@@ -3,10 +3,11 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include "tItens.h"
 #include "tProduto.h"
 
-typedef struct EstoqueFilial tEstoqueFilial;
+typedef struct Estoque tEstoque;
 
-typedef struct ItensEstoque tItensEstoque;
+tEstoque *CriaEstoque(int num);
 
 #endif

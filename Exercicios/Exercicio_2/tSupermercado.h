@@ -13,4 +13,6 @@ tSupermercado *CriaSupermercado();
 
 void CriaFiliaisSupermercado(tSupermercado *supermercado);
 
+void ImprimeSupermercado(tSupermercado *supermercado);
+
 #endif

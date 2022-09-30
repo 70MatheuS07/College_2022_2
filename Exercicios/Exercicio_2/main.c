@@ -11,8 +11,7 @@ int main()
 
     CriaFiliaisSupermercado(supermercado);
 
-
-
+    ImprimeSupermercado(supermercado);
 
     return 0;
 }
