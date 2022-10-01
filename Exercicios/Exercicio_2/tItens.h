@@ -13,4 +13,6 @@ float CalculaValorItens(tItens **itens, int num);
 
 void ImprimeItens(tItens **itens, int num);
 
+void LiberaItens(tItens **itens, int num);
+
 #endif

@@ -13,4 +13,6 @@ float PegaValorProduto(tProduto *produto);
 
 void ImprimeNomeValorProduto(tProduto *produto);
 
+void LiberaProduto(tProduto *produto);
+
 #endif

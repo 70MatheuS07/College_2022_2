@@ -14,6 +14,8 @@ int main()
     CalculaEstoqueSupermercado(supermercado);
 
     ImprimeSupermercado(supermercado);
+    
+    LiberaSupermercado(supermercado);
 
     return 0;
 }

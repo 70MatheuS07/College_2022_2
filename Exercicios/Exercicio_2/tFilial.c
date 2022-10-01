@@ -48,3 +48,20 @@ void ImprimeFilial(tFilial **filial, int num)
         ImprimeEstoque(filial[i]->estoque);
     }
 }
+
+void LiberaFiliais(tFilial **filial, int num)
+{
+    for (int i = 0; i < num; i++)
+    {
+        LiberaEstoque(filial[i]->estoque);
+
+        free(filial[i]->nome);
+        filial[i]->nome = NULL;
+
+        free(filial[i]);
+        filial[i] = NULL;
+    }
+
+    free(filial);
+    filial = NULL;
+}

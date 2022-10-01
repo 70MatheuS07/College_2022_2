@@ -14,4 +14,6 @@ float CalculaValorEstoque(tEstoque *estoque);
 
 void ImprimeEstoque(tEstoque *estoque);
 
+void LiberaEstoque(tEstoque *estoque);
+
 #endif

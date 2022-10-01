@@ -17,4 +17,6 @@ void CalculaEstoqueSupermercado(tSupermercado *supermercado);
 
 void ImprimeSupermercado(tSupermercado *supermercado);
 
+void LiberaSupermercado(tSupermercado *supermercado);
+
 #endif

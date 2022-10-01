@@ -16,4 +16,6 @@ float CalculaValorFilial(tFilial **filial, int num);
 
 void ImprimeFilial(tFilial **filial, int num);
 
+void LiberaFiliais(tFilial **filial, int num);
+
 #endif

@@ -42,3 +42,11 @@ void ImprimeEstoque(tEstoque *estoque)
 
     ImprimeItens(estoque->itensEstoque, estoque->qtdItens);
 }
+
+void LiberaEstoque(tEstoque *estoque)
+{
+    LiberaItens(estoque->itensEstoque, estoque->qtdItens);
+
+    free(estoque);
+    estoque = NULL;
+}

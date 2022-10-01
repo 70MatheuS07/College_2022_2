@@ -57,3 +57,17 @@ void ImprimeItens(tItens **itens, int num)
         printf("quantidade: %d\n", itens[i]->quantidade);
     }
 }
+
+void LiberaItens(tItens **itens, int num)
+{
+    for (int i = 0; i < num; i++)
+    {
+        LiberaProduto(itens[i]->produto);
+
+        free(itens[i]);
+        itens[i] = NULL;
+    }
+
+    free(itens);
+    itens = NULL;
+}

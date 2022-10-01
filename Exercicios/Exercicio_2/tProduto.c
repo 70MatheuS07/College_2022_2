@@ -38,3 +38,12 @@ void ImprimeNomeValorProduto(tProduto *produto)
 {
     printf("%s, valor unitario: %.2f, ", produto->nome, produto->valor);
 }
+
+void LiberaProduto(tProduto *produto)
+{
+    free(produto->nome);
+    produto->nome = NULL;
+
+    free(produto);
+    produto = NULL;
+}

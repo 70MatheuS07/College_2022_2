@@ -55,3 +55,14 @@ void ImprimeSupermercado(tSupermercado *supermercado)
 
     ImprimeFilial(supermercado->filiais, supermercado->qtdFiliais);
 }
+
+void LiberaSupermercado(tSupermercado *supermercado)
+{
+    LiberaFiliais(supermercado->filiais, supermercado->qtdFiliais);
+
+    free(supermercado->nome);
+    supermercado->nome = NULL;
+
+    free(supermercado);
+    supermercado = NULL;
+}
