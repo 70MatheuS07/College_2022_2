@@ -11,6 +11,8 @@ int main()
 
     CriaFiliaisSupermercado(supermercado);
 
+    CalculaEstoqueSupermercado(supermercado);
+
     ImprimeSupermercado(supermercado);
 
     return 0;

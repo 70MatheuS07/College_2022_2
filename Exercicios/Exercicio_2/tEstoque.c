@@ -3,7 +3,7 @@
 struct Estoque
 {
     float valor;
-    tItens *itensEstoque;
+    tItens **itensEstoque;
 };
 
 tEstoque *CriaEstoque(int num)
@@ -14,14 +14,21 @@ tEstoque *CriaEstoque(int num)
 
     scanf("%d", &qtd);
 
-    printf("\n");
+    tEstoque *estoque = calloc(1, sizeof(tEstoque));
 
-    tEstoque *estoque = calloc(qtd, sizeof(tEstoque));
-
-    for (int i = 0; i < qtd; i++)
-    {
-        estoque[i].itensEstoque = CriaItens(i);
-    }
+    estoque->itensEstoque = CriaItens(qtd);
 
     return estoque;
+}
+
+float CalculaValorEstoque(tEstoque *estoque)
+{
+    float result=0;
+    estoque->valor = 0;
+
+    estoque->valor = CalculaValorItens(estoque->itensEstoque);
+
+    result = estoque->valor;
+
+    return result;
 }

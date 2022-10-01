@@ -13,6 +13,8 @@ tSupermercado *CriaSupermercado();
 
 void CriaFiliaisSupermercado(tSupermercado *supermercado);
 
+void CalculaEstoqueSupermercado(tSupermercado *supermercado);
+
 void ImprimeSupermercado(tSupermercado *supermercado);
 
 #endif

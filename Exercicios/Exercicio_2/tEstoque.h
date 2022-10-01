@@ -10,4 +10,6 @@ typedef struct Estoque tEstoque;
 
 tEstoque *CriaEstoque(int num);
 
+float CalculaValorEstoque(tEstoque *estoque);
+
 #endif

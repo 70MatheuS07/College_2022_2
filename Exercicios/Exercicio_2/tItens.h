@@ -7,6 +7,8 @@
 
 typedef struct Itens tItens;
 
-tItens *CriaItens(int i);
+tItens **CriaItens(int num);
+
+float CalculaValorItens(tItens **itens);
 
 #endif

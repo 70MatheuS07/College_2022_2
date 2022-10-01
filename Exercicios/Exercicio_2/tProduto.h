@@ -9,4 +9,6 @@ typedef struct Produto tProduto;
 
 tProduto *CriaProduto(int i);
 
+float PegaValorProduto(tProduto *produto);
+
 #endif

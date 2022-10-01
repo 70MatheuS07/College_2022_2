@@ -10,8 +10,10 @@ typedef struct Filial tFilial;
 
 tFilial **CriaFiliais(int quantidade);
 
-void ColetaNomeFilial(tFilial *filial, int num);
+void ColetaNomeFilial(tFilial **filial, int num);
 
-void ImprimeFilial(tFilial *filial, int num);
+float CalculaValorFilial(tFilial **filial, int num);
+
+void ImprimeFilial(tFilial **filial, int num);
 
 #endif

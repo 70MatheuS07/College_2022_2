@@ -24,3 +24,12 @@ tProduto *CriaProduto(int i)
 
     return produto;
 }
+
+float PegaValorProduto(tProduto *produto)
+{
+    float valor=0;
+
+    valor = produto->valor;
+
+    return valor;
+}

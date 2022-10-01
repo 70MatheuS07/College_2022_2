@@ -4,7 +4,7 @@ struct Supermercado
 {
     char *nome;
     float estoqueTotal;
-    tFilial *filiais;
+    tFilial **filiais;
     int qtdFiliais;
 };
 
@@ -40,6 +40,13 @@ void CriaFiliaisSupermercado(tSupermercado *supermercado)
     {
         ColetaNomeFilial(supermercado->filiais, i);
     }
+}
+
+void CalculaEstoqueSupermercado(tSupermercado *supermercado)
+{
+    supermercado->estoqueTotal = 0;
+
+    supermercado->estoqueTotal += CalculaValorFilial(supermercado->filiais, supermercado->qtdFiliais);
 }
 
 void ImprimeSupermercado(tSupermercado *supermercado)
