@@ -33,3 +33,8 @@ float PegaValorProduto(tProduto *produto)
 
     return valor;
 }
+
+void ImprimeNomeValorProduto(tProduto *produto)
+{
+    printf("%s, valor unitario: %.2f, ", produto->nome, produto->valor);
+}

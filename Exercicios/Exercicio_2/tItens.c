@@ -31,12 +31,12 @@ tItens **CriaItens(int num)
     return itens;
 }
 
-float CalculaValorItens(tItens **itens)
+float CalculaValorItens(tItens **itens, int num)
 {
     float valor = 0;
     float total = 0;
     float result = 0;
-    for (int i = 0; i < itens[i]->quantidade; i++)
+    for (int i = 0; i < num; i++)
     {
         valor = PegaValorProduto(itens[i]->produto);
         total = valor * itens[i]->quantidade;
@@ -44,4 +44,16 @@ float CalculaValorItens(tItens **itens)
     }
 
     return result;
+}
+
+void ImprimeItens(tItens **itens, int num)
+{
+    for (int i = 0; i < num; i++)
+    {
+        printf("\tItem: ");
+
+        ImprimeNomeValorProduto(itens[i]->produto);
+
+        printf("quantidade: %d\n", itens[i]->quantidade);
+    }
 }

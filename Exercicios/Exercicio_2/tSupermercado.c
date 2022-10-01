@@ -51,10 +51,7 @@ void CalculaEstoqueSupermercado(tSupermercado *supermercado)
 
 void ImprimeSupermercado(tSupermercado *supermercado)
 {
-    printf("Nome do supermercado: %s\n\n", supermercado->nome);
+    printf("Nome do supermercado: %s, Estoque Total: %.2f\n\n", supermercado->nome, supermercado->estoqueTotal);
 
-    for (int i = 0; i < supermercado->qtdFiliais; i++)
-    {
-        ImprimeFilial(supermercado->filiais, i);
-    }
+    ImprimeFilial(supermercado->filiais, supermercado->qtdFiliais);
 }

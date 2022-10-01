@@ -11,4 +11,6 @@ tProduto *CriaProduto(int i);
 
 float PegaValorProduto(tProduto *produto);
 
+void ImprimeNomeValorProduto(tProduto *produto);
+
 #endif

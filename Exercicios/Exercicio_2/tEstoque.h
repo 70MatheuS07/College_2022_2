@@ -12,4 +12,6 @@ tEstoque *CriaEstoque(int num);
 
 float CalculaValorEstoque(tEstoque *estoque);
 
+void ImprimeEstoque(tEstoque *estoque);
+
 #endif

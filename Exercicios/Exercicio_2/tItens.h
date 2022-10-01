@@ -9,6 +9,8 @@ typedef struct Itens tItens;
 
 tItens **CriaItens(int num);
 
-float CalculaValorItens(tItens **itens);
+float CalculaValorItens(tItens **itens, int num);
+
+void ImprimeItens(tItens **itens, int num);
 
 #endif

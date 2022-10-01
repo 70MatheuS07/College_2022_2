@@ -35,9 +35,16 @@ float CalculaValorFilial(tFilial **filial, int num)
     {
         estoqueTotalFilial += CalculaValorEstoque(filial[i]->estoque);
     }
+
+    return estoqueTotalFilial;
 }
 
 void ImprimeFilial(tFilial **filial, int num)
 {
-    printf("Filial %d: %s\n", num + 1, filial[num]->nome);
+    for (int i = 0; i < num; i++)
+    {
+        printf("Filial %d: %s\n", i + 1, filial[i]->nome);
+
+        ImprimeEstoque(filial[i]->estoque);
+    }
 }
