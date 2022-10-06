@@ -13,6 +13,8 @@ void ScanfCliente(tCliente *cliente);
 
 void EscolheMatrizTranspostaCliente(tCliente *cliente);
 
-void MultiplicaMatrizesCliente(tCLiente *cliente);
+void MultiplicaMatrizesCliente(tCliente *cliente);
+
+void LiberaCliente(tCliente *cliente);
 
 #endif

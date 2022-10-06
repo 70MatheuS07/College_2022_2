@@ -73,39 +73,49 @@ Matriz *transposta(Matriz *mat)
 
 Matriz *multiplicacao(Matriz *mat1, Matriz *mat2)
 {
-    Matriz *matrizResult = inicializaMatriz(mat1->linhas, mat1->colunas);
+    Matriz *matrizResult = inicializaMatriz(mat1->linhas, mat2->colunas);
     int result = 0;
+
+    if (mat1->colunas != mat2->linhas)
+    {
+        return NULL;
+    }
 
     for (int i = 0; i < mat1->linhas; i++)
     {
-        for (int j = 0; j < mat1->colunas; j++)
+        for (int j = 0; j < mat2->colunas; j++)
         {
-            result += mat1->matriz[i][j] * mat2->matriz[j][i];
+            result = 0;
 
-            if (j == mat1->colunas - 1)
+            for (int k = 0; k < mat1->colunas; k++)
             {
+                result += mat1->matriz[i][k] * mat2->matriz[k][j];
                 matrizResult->matriz[i][j] = result;
-                result = 0;
             }
         }
     }
+
+    return matrizResult;
 }
 
 void imprimeMatriz(Matriz *mat)
 {
-    for (int i = 0; i < mat->linhas; i++)
+    if (mat != NULL)
     {
-        for (int j = 0; j < mat->colunas; j++)
+        for (int i = 0; i < mat->linhas; i++)
         {
-            printf("%d", mat->matriz[i][j]);
-
-            if (j < mat->colunas - 1)
+            for (int j = 0; j < mat->colunas; j++)
             {
-                printf(" ");
-            }
-        }
+                printf("%d", mat->matriz[i][j]);
 
-        printf("\n");
+                if (j < mat->colunas - 1)
+                {
+                    printf(" ");
+                }
+            }
+
+            printf("\n");
+        }
     }
 }
 

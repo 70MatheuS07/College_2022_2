@@ -12,6 +12,8 @@ int main()
     EscolheMatrizTranspostaCliente(cliente);
 
     MultiplicaMatrizesCliente(cliente);
+
+    LiberaCliente(cliente);
     
     return 0;
 }
