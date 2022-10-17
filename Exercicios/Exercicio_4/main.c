@@ -5,7 +5,16 @@
 
 int main()
 {
-    CriaLista();
+    tLista *lista;
+    tProduto *produto;
+
+    lista = CriaLista();
+
+    produto = CriaProduto();
+
+    InsereProdutoLista(lista, produto);
+
+    ImprimeLista(lista);
 
     return 0;
 }

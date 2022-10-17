@@ -13,4 +13,6 @@ int RetornaCodigoProduto(tProduto *produto);
 
 void LiberaProduto(tProduto *produto);
 
+void ImprimeProduto(tProduto *produto);
+
 #endif

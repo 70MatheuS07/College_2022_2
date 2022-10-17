@@ -48,3 +48,10 @@ void LiberaProduto(tProduto *produto)
     free(produto);
     produto = NULL;
 }
+
+void ImprimeProduto(tProduto *produto)
+{
+    printf("Produto: %s\n", produto->nome);
+    printf("Codigo: %d\n", produto->codigo);
+    printf("Preco: %.2f\n", produto->preco);
+}

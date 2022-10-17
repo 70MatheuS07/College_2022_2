@@ -24,15 +24,6 @@ tLista *CriaLista()
     return lista;
 }
 
-void InsereProdutoLista(tProduto *produto)
-{
-    tProduto *produto;
-
-    produto = CriaProduto();
-
-    InsereProdutoLista(produto);
-}
-
 void InsereProdutoLista(tLista *lista, tProduto *produto)
 {
     tCelula *nova = malloc(sizeof(tCelula));
@@ -77,7 +68,18 @@ void RetiraProdutoLista(tLista *lista, int codigo)
         aux = aux->prox;
     }
 
-    if (aux == lista->inicio)
+    if (aux == lista->inicio && aux == lista->fim)
+    {
+        lista->inicio = NULL;
+        lista->fim = NULL;
+
+        LiberaProduto(aux->produto);
+        aux->prox = NULL;
+        free(aux);
+        aux = NULL;
+    }
+
+    else if (aux == lista->inicio)
     {
         lista->inicio = aux->prox;
 
@@ -99,6 +101,18 @@ void RetiraProdutoLista(tLista *lista, int codigo)
 
     else
     {
-        
+        ant->prox = aux->prox;
+        LiberaProduto(aux->produto);
+        aux->prox = NULL;
+        free(aux);
+        aux = NULL;
+    }
+}
+
+void ImprimeLista(tLista *lista)
+{
+    for (tCelula *aux = lista->inicio; aux != NULL; aux = aux->prox)
+    {
+        ImprimeProduto(aux->produto);
     }
 }
