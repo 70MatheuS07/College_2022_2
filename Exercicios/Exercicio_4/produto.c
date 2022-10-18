@@ -19,10 +19,10 @@ tProduto *CriaProduto()
     nome = LerLinha();
 
     printf("\nDigite o codigo do produto: ");
-    scanf("%d\n", &codigo);
+    scanf("%d", &codigo);
 
     printf("\nDigite o preco do produto: ");
-    scanf("%f\n", &preco);
+    scanf("%f", &preco);
 
     produto->nome = nome;
     produto->codigo = codigo;
@@ -51,7 +51,7 @@ void LiberaProduto(tProduto *produto)
 
 void ImprimeProduto(tProduto *produto)
 {
-    printf("Produto: %s\n", produto->nome);
+    printf("\n\nProduto: %s\n", produto->nome);
     printf("Codigo: %d\n", produto->codigo);
     printf("Preco: %.2f\n", produto->preco);
 }

@@ -92,6 +92,7 @@ void RetiraProdutoLista(tLista *lista, int codigo)
     else if (aux == lista->fim)
     {
         lista->fim = ant;
+        ant->prox = NULL;
 
         LiberaProduto(aux->produto);
         aux->prox = NULL;

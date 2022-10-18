@@ -10,9 +10,20 @@ int main()
 
     lista = CriaLista();
 
-    produto = CriaProduto();
+    int qtd;
+    char lixo;
 
-    InsereProdutoLista(lista, produto);
+    scanf("%d", &qtd, &lixo);
+
+    for (int i = 0; i < qtd; i++)
+    {
+        produto = CriaProduto();
+        InsereProdutoLista(lista, produto);
+    }
+
+    ImprimeLista(lista);
+
+    RetiraProdutoLista(lista, 1003);
 
     ImprimeLista(lista);
 
