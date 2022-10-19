@@ -6,6 +6,7 @@ struct Celula
 {
     tProduto *produto;
     tCelula *prox;
+    tCelula *ant;
 };
 
 struct Lista
@@ -29,16 +30,19 @@ void InsereProdutoLista(tLista *lista, tProduto *produto)
     tCelula *nova = malloc(sizeof(tCelula));
 
     nova->produto = produto;
-    nova->prox = NULL;
 
     if (lista->inicio == NULL)
     {
+        nova->prox = NULL;
+        nova->ant = NULL;
         lista->inicio = lista->fim = nova;
     }
 
     else
     {
         lista->fim->prox = nova;
+        nova->ant = lista->fim;
+        nova->prox = NULL;
         lista->fim = nova;
     }
 }
@@ -46,7 +50,6 @@ void InsereProdutoLista(tLista *lista, tProduto *produto)
 void RetiraProdutoLista(tLista *lista, int codigo)
 {
     tCelula *aux = lista->inicio;
-    tCelula *ant;
     int codigoReturn;
 
     while (1)
@@ -64,7 +67,6 @@ void RetiraProdutoLista(tLista *lista, int codigo)
             return;
         }
 
-        ant = aux;
         aux = aux->prox;
     }
 
@@ -74,6 +76,7 @@ void RetiraProdutoLista(tLista *lista, int codigo)
         lista->fim = NULL;
 
         LiberaProduto(aux->produto);
+        aux->ant = NULL;
         aux->prox = NULL;
         free(aux);
         aux = NULL;
@@ -82,8 +85,10 @@ void RetiraProdutoLista(tLista *lista, int codigo)
     else if (aux == lista->inicio)
     {
         lista->inicio = aux->prox;
+        aux->prox->ant = NULL;
 
         LiberaProduto(aux->produto);
+        aux->ant = NULL;
         aux->prox = NULL;
         free(aux);
         aux = NULL;
@@ -91,10 +96,12 @@ void RetiraProdutoLista(tLista *lista, int codigo)
 
     else if (aux == lista->fim)
     {
-        lista->fim = ant;
-        ant->prox = NULL;
+        aux->ant->prox = NULL;
+        lista->fim = aux->ant;
+        
 
         LiberaProduto(aux->produto);
+        aux->ant = NULL;
         aux->prox = NULL;
         free(aux);
         aux = NULL;
@@ -102,7 +109,8 @@ void RetiraProdutoLista(tLista *lista, int codigo)
 
     else
     {
-        ant->prox = aux->prox;
+        aux->ant->prox = aux->prox;
+        aux->prox->ant = aux->ant;
         LiberaProduto(aux->produto);
         aux->prox = NULL;
         free(aux);
@@ -130,10 +138,18 @@ void LiberaLista(tLista *lista)
 
         LiberaProduto(aux->produto);
         free(aux);
-        
+
         aux = prox;
     }
 
     free(lista);
     lista = NULL;
+}
+
+void ImprimeListaInvertida(tLista *lista)
+{
+    for (tCelula *aux = lista->fim; aux != NULL; aux = aux->ant)
+    {
+        ImprimeProduto(aux->produto);
+    }
 }

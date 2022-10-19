@@ -3,6 +3,8 @@
 #include "lista.h"
 #include "produto.h"
 
+#define CODIGO 1002
+
 int main()
 {
     tLista *lista;
@@ -21,10 +23,12 @@ int main()
         InsereProdutoLista(lista, produto);
     }
 
-    ImprimeLista(lista);
+    // Modificar o codigo do produto dependendo do codigo dele
+    RetiraProdutoLista(lista, CODIGO);
 
-    //Depende de qual teste o retira produto muda
-    //RetiraProdutoLista(lista, 1003);
+        ImprimeLista(lista);
+
+    ImprimeListaInvertida(lista);
 
     LiberaLista(lista);
 
