@@ -13,4 +13,8 @@ tMovel *CriaMovel();
 
 void ImprimeMovel(tMovel *movel);
 
+int RetornaIdMovel(tMovel *movel);
+
+void LiberaMovel(tMovel *movel);
+
 #endif

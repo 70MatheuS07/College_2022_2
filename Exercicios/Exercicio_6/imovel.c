@@ -31,3 +31,19 @@ void ImprimeImovel(tImovel *imovel)
     printf("endereco: %s\n", imovel->endereco);
     printf("preco: %.2f\n", imovel->preco);
 }
+
+int RetornaIdImovel(tImovel *imovel)
+{
+    int id = imovel->id;
+
+    return id;
+}
+
+void LiberaImovel(tImovel *imovel)
+{
+    free(imovel->endereco);
+    imovel->endereco = NULL;
+
+    free(imovel);
+    imovel = NULL;
+}

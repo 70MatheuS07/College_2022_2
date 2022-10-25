@@ -16,5 +16,13 @@ int main()
 
     ImprimeLista(lista);
 
+    // lista = RetiraLista(lista, 10);
+    // lista = RetiraLista(lista, 120);
+    // lista = RetiraLista(lista, 100);
+
+    ImprimeLista(lista);
+
+    LiberaListaToda(lista);
+
     return 0;
 }

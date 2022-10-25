@@ -10,10 +10,16 @@ typedef struct Lista tLista;
 
 tLista *CriaLista();
 
-void RetiraItemDaLista(tLista *lista, int id);
-
 tLista *CriaListaEncadeada(tLista *lista);
 
 void ImprimeLista(tLista *lista);
+
+tLista *RetiraLista(tLista *lista, int id);
+
+void LiberaLista(tLista *lista);
+
+void LiberaTodaLista(tLista *lista);
+
+void LiberaListaToda(tLista *lista);
 
 #endif

@@ -14,4 +14,8 @@ tImovel *CriaImovel();
 
 void ImprimeImovel(tImovel *imovel);
 
+int RetornaIdImovel(tImovel *imovel);
+
+void LiberaImovel(tImovel *imovel);
+
 #endif
