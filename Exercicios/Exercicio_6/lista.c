@@ -186,3 +186,40 @@ void LiberaListaToda(tLista *lista)
 
     lista = NULL;
 }
+
+void QualMinhaTaxa(tLista *lista, int id)
+{
+    tLista *aux = lista;
+    tLista *ant = NULL;
+
+    while (aux != NULL)
+    {
+        if (aux->identificador == MOVEL)
+        {
+            if (RetornaIdMovel(aux->movel) == id)
+            {
+                break;
+            }
+        }
+
+        else
+        {
+            if (RetornaIdImovel(aux->imovel) == id)
+            {
+                break;
+            }
+        }
+
+        aux = aux->prox;
+    }
+
+    if (aux->identificador == MOVEL)
+    {
+        printf("A taxa e de: 0.5%%\n");
+    }
+
+    else
+    {
+        printf("A taxa e de: 1.0%%\n");
+    }
+}

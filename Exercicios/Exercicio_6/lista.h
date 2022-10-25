@@ -22,4 +22,6 @@ void LiberaTodaLista(tLista *lista);
 
 void LiberaListaToda(tLista *lista);
 
+void QualMinhaTaxa(tLista *lista, int id);
+
 #endif
