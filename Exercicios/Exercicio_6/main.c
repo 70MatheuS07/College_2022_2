@@ -22,6 +22,10 @@ int main()
 
     ImprimeLista(lista);
 
+    QualMinhaTaxa(lista, 10);
+    QualMinhaTaxa(lista, 120);
+    QualMinhaTaxa(lista, 100);
+
     LiberaListaToda(lista);
 
     return 0;
