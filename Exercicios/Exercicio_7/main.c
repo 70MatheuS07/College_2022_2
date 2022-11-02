@@ -3,20 +3,18 @@
 #include "pilha.h"
 #include "livro.h"
 
-#define TAM_PILHA 10
-
 int main()
 {
     int qtd = 0;
     char lixo;
-
-    tPilha *pilha = CriaPilha(TAM_PILHA);
 
     tLivro *livro;
 
     printf("Digite a quantidade de livros que serao colocados na pilha: ");
 
     scanf("%d%c", &qtd, &lixo);
+
+    tPilha *pilha = CriaPilha(qtd);
 
     for (int i = 0; i < qtd; i++)
     {
@@ -31,6 +29,8 @@ int main()
     LiberaLivro(livro);
 
     ImprimePilha(pilha);
+
+    LiberaPilha(pilha);
 
     return 0;
 }

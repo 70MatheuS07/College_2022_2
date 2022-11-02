@@ -15,4 +15,6 @@ tLivro *RetiraLivroPilha(tPilha *pilha);
 
 void ImprimePilha(tPilha *pilha);
 
+void LiberaPilha(tPilha *pilha);
+
 #endif

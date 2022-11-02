@@ -50,26 +50,35 @@ tLivro *RetiraLivroPilha(tPilha *pilha)
 
 void ImprimePilha(tPilha *pilha)
 {
+    int i = pilha->topo - 1;
     printf("\ndebug\n");
-    
+
     if (pilha->topo == 0 || pilha == NULL)
     {
         printf("\nA pilha esta vazia!");
         return;
     }
 
-    for (int i = pilha->maxQtdLivros - 1; i < 0; i--)
+    while (i != 0)
     {
         ImprimeLivro(pilha->livros[i]);
+
+        i--;
     }
 }
 
 void LiberaPilha(tPilha *pilha)
 {
-    for (int i = pilha->maxQtdLivros - 1; i < 0; i--)
+    int i = pilha->topo - 1;
+
+    while (i != 0)
     {
         LiberaLivro(pilha->livros[i]);
+        i--;
     }
+
+    free(pilha->livros);
+    pilha->livros = NULL;
 
     free(pilha);
     pilha = NULL;
