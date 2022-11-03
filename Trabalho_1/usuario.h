@@ -4,10 +4,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-
-#define HOBBIES_INICIAL 8
+#include "hobbies.h"
+#include "arquivo.h"
 
 typedef struct Usuario tUsuario;
 
 tUsuario *CriaUsuario();
 
+tUsuario *ColetaUsuario(FILE *arquivo);
+
+#endif

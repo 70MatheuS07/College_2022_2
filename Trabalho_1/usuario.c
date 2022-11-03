@@ -4,27 +4,24 @@ struct Usuario
 {
     char *nome;
     int idade;
-    char **hobbies;
+    tHobbies *hobbies;
     int qtdHobbies;
 };
 
 tUsuario *CriaUsuario()
 {
-    char nome[101];
-    int idade;
+    tUsuario *usuario = malloc(sizeof(tUsuario));
 
-    tUsuario *usuario = calloc(1, sizeof(tUsuario));
+    return usuario;
+}
 
-    usuario->hobbies = malloc(HOBBIES_INICIAL * sizeof(char *));
+tUsuario *ColetaUsuario(FILE *arquivo)
+{
+    tUsuario *usuario = CriaUsuario();
+    
+    usuario->nome = LehNomeArquivoUsers(FILE *arquivo);
 
-    scanf("%[^;]", nome);
-    usuario->nome = calloc(strlen(nome), sizeof(char));
-    strcpy(usuario->nome, nome);
+    usuario->idade = LehIdadeArquivoUsers(FILE *arquivo);
 
-    scanf(";%d;", &idade);
-    usuario->idade = idade;
-
-    while (1)
-    {
-    }
+    usuario->hobbies = ColetaHobbies(FILE *arquivo);
 }
