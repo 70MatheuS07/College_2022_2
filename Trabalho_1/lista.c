@@ -10,27 +10,63 @@ struct Celula
 
 struct Lista
 {
-    tCelula *primeira;
-    tCelula *ultima;
+    tCelula *inicio;
+    tCelula *fim;
 };
 
 tLista *CriaLista()
 {
     tLista *lista = malloc(sizeof(tLista));
 
+    lista->inicio = NULL;
+    lista->fim = NULL;
+
     return lista;
 }
 
 tLista *LehUsuariosLista(tLista *lista)
 {
+    int i = 0;
+
     tUsuario *usuario;
 
     FILE *arquivo;
 
-    arquivo = fopen("users.txt", "r");
+    arquivo = fopen("caso_01/entradas/users.txt", "r");
 
     while (!feof(arquivo))
     {
-        usuario = ColetaUsuario();
+        usuario = ColetaUsuario(arquivo);
+
+        InsereUsuarioLista(lista, usuario);
+    }
+
+    return lista;
+}
+
+void InsereUsuarioLista(tLista *lista, tUsuario *usuario)
+{
+    tCelula *nova = malloc(sizeof(tCelula));
+
+    nova->usuario = usuario;
+    nova->prox = NULL;
+
+    if (lista->inicio == NULL)
+    {
+        lista->inicio = lista->fim = nova;
+    }
+
+    else
+    {
+        lista->fim->prox = nova;
+        lista->fim = nova;
+    }
+}
+
+void ImprimeLista(tLista *lista)
+{
+    for (tCelula *aux = lista->inicio; aux != NULL; aux = aux->prox)
+    {
+        ImprimeUsuario(aux->usuario);
     }
 }

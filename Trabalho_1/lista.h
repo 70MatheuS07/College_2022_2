@@ -11,4 +11,8 @@ tLista *CriaLista();
 
 tLista *LehUsuariosLista(tLista *lista);
 
+void InsereUsuarioLista(tLista *lista, tUsuario *usuario);
+
+void ImprimeLista(tLista *lista);
+
 #endif
