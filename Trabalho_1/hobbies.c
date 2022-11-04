@@ -32,7 +32,7 @@ tHobbies *ColetaHobbies(FILE *arquivo)
         {
             fscanf(arquivo, "%c", &caracter);
 
-            if (caracter == ',' || caracter == '\n')
+            if (caracter == ',' || caracter == '\n' || feof(arquivo))
             {
                 string[i] = '\0';
                 break;
@@ -40,20 +40,19 @@ tHobbies *ColetaHobbies(FILE *arquivo)
 
             else
             {
-                //da problema na segunda leitura, não sei porque ?
                 string[i] = caracter;
             }
 
             i++;
         }
 
-        result = malloc(i+1 * sizeof(char));
+        result = malloc(i + 1 * sizeof(char));
 
         strcpy(result, string);
 
         InsereHobbyLista(hobbies, result);
 
-        if (caracter == '\n')
+        if (caracter == '\n' || feof(arquivo))
         {
             break;
         }
@@ -93,6 +92,29 @@ void ImprimeHobbies(tHobbies *hobbies)
 {
     for (tCelula *aux = hobbies->inicio; aux != NULL; aux = aux->prox)
     {
-        printf("%s ", hobbies->inicio->hobby);
+        printf("%s ", aux->hobby);
     }
+}
+
+void LiberaHobbies(tHobbies *hobbies)
+{
+    tCelula *aux, *prox;
+
+    aux = hobbies->inicio;
+
+    while (aux != NULL)
+    {
+        prox = aux->prox;
+
+        free(aux->hobby);
+        aux->hobby = NULL;
+
+        free(aux);
+        aux = NULL;
+
+        aux = prox;
+    }
+
+    free(hobbies);
+    hobbies = NULL;
 }

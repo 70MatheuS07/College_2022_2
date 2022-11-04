@@ -41,6 +41,8 @@ tLista *LehUsuariosLista(tLista *lista)
         InsereUsuarioLista(lista, usuario);
     }
 
+    fclose(arquivo);
+
     return lista;
 }
 
@@ -68,5 +70,28 @@ void ImprimeLista(tLista *lista)
     for (tCelula *aux = lista->inicio; aux != NULL; aux = aux->prox)
     {
         ImprimeUsuario(aux->usuario);
+        printf("\n\n");
     }
+}
+
+void LiberaLista(tLista *lista)
+{
+    tCelula *aux, *prox;
+
+    aux = lista->inicio;
+
+    while (aux != NULL)
+    {
+        prox = aux->prox;
+
+        LiberaUsuario(aux->usuario);
+
+        free(aux);
+        aux = NULL;
+        
+        aux = prox;
+    }
+
+    free(lista);
+    lista = NULL;
 }

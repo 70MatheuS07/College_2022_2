@@ -13,4 +13,6 @@ void InsereHobbyLista(tHobbies *hobbies, char *hobby);
 
 void ImprimeHobbies(tHobbies *hobbies);
 
+void LiberaHobbies(tHobbies *hobbies);
+
 #endif

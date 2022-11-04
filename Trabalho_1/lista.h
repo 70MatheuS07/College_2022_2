@@ -15,4 +15,6 @@ void InsereUsuarioLista(tLista *lista, tUsuario *usuario);
 
 void ImprimeLista(tLista *lista);
 
+void LiberaLista(tLista *lista);
+
 #endif

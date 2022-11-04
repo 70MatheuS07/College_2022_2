@@ -14,4 +14,6 @@ tUsuario *ColetaUsuario(FILE *arquivo);
 
 void ImprimeUsuario(tUsuario *usuario);
 
+void LiberaUsuario(tUsuario *usuario);
+
 #endif

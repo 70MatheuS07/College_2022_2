@@ -9,8 +9,9 @@ int main(int argc, char *argv[])
 
     usuarios = LehUsuariosLista(usuarios);
 
-    ImprimeLista(usuarios);
-
-    //Leh o arquivo de users.txt
     
+
+    //ImprimeLista(usuarios);
+
+    LiberaLista(usuarios);
 }

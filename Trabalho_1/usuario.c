@@ -67,3 +67,17 @@ void ImprimeUsuario(tUsuario *usuario)
     
     ImprimeHobbies(usuario->hobbies);
 }
+
+void LiberaUsuario(tUsuario *usuario)
+{
+    free(usuario->nome);
+    usuario->nome = NULL;
+
+    free(usuario->localizacao);
+    usuario->localizacao = NULL;
+
+    LiberaHobbies(usuario->hobbies);
+
+    free(usuario);
+    usuario = NULL;
+}
