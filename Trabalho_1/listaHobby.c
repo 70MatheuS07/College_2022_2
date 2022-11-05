@@ -1,4 +1,4 @@
-#include "hobbies.h"
+#include "listaHobby.h"
 
 typedef struct Celula tCelula;
 
@@ -8,68 +8,42 @@ struct Celula
     tCelula *prox;
 };
 
-struct HobbiesLista
+struct ListaHobby
 {
     tCelula *inicio;
     tCelula *fim;
 };
 
-tHobbies *ColetaHobbies(FILE *arquivo)
+tListaHobby *ColetaHobbies(FILE *arquivo)
 {
     int i = 0;
     char caracter;
 
-    tHobbies *hobbies = malloc(sizeof(tHobbies));
+    tListaHobby *hobbies = malloc(sizeof(tListaHobby));
 
     char *string;
-    char *result;
 
     while (1)
     {
-        string = malloc(101 * sizeof(char));
+        string = ColetaHobbyArquivo(arquivo);
 
-        while (1)
-        {
-            fscanf(arquivo, "%c", &caracter);
+        int tam = strlen(string);
 
-            if (caracter == ',' || caracter == '\n' || feof(arquivo))
-            {
-                string[i] = '\0';
-                break;
-            }
+        caracter = string[tam - 1];
+        string[tam - 1] = '\0';
 
-            else
-            {
-                string[i] = caracter;
-            }
+        InsereHobbyLista(hobbies, string);
 
-            i++;
-        }
-
-        result = malloc(i + 1 * sizeof(char));
-
-        strcpy(result, string);
-
-        InsereHobbyLista(hobbies, result);
-
-        if (caracter == '\n' || feof(arquivo))
+        if (feof(arquivo) || caracter == '\n')
         {
             break;
         }
-
-        free(string);
-        string = NULL;
-
-        i = 0;
     }
-
-    free(string);
-    string = NULL;
 
     return hobbies;
 }
 
-void InsereHobbyLista(tHobbies *hobbies, char *hobby)
+void InsereHobbyLista(tListaHobby *hobbies, char *hobby)
 {
     tCelula *nova = malloc(sizeof(tCelula));
 
@@ -88,7 +62,7 @@ void InsereHobbyLista(tHobbies *hobbies, char *hobby)
     }
 }
 
-void ImprimeHobbies(tHobbies *hobbies)
+void ImprimeHobbies(tListaHobby *hobbies)
 {
     for (tCelula *aux = hobbies->inicio; aux != NULL; aux = aux->prox)
     {
@@ -96,7 +70,7 @@ void ImprimeHobbies(tHobbies *hobbies)
     }
 }
 
-void LiberaHobbies(tHobbies *hobbies)
+void LiberaHobbies(tListaHobby *hobbies)
 {
     tCelula *aux, *prox;
 

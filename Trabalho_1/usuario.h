@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "hobbies.h"
+#include "listaHobby.h"
 
 typedef struct Usuario tUsuario;
 

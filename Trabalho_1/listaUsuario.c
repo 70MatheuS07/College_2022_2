@@ -1,4 +1,4 @@
-#include "lista.h"
+#include "listaUsuario.h"
 
 typedef struct Celula tCelula;
 
@@ -8,15 +8,15 @@ struct Celula
     tCelula *prox;
 };
 
-struct Lista
+struct ListaUsuario
 {
     tCelula *inicio;
     tCelula *fim;
 };
 
-tLista *CriaLista()
+tListaUsuario *CriaLista()
 {
-    tLista *lista = malloc(sizeof(tLista));
+    tListaUsuario *lista = malloc(sizeof(tListaUsuario));
 
     lista->inicio = NULL;
     lista->fim = NULL;
@@ -24,7 +24,7 @@ tLista *CriaLista()
     return lista;
 }
 
-tLista *LehUsuariosLista(tLista *lista)
+tListaUsuario *LehUsuariosLista(tListaUsuario *lista)
 {
     int i = 0;
 
@@ -46,7 +46,7 @@ tLista *LehUsuariosLista(tLista *lista)
     return lista;
 }
 
-void InsereUsuarioLista(tLista *lista, tUsuario *usuario)
+void InsereUsuarioLista(tListaUsuario *lista, tUsuario *usuario)
 {
     tCelula *nova = malloc(sizeof(tCelula));
 
@@ -65,7 +65,7 @@ void InsereUsuarioLista(tLista *lista, tUsuario *usuario)
     }
 }
 
-void ImprimeLista(tLista *lista)
+void ImprimeLista(tListaUsuario *lista)
 {
     for (tCelula *aux = lista->inicio; aux != NULL; aux = aux->prox)
     {
@@ -74,7 +74,7 @@ void ImprimeLista(tLista *lista)
     }
 }
 
-void LiberaLista(tLista *lista)
+void LiberaLista(tListaUsuario *lista)
 {
     tCelula *aux, *prox;
 

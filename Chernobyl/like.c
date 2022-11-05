@@ -28,10 +28,7 @@ int EhNomeLikeIgual(tLike *like, char *nome)
 
 void LiberaLike(tLike *like)
 {
-    like->nomeLike = NULL;
-
     free(like);
-    like = NULL;
 }
 
 void ImprimeLike(tLike *like)
