@@ -6,6 +6,13 @@ struct Usuario
     int idade;
     char *localizacao;
     tHobbies *hobbies;
+    tLikes *likes;
+    tAmizades *amigos;
+};
+
+struct Amizade
+{
+    char *nomeAmigo;
 };
 
 tUsuario *CriaUsuario()
