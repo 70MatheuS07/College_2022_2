@@ -1,32 +1,14 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include "fila.h"
 #include "lista.h"
-#include "produto.h"
 
 int main()
 {
-    tLista *lista;
-    tProduto *produto;
-
-    lista = CriaLista();
-
-    int qtd;
+    int comando=0;
     char lixo;
 
-    scanf("%d", &qtd, &lixo);
-
-    for (int i = 0; i < qtd; i++)
-    {
-        produto = CriaProduto();
-        InsereProdutoLista(lista, produto);
-    }
-
-    ImprimeLista(lista);
-
-    //Depende de qual teste o retira produto muda
-    //RetiraProdutoLista(lista, 1003);
-
-    LiberaLista(lista);
+    tFila *fila = CriaFila(8);
 
     return 0;
 }
