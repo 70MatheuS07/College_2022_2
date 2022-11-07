@@ -5,6 +5,8 @@
 #include <string.h>
 #include <stdio.h>
 #include "listaHobby.h"
+#include "listaLike.h"
+#include "package.h"
 
 typedef struct Usuario tUsuario;
 

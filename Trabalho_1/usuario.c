@@ -6,7 +6,8 @@ struct Usuario
     int idade;
     char *localizacao;
     tListaHobby *hobbies;
-    //tListaLike *likes;
+    tListaLike *likes;
+    tPackage *pacoteDados;
 };
 
 tUsuario *CriaUsuario()
