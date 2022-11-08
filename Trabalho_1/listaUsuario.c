@@ -95,3 +95,11 @@ void LiberaLista(tListaUsuario *lista)
     free(lista);
     lista = NULL;
 }
+
+void LehPackageListaUsuario(tListaUsuario *usuarios, int argc, char *argv[])
+{
+    for(tCelula *aux = usuarios->inicio; aux != NULL; aux = aux->prox)
+    {
+        LehPackageUsuario(aux->usuario, argc, argv);
+    }
+}

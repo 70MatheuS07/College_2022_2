@@ -17,4 +17,6 @@ void ImprimeLista(tListaUsuario *lista);
 
 void LiberaLista(tListaUsuario *lista);
 
+void LehPackageListaUsuario(tListaUsuario *usuarios, int argc, char *argv[]);
+
 #endif

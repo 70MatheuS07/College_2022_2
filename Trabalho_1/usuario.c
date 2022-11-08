@@ -7,7 +7,7 @@ struct Usuario
     char *localizacao;
     tListaHobby *hobbies;
     tListaLike *likes;
-    tPackage *pacoteDados;
+    tPackage *package;
 };
 
 tUsuario *CriaUsuario()
@@ -66,7 +66,7 @@ void ImprimeUsuario(tUsuario *usuario)
     printf("Nome: %s\n", usuario->nome);
     printf("Idade: %d\n", usuario->idade);
     printf("Localizacao: %s\n", usuario->localizacao);
-    
+
     ImprimeHobbies(usuario->hobbies);
 }
 
@@ -82,4 +82,9 @@ void LiberaUsuario(tUsuario *usuario)
 
     free(usuario);
     usuario = NULL;
+}
+
+void LehPackageUsuario(tUsuario *usuario, int argc, char *argv[])
+{
+    LehPackageArquivo(usuario->nome, usuario->package, argc, argv);
 }

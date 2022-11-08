@@ -18,4 +18,6 @@ void ImprimeUsuario(tUsuario *usuario);
 
 void LiberaUsuario(tUsuario *usuario);
 
+void LehPackageUsuario(tUsuario *usuario, int argc, char *argv[]);
+
 #endif

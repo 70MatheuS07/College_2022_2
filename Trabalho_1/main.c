@@ -9,7 +9,11 @@ int main(int argc, char *argv[])
 
     usuarios = LehUsuariosLista(usuarios);
 
+    LehPackageListaUsuario(usuarios, argc, argv);
+
     ImprimeLista(usuarios);
 
     LiberaLista(usuarios);
+
+    return 0;
 }
