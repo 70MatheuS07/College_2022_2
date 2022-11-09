@@ -1,3 +1,5 @@
+APPNAME: compilador
+
 all:
 	@gcc -c *.c
 	@gcc -o main *.o
