@@ -1,1 +1,1 @@
-hobby.o hobby.d : hobby.c hobby.h
+hobby.o hobby.d : hobby.c hobby.h listaHobby.h

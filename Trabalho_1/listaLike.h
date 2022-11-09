@@ -1,5 +1,5 @@
-#ifndef LISTALIKE
-#define LISTALIKE
+#ifndef LISTALIKE_H
+#define LISTALIKE_H
 
 #include <stdlib.h>
 #include <stdio.h>

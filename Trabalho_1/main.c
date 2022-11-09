@@ -5,15 +5,18 @@
 
 int main(int argc, char *argv[])
 {
-    tListaUsuario *usuarios = CriaLista();
+    int num = atoi(argv[argc - 1]);
+
+    tListaUsuario *usuarios = CriaListaUsuario();
 
     usuarios = LehUsuariosLista(usuarios);
 
-    LehPackageListaUsuario(usuarios, argc, argv);
+    // Todo mundo sem package, comeu com angu
+    LehPackageListaUsuario(usuarios, num);
 
-    ImprimeLista(usuarios);
+    ImprimeListaUsuario(usuarios);
 
-    LiberaLista(usuarios);
+    LiberaListaUsuario(usuarios);
 
     return 0;
 }

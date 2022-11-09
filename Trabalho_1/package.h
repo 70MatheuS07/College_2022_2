@@ -9,8 +9,12 @@
 
 typedef struct Package tPackage;
 
-tPackage *CriaPackage();
+tPackage *CriaPackage(int num);
 
-void LehPackageArquivo(char *nome, tPackage *package, int argc, char *argv[]);
+tPackage *LehPackageArquivo(char *nome, tPackage *package, int num);
+
+char *LehCaracterCaracterPackage(FILE *arquivo);
+
+void ImprimePackage(tPackage *package, int num);
 
 #endif

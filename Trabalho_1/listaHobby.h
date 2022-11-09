@@ -7,12 +7,14 @@
 
 typedef struct ListaHobby tListaHobby;
 
-tListaHobby *ColetaHobbies(FILE *arquivo);
+tListaHobby *CriaListaHobby();
+
+tListaHobby *ColetaHobbyLista(FILE *arquivo);
 
 void InsereHobbyLista(tListaHobby *hobbies, char *hobby);
 
-void ImprimeHobbies(tListaHobby *hobbies);
+void ImprimeListaHobby(tListaHobby *hobbies);
 
-void LiberaHobbies(tListaHobby *hobbies);
+void LiberaListaHobby(tListaHobby *hobbies);
 
 #endif

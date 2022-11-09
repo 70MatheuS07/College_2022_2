@@ -56,7 +56,7 @@ tUsuario *ColetaUsuario(FILE *arquivo)
 
     fscanf(arquivo, ";");
 
-    usuario->hobbies = ColetaHobbies(arquivo);
+    usuario->hobbies = ColetaHobbyLista(arquivo);
 
     return usuario;
 }
@@ -67,7 +67,10 @@ void ImprimeUsuario(tUsuario *usuario)
     printf("Idade: %d\n", usuario->idade);
     printf("Localizacao: %s\n", usuario->localizacao);
 
-    ImprimeHobbies(usuario->hobbies);
+    ImprimeListaHobby(usuario->hobbies);
+
+    // Passar o 2 por parametro (argv)
+    ImprimePackage(usuario->package, 2);
 }
 
 void LiberaUsuario(tUsuario *usuario)
@@ -78,13 +81,13 @@ void LiberaUsuario(tUsuario *usuario)
     free(usuario->localizacao);
     usuario->localizacao = NULL;
 
-    LiberaHobbies(usuario->hobbies);
+    LiberaListaHobby(usuario->hobbies);
 
     free(usuario);
     usuario = NULL;
 }
 
-void LehPackageUsuario(tUsuario *usuario, int argc, char *argv[])
+void LehPackageUsuario(tUsuario *usuario, int num)
 {
-    LehPackageArquivo(usuario->nome, usuario->package, argc, argv);
+    usuario->package = LehPackageArquivo(usuario->nome, usuario->package, num);
 }

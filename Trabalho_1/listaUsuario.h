@@ -7,16 +7,16 @@
 
 typedef struct ListaUsuario tListaUsuario;
 
-tListaUsuario *CriaLista();
+tListaUsuario *CriaListaUsuario();
 
 tListaUsuario *LehUsuariosLista(tListaUsuario *lista);
 
 void InsereUsuarioLista(tListaUsuario *lista, tUsuario *usuario);
 
-void ImprimeLista(tListaUsuario *lista);
+void ImprimeListaUsuario(tListaUsuario *lista);
 
-void LiberaLista(tListaUsuario *lista);
+void LiberaListaUsuario(tListaUsuario *lista);
 
-void LehPackageListaUsuario(tListaUsuario *usuarios, int argc, char *argv[]);
+void LehPackageListaUsuario(tListaUsuario *usuarios, int num);
 
 #endif

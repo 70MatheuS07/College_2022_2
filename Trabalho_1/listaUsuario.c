@@ -14,7 +14,7 @@ struct ListaUsuario
     tCelula *fim;
 };
 
-tListaUsuario *CriaLista()
+tListaUsuario *CriaListaUsuario()
 {
     tListaUsuario *lista = malloc(sizeof(tListaUsuario));
 
@@ -65,7 +65,7 @@ void InsereUsuarioLista(tListaUsuario *lista, tUsuario *usuario)
     }
 }
 
-void ImprimeLista(tListaUsuario *lista)
+void ImprimeListaUsuario(tListaUsuario *lista)
 {
     for (tCelula *aux = lista->inicio; aux != NULL; aux = aux->prox)
     {
@@ -74,7 +74,7 @@ void ImprimeLista(tListaUsuario *lista)
     }
 }
 
-void LiberaLista(tListaUsuario *lista)
+void LiberaListaUsuario(tListaUsuario *lista)
 {
     tCelula *aux, *prox;
 
@@ -96,10 +96,10 @@ void LiberaLista(tListaUsuario *lista)
     lista = NULL;
 }
 
-void LehPackageListaUsuario(tListaUsuario *usuarios, int argc, char *argv[])
+void LehPackageListaUsuario(tListaUsuario *usuarios, int num)
 {
     for(tCelula *aux = usuarios->inicio; aux != NULL; aux = aux->prox)
     {
-        LehPackageUsuario(aux->usuario, argc, argv);
+        LehPackageUsuario(aux->usuario, num);
     }
 }

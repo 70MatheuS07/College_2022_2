@@ -36,5 +36,15 @@ void LiberaLike(tLike *like)
 
 void ImprimeLike(tLike *like)
 {
-    printf("\nNome: %s\ntipo: %d\n", like->nomeLike, like->like);
+    printf("\nNome: %s\n", like->nomeLike);
+
+    if (like->like == 1)
+    {
+        printf("tipo: Like\n");
+    }
+
+    else if (like->like == 0)
+    {
+        printf("tipo: Unlike\n");
+    }
 }

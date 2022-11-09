@@ -14,7 +14,17 @@ struct ListaHobby
     tCelula *fim;
 };
 
-tListaHobby *ColetaHobbies(FILE *arquivo)
+tListaHobby *CriaListaHobby()
+{
+    tListaHobby *hobby = malloc(sizeof(tListaHobby));
+
+    hobby->inicio = NULL;
+    hobby->fim = NULL;
+
+    return hobby;
+}
+
+tListaHobby *ColetaHobbyLista(FILE *arquivo)
 {
     int i = 0;
     char caracter;
@@ -62,7 +72,7 @@ void InsereHobbyLista(tListaHobby *hobbies, char *hobby)
     }
 }
 
-void ImprimeHobbies(tListaHobby *hobbies)
+void ImprimeListaHobby(tListaHobby *hobbies)
 {
     for (tCelula *aux = hobbies->inicio; aux != NULL; aux = aux->prox)
     {
@@ -70,7 +80,7 @@ void ImprimeHobbies(tListaHobby *hobbies)
     }
 }
 
-void LiberaHobbies(tListaHobby *hobbies)
+void LiberaListaHobby(tListaHobby *hobbies)
 {
     tCelula *aux, *prox;
 
