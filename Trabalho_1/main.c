@@ -5,6 +5,13 @@
 
 int main(int argc, char *argv[])
 {
+    ///*
+    char *string = calloc(2, sizeof(char));
+    string = "2\0";
+    argv[1] = string;
+    argc = 2;
+    //*/
+
     int num = atoi(argv[argc - 1]);
 
     tListaUsuario *usuarios = CriaListaUsuario();

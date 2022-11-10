@@ -17,4 +17,6 @@ char *LehCaracterCaracterPackage(FILE *arquivo);
 
 void ImprimePackage(tPackage *package, int num);
 
+char *LehCaracterCaracterPackagePost(FILE *arquivo);
+
 #endif

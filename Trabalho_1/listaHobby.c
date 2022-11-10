@@ -29,7 +29,7 @@ tListaHobby *ColetaHobbyLista(FILE *arquivo)
     int i = 0;
     char caracter;
 
-    tListaHobby *hobbies = malloc(sizeof(tListaHobby));
+    tListaHobby *hobbies = CriaListaHobby();
 
     char *string;
 
@@ -76,7 +76,7 @@ void ImprimeListaHobby(tListaHobby *hobbies)
 {
     for (tCelula *aux = hobbies->inicio; aux != NULL; aux = aux->prox)
     {
-        printf("%s ", aux->hobby);
+        printf("Hobby: %s\n", aux->hobby);
     }
 }
 

@@ -2,8 +2,8 @@
 
 struct Package
 {
-    tListaLike **likes;
-    tListaLike **unlikes;
+    tLike **likes;
+    tLike **unlikes;
     tListaHobby **hobbies;
     char **post;
 };
@@ -12,9 +12,9 @@ tPackage *CriaPackage(int num)
 {
     tPackage *package = malloc(sizeof(tPackage));
 
-    package->likes = malloc(num * sizeof(tListaLike *));
+    package->likes = malloc(num * sizeof(tLike *));
 
-    package->unlikes = malloc(num * sizeof(tListaLike *));
+    package->unlikes = malloc(num * sizeof(tLike *));
 
     package->hobbies = malloc(num * sizeof(tListaHobby *));
 
@@ -27,63 +27,44 @@ tPackage *LehPackageArquivo(char *nome, tPackage *package, int num)
 {
     package = CriaPackage(num);
 
-    char *string = calloc(101, sizeof(char));
-
-    char fixo[13] = ".package.txt";
-
-    char prefixo[101] = "caso_01/entradas/";
-
-    strcpy(string, nome);
-
-    strcat(string, fixo);
-
-    strcat(prefixo, string);
-
     FILE *arquivo;
 
-    arquivo = fopen(prefixo, "r");
+    arquivo = fopen("test1/input/Afonso.package.txt", "r");
 
+    char *string = calloc(101, sizeof(char));
     char *str;
     char caracter = '\0';
     int qtd = 0, i = 0;
     tLike *like;
     tLike *unlike;
 
-    while (feof(arquivo) || num == i)
+    while (i < num)
     {
-        package->likes[i] = CriaListaLike();
-        package->unlikes[i] = CriaListaLike();
         package->hobbies[i] = CriaListaHobby();
 
         // Pega likes arquivo
-        while (caracter != ';')
-        {
-            str = LehCaracterCaracterPackage(arquivo);
+        fscanf(arquivo, "%[^;]", string);
+        fscanf(arquivo, "%c", &caracter);
 
-            qtd = strlen(str);
+        // Trocar para strdup(str)! Se sobrar tempo...
+        qtd = strlen(string);
+        str = malloc((qtd + 1) * sizeof(char));
+        strcpy(str, string);
 
-            caracter = str[qtd - 1];
-            str[qtd - 1] = '\0';
-
-            like = CriaLike(str, 1);
-
-            InsereLikeLista(package->likes[i], like);
-        }
+        package->likes[i] = CriaLike(str, 1);
 
         // Pega unlikes arquivo;
-        while (caracter != ';')
-        {
-            str = LehCaracterCaracterPackage(arquivo);
+        fscanf(arquivo, "%[^;]", string);
+        fscanf(arquivo, "%c", &caracter);
 
-            qtd = strlen(str);
+        // Trocar para strdup(str)! Se sobrar tempo...
+        qtd = strlen(string);
+        str = malloc((qtd + 1) * sizeof(char));
+        strcpy(str, string);
 
-            caracter = str[qtd - 1];
-            str[qtd - 1] = '\0';
+        package->unlikes[i] = CriaLike(str, 0);
 
-            unlike = CriaLike(str, 0);
-
-            InsereLikeLista(package->likes[i], unlike);
-        }
+        caracter = '\0';
 
         while (caracter != ';')
         {
@@ -97,9 +78,15 @@ tPackage *LehPackageArquivo(char *nome, tPackage *package, int num)
             InsereHobbyLista(package->hobbies[i], str);
         }
 
-        while (caracter != '\n' || feof(arquivo))
+        caracter = '\0';
+
+        while (caracter != '\n')
         {
-            str = LehCaracterCaracterPackage(arquivo);
+            if(feof(arquivo))
+            {
+                break;
+            }
+            str = LehCaracterCaracterPackagePost(arquivo);
 
             qtd = strlen(str);
 
@@ -117,6 +104,9 @@ tPackage *LehPackageArquivo(char *nome, tPackage *package, int num)
     }
 
     fclose(arquivo);
+
+    free(string);
+    string = NULL;
 
     return package;
 }
@@ -164,12 +154,56 @@ char *LehCaracterCaracterPackage(FILE *arquivo)
     return result;
 }
 
+char *LehCaracterCaracterPackagePost(FILE *arquivo)
+{
+    int i = 0;
+
+    char *string = calloc(101, sizeof(char));
+    char caracter;
+
+    while (1)
+    {
+        fscanf(arquivo, "%c", &caracter);
+
+        if (caracter == ';' || caracter == '\n')
+        {
+            string[i] = caracter;
+            i++;
+            string[i] = '\0';
+            break;
+        }
+
+        else if (feof(arquivo))
+        {
+            string[i] = '\0';
+            break;
+        }
+
+        else
+        {
+            string[i] = caracter;
+        }
+
+        i++;
+    }
+
+    char *result = malloc(i + 1 * sizeof(char));
+
+    strcpy(result, string);
+
+    free(string);
+    string = NULL;
+
+    return result;
+}
+
 void ImprimePackage(tPackage *package, int num)
 {
     for (int i = 0; i < num; i++)
     {
-        ImprimeListaLike(package->likes[i]);
-        ImprimeListaLike(package->unlikes[i]);
+        ImprimeLike(package->likes[i]);
+        ImprimeLike(package->unlikes[i]);
+        printf("\n");
         ImprimeListaHobby(package->hobbies[i]);
 
         printf("post: %s\n", package->post[i]);

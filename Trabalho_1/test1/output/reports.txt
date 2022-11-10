@@ -2,9 +2,9 @@
 Joao
 23 anos
 Vitoria-ES
-0 amigos 
+0 amigos
 
-HOBBIES:
+HOBBIES
 bike
 carro
 
@@ -12,7 +12,7 @@ POSTS PUBLICADOS
 
 POSTS DO FEED
 
-AMIGOS
+MATCHES
 
 SUGESTOES DE AMIZADE
 Afonso
@@ -29,7 +29,6 @@ mountain bike
 
 POSTS PUBLICADOS
 "e ae galera, tudo bem?" alcance: 0
-
 "cheguei cansado hoje" alcance: 1
 
 POSTS DO FEED
@@ -51,7 +50,7 @@ HOBBIES
 carro
 
 POSTS PUBLICADOS
-"Bom dia rapeize!!!" alcance: 1 
+"Bom dia rapeize!!!" alcance: 1
 
 POSTS DO FEED
 "cheguei cansado hoje" - Afonso
@@ -79,3 +78,4 @@ POSTS DO FEED
 MATCHES
 
 SUGESTOES DE AMIZADE
+
