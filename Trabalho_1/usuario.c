@@ -83,6 +83,8 @@ void LiberaUsuario(tUsuario *usuario)
 
     LiberaListaHobby(usuario->hobbies);
 
+    LiberaPackage(usuario->package);
+
     free(usuario);
     usuario = NULL;
 }

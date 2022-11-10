@@ -6,6 +6,7 @@ struct Package
     tLike **unlikes;
     tListaHobby **hobbies;
     char **post;
+    int num;
 };
 
 tPackage *CriaPackage(int num)
@@ -20,6 +21,8 @@ tPackage *CriaPackage(int num)
 
     package->post = malloc(num * sizeof(char *));
 
+    package->num = num;
+
     return package;
 }
 
@@ -29,7 +32,18 @@ tPackage *LehPackageArquivo(char *nome, tPackage *package, int num)
 
     FILE *arquivo;
 
-    arquivo = fopen("test1/input/Afonso.package.txt", "r");
+    char *leitura = calloc(101, sizeof(char));
+    char *prefixo = calloc(101, sizeof(char));
+    char *posfixo = calloc(101, sizeof(char));
+
+    prefixo = "test1/input/\0";
+    posfixo = ".package.txt\0";
+
+    ColocaStringNoFimDoCharPointer(leitura, prefixo);
+    ColocaStringNoFimDoCharPointer(leitura, nome);
+    ColocaStringNoFimDoCharPointer(leitura, posfixo);
+
+    arquivo = fopen(leitura, "r");
 
     char *string = calloc(101, sizeof(char));
     char *str;
@@ -82,7 +96,7 @@ tPackage *LehPackageArquivo(char *nome, tPackage *package, int num)
 
         while (caracter != '\n')
         {
-            if(feof(arquivo))
+            if (feof(arquivo))
             {
                 break;
             }
@@ -107,6 +121,17 @@ tPackage *LehPackageArquivo(char *nome, tPackage *package, int num)
 
     free(string);
     string = NULL;
+
+    free(leitura);
+    leitura = NULL;
+
+/* Ta dando erro nao sei como!
+    free(prefixo);
+    prefixo = NULL;
+
+    free(posfixo);
+    posfixo = NULL;
+    */
 
     return package;
 }
@@ -197,6 +222,30 @@ char *LehCaracterCaracterPackagePost(FILE *arquivo)
     return result;
 }
 
+void ColocaStringNoFimDoCharPointer(char *leitura, char *string)
+{
+    int i = 0;
+
+    while (1)
+    {
+        if (leitura[i] == '\0')
+        {
+            break;
+        }
+
+        i++;
+    }
+
+    for (int j = 0; string[j] != '\0'; j++)
+    {
+        leitura[i] = string[j];
+
+        i++;
+    }
+
+    leitura[i] = '\0';
+}
+
 void ImprimePackage(tPackage *package, int num)
 {
     for (int i = 0; i < num; i++)
@@ -208,4 +257,34 @@ void ImprimePackage(tPackage *package, int num)
 
         printf("post: %s\n", package->post[i]);
     }
+}
+
+void LiberaPackage(tPackage *package)
+{
+    for (int i = 0; i < package->num; i++)
+    {
+        LiberaLike(package->likes[i]);
+
+        LiberaLike(package->unlikes[i]);
+
+        LiberaListaHobby(package->hobbies[i]);
+
+        free(package->post[i]);
+        package->post[i] = NULL;
+    }
+
+    free(package->likes);
+    package->likes = NULL;
+
+    free(package->unlikes);
+    package->unlikes = NULL;
+
+    free(package->hobbies);
+    package->hobbies = NULL;
+
+    free(package->post);
+    package->post = NULL;
+
+    free(package);
+    package = NULL;
 }

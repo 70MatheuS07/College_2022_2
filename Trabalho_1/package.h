@@ -19,4 +19,8 @@ void ImprimePackage(tPackage *package, int num);
 
 char *LehCaracterCaracterPackagePost(FILE *arquivo);
 
+void ColocaStringNoFimDoCharPointer(char *leitura, char *string);
+
+void LiberaPackage(tPackage *package);
+
 #endif
