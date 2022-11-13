@@ -104,3 +104,4 @@ void LiberaListaHobby(tListaHobby *hobbies)
     free(hobbies);
     hobbies = NULL;
 }
+

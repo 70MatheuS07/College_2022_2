@@ -124,3 +124,63 @@ int ComparaListaLikeNome(tListaLike *lista, char *nome)
 
     return 0;
 }
+
+void LiberaListaLikeEdMatch(tListaLike *listaLike)
+{
+    tCelula *p = listaLike->inicio;
+    tCelula *t;
+
+    while (p != NULL)
+    {
+        t = p->prox;
+
+        free(p);
+        p = NULL;
+
+        p = t;
+    }
+
+    free(listaLike);
+    listaLike = NULL;
+}
+
+void RetiraDaListaLikeEdMatch(tListaLike *listaLike, char *nome)
+{
+    tCelula *p = listaLike->inicio;
+    tCelula *ant = NULL;
+
+    while (p != NULL && EhNomeLikeIgual(p->like, nome) != 0)
+    {
+        ant = p;
+        p = p->prox;
+    }
+
+    // unica celula
+    if (p == listaLike->inicio && p == listaLike->fim)
+    {
+
+        listaLike->inicio = NULL;
+        listaLike->fim = NULL;
+    }
+
+    // primeira celula
+    else if (p == listaLike->inicio)
+    {
+        listaLike->inicio = p->prox;
+    }
+
+    // ultima celula
+    else if (p == listaLike->fim)
+    {
+        listaLike->fim = ant;
+        listaLike->fim->prox = NULL;
+    }
+
+    // entre duas celulas
+    else
+    {
+        ant->prox = p->prox;
+    }
+
+    free(p);
+}

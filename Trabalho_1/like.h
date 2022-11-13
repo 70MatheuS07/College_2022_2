@@ -21,4 +21,6 @@ char *RetornaNomeLike(tLike *like);
 
 int ComparaSeNomeLikeIgualNome(tLike *like, char *nome);
 
+void LiberaLikeEdMatch(tLike *like);
+
 #endif

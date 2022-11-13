@@ -108,29 +108,37 @@ void LehPackageListaUsuario(tListaUsuario *usuarios, int num)
 
 void ExecutaEdMatch(tListaUsuario *usuarios, int num)
 {
-    char *nome;
+    char *nomeLike;
+    char *nomeUnlike;
 
     for (int i = 0; i < num; i++)
     {
         for (tCelula *aux = usuarios->inicio; aux != NULL; aux = aux->prox)
         {
-            nome = RegistraLikeUsuario(aux->usuario, i);
+            nomeLike = RegistraLikeUsuario(aux->usuario, i);
 
-            if (nome != NULL)
+            if (nomeLike != NULL)
             {
-                ConfereAmizade(usuarios, nome, aux->usuario);
+                printf("+ %s curtiu %s\n", RetornaNomeUsuario(aux->usuario), nomeLike);
+                ConfereAmizadeFeita(usuarios, nomeLike, aux->usuario);
             }
 
-            // RegistraUnlike();
+            nomeUnlike = RegistraUnlikeUsuario(aux->usuario, i);
 
-            // RegistraAlteracaoHobbies();
+            if (nomeUnlike != NULL)
+            {
+                printf("_ %s descurtiu %s\n", RetornaNomeUsuario(aux->usuario), nomeUnlike);
+                ConfereAmizadeDesfeita(usuarios, nomeUnlike, aux->usuario);
+            }
+
+            //RegistraAlteracaoListaHobby(RetornaPackageUsuario(aux->usuario), RetornaListaHobbyUsuario(aux->usuario), num);
 
             // RegistraPost();
         }
     }
 }
 
-void ConfereAmizade(tListaUsuario *usuarios, char *nome, tUsuario *usuario)
+void ConfereAmizadeFeita(tListaUsuario *usuarios, char *nome, tUsuario *usuario)
 {
     for (tCelula *aux = usuarios->inicio; aux != NULL; aux = aux->prox)
     {
@@ -139,6 +147,20 @@ void ConfereAmizade(tListaUsuario *usuarios, char *nome, tUsuario *usuario)
             if (GerouAmizadeEntreUsuarios(aux->usuario, usuario) == 1)
             {
                 printf("# %s e %s viraram amigos\n", RetornaNomeUsuario(usuario), nome);
+            }
+        }
+    }
+}
+
+void ConfereAmizadeDesfeita(tListaUsuario *usuarios, char *nome, tUsuario *usuario)
+{
+    for (tCelula *aux = usuarios->inicio; aux != NULL; aux = aux->prox)
+    {
+        if (ConfereSeNomesSaoIguais(aux->usuario, nome) == 1)
+        {
+            if (GerouAmizadeEntreUsuarios(aux->usuario, usuario) == 1)
+            {
+                printf("# %s desfez amizade com %s \n", RetornaNomeUsuario(usuario), nome);
             }
         }
     }

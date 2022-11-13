@@ -17,4 +17,6 @@ void ImprimeListaHobby(tListaHobby *hobbies);
 
 void LiberaListaHobby(tListaHobby *hobbies);
 
+void RetiraDaListaHobby(tListaHobby *listaHobby, char *nome);
+
 #endif

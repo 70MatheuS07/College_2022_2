@@ -85,9 +85,8 @@ void LiberaUsuario(tUsuario *usuario)
     LiberaListaHobby(usuario->hobbies);
 
     LiberaPackage(usuario->package);
-    
-    // Dando mais free's que o normal! fazer conferencia
-    //LiberaListaLike(usuario->likes);
+
+    LiberaListaLikeEdMatch(usuario->likes);
 
     free(usuario);
     usuario = NULL;
@@ -109,9 +108,12 @@ char *RegistraLikeUsuario(tUsuario *usuario, int i)
     {
         nome = RetornaNomeLike(likeUsuario);
 
-        InsereLikeLista(usuario->likes, likeUsuario);
+        if (nome[0] != '.')
+        {
+            InsereLikeLista(usuario->likes, likeUsuario);
 
-        return nome;
+            return nome;
+        }
     }
 
     return NULL;
@@ -140,4 +142,36 @@ int GerouAmizadeEntreUsuarios(tUsuario *usuarioAmigo, tUsuario *usuario)
 char *RetornaNomeUsuario(tUsuario *usuario)
 {
     return usuario->nome;
+}
+
+char *RegistraUnlikeUsuario(tUsuario *usuario, int i)
+{
+    tLike *unlikeUsuario;
+    char *nome;
+
+    unlikeUsuario = RetornaUnlikePackage(usuario->package, i);
+
+    if (VerificaLike(unlikeUsuario) == 1)
+    {
+        nome = RetornaNomeLike(unlikeUsuario);
+
+        if (nome[0] != '.')
+        {
+            RetiraDaListaLikeEdMatch(usuario->likes, nome);
+
+            return nome;
+        }
+    }
+
+    return NULL;
+}
+
+tListaHobby *RetornaListaHobbyUsuario(tUsuario *usuario)
+{
+    return usuario->hobbies;
+}
+
+tPackage *RetornaPackageUsuario(tUsuario *usuario)
+{
+    return usuario->package;
 }

@@ -23,7 +23,7 @@ char *ColetaHobbyArquivo(FILE *arquivo)
             break;
         }
 
-        else if(feof(arquivo))
+        else if (feof(arquivo))
         {
             string[i] = '\0';
             break;
@@ -43,4 +43,38 @@ char *ColetaHobbyArquivo(FILE *arquivo)
     string = NULL;
 
     return result;
+}
+
+int NaoTemHobbies(tHobby *hobby)
+{
+    if (hobby->nome != ".")
+    {
+        return 1;
+    }
+
+    return 0;
+}
+
+int EhNomeHobbyIgual(char *hobby, char *nome)
+{
+    if (strcmp(hobby, nome) == 0)
+    {
+        return 1;
+    }
+
+    return 0;
+}
+
+void LiberaHobby(tHobby *hobby)
+{
+    free(hobby->nome);
+    hobby->nome = NULL;
+
+    free(hobby);
+    hobby = NULL;
+}
+
+char *RetornaNomeHobby(tHobby *hobby)
+{
+    return hobby->nome;
 }

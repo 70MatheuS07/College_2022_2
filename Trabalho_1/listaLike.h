@@ -19,4 +19,8 @@ void ImprimeListaLike(tListaLike *listaLike);
 
 int ComparaListaLikeNome(tListaLike *lista, char *nome);
 
+void LiberaListaLikeEdMatch(tListaLike *listaLike);
+
+void RetiraDaListaLikeEdMatch(tListaLike *listaLike, char *nome);
+
 #endif

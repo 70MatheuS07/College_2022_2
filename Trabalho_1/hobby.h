@@ -4,10 +4,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "listaHobby.h"
 
 typedef struct Hobby tHobby;
 
 char *ColetaHobbyArquivo(FILE *arquivo);
+
+int EhNomeHobbyIgual(char *hobby, char *nome);
+
+int NaoTemHobbies(tHobby *hobby);
+
+void LiberaHobby(tHobby *hobby);
+
+char *RetornaNomeHobby(tHobby *hobby);
 
 #endif

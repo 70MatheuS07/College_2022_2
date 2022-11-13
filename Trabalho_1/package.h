@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "listaLike.h"
+#include "like.h"
 #include "listaHobby.h"
 
 typedef struct Package tPackage;
@@ -27,5 +27,7 @@ void ColocaStringNoFimDoCharPointer(char *leitura, char *string);
 void LiberaPackage(tPackage *package);
 
 tLike *RetornaLikePackage(tPackage *package, int i);
+
+tLike *RetornaUnlikePackage(tPackage *package, int i);
 
 #endif

@@ -256,3 +256,8 @@ tLike *RetornaLikePackage(tPackage *package, int i)
 {
     return package->likes[i];
 }
+
+tLike *RetornaUnlikePackage(tPackage *package, int i)
+{
+    return package->unlikes[i];
+}
