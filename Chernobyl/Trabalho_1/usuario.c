@@ -14,10 +14,6 @@ tUsuario *CriaUsuario()
 {
     tUsuario *usuario = malloc(sizeof(tUsuario));
 
-    // Inserir tListaLike e tListaAmigo: malloc neles
-
-    usuario->likes = CriaListaLike();
-
     return usuario;
 }
 
@@ -31,7 +27,8 @@ tUsuario *ColetaUsuario(FILE *arquivo)
 
     fscanf(arquivo, "%100[^;]", nome);
 
-    char *string = strdup(nome);
+    char *string = malloc((strlen(nome) + 1) * sizeof(char));
+    strcpy(string, nome);
 
     usuario->nome = string;
     string = NULL;
@@ -47,7 +44,9 @@ tUsuario *ColetaUsuario(FILE *arquivo)
 
     fscanf(arquivo, "%100[^;]", localizacao);
 
-    string = strdup(localizacao);
+    string = malloc((strlen(localizacao) + 1) * sizeof(char));
+
+    strcpy(string, localizacao);
 
     usuario->localizacao = string;
     string = NULL;
@@ -85,9 +84,6 @@ void LiberaUsuario(tUsuario *usuario)
     LiberaListaHobby(usuario->hobbies);
 
     LiberaPackage(usuario->package);
-    
-    // Dando mais free's que o normal! fazer conferencia
-    //LiberaListaLike(usuario->likes);
 
     free(usuario);
     usuario = NULL;
@@ -96,48 +92,4 @@ void LiberaUsuario(tUsuario *usuario)
 void LehPackageUsuario(tUsuario *usuario, int num)
 {
     usuario->package = LehPackageArquivo(usuario->nome, usuario->package, num);
-}
-
-char *RegistraLikeUsuario(tUsuario *usuario, int i)
-{
-    tLike *likeUsuario;
-    char *nome;
-
-    likeUsuario = RetornaLikePackage(usuario->package, i);
-
-    if (VerificaLike(likeUsuario) == 1)
-    {
-        nome = RetornaNomeLike(likeUsuario);
-
-        InsereLikeLista(usuario->likes, likeUsuario);
-
-        return nome;
-    }
-
-    return NULL;
-}
-
-int ConfereSeNomesSaoIguais(tUsuario *usuario, char *nome)
-{
-    if (strcmp(usuario->nome, nome) == 0)
-    {
-        return 1;
-    }
-
-    return 0;
-}
-
-int GerouAmizadeEntreUsuarios(tUsuario *usuarioAmigo, tUsuario *usuario)
-{
-    if (ComparaListaLikeNome(usuarioAmigo->likes, usuario->nome) == 1)
-    {
-        return 1;
-    }
-
-    return 0;
-}
-
-char *RetornaNomeUsuario(tUsuario *usuario)
-{
-    return usuario->nome;
 }

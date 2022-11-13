@@ -37,7 +37,9 @@ char *ColetaHobbyArquivo(FILE *arquivo)
         i++;
     }
 
-    char *result = strdup(string);
+    char *result = malloc(i + 1 * sizeof(char));
+
+    strcpy(result, string);
 
     free(string);
     string = NULL;

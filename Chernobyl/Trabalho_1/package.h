@@ -1,9 +1,6 @@
 #ifndef PACKAGE_H
 #define PACKAGE_H
 
-#define LIKE 1
-#define UNLIKE 0
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -25,7 +22,5 @@ char *LehCaracterCaracterPackagePost(FILE *arquivo);
 void ColocaStringNoFimDoCharPointer(char *leitura, char *string);
 
 void LiberaPackage(tPackage *package);
-
-tLike *RetornaLikePackage(tPackage *package, int i);
 
 #endif

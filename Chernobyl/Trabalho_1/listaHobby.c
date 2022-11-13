@@ -32,19 +32,17 @@ tListaHobby *ColetaHobbyLista(FILE *arquivo)
     tListaHobby *hobbies = CriaListaHobby();
 
     char *string;
-    int tam;
 
     while (1)
     {
         string = ColetaHobbyArquivo(arquivo);
 
-        tam = strlen(string);
+        int tam = strlen(string);
 
         caracter = string[tam - 1];
         string[tam - 1] = '\0';
 
         InsereHobbyLista(hobbies, string);
-        string = NULL;
 
         if (feof(arquivo) || caracter == '\n')
         {

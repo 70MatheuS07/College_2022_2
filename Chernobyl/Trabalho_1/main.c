@@ -6,7 +6,8 @@
 int main(int argc, char *argv[])
 {
     ///*
-    char *string = strdup("2\0");
+    char *string = calloc(2, sizeof(char));
+    string = "2\0";
     argv[1] = string;
     argc = 2;
     //*/
@@ -17,16 +18,12 @@ int main(int argc, char *argv[])
 
     usuarios = LehUsuariosLista(usuarios);
 
+    // Todo mundo sem package, comeu com angu
     LehPackageListaUsuario(usuarios, num);
-
-    ExecutaEdMatch(usuarios, num);
 
     ImprimeListaUsuario(usuarios);
 
     LiberaListaUsuario(usuarios);
-
-    free(string);
-    string = NULL;
 
     return 0;
 }

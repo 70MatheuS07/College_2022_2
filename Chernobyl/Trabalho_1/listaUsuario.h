@@ -19,8 +19,4 @@ void LiberaListaUsuario(tListaUsuario *lista);
 
 void LehPackageListaUsuario(tListaUsuario *usuarios, int num);
 
-void ExecutaEdMatch(tListaUsuario *usuarios, int num);
-
-void ConfereAmizade(tListaUsuario *usuarios, char *nome, tUsuario *usuario);
-
 #endif

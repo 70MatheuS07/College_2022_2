@@ -32,7 +32,6 @@ tListaUsuario *LehUsuariosLista(tListaUsuario *lista)
 
     FILE *arquivo;
 
-    // Pode mudar de acordo com arquivo de entrada
     arquivo = fopen("test1/input/users.txt", "r");
 
     while (!feof(arquivo))
@@ -40,7 +39,6 @@ tListaUsuario *LehUsuariosLista(tListaUsuario *lista)
         usuario = ColetaUsuario(arquivo);
 
         InsereUsuarioLista(lista, usuario);
-        usuario = NULL;
     }
 
     fclose(arquivo);
@@ -90,7 +88,7 @@ void LiberaListaUsuario(tListaUsuario *lista)
 
         free(aux);
         aux = NULL;
-
+        
         aux = prox;
     }
 
@@ -100,46 +98,8 @@ void LiberaListaUsuario(tListaUsuario *lista)
 
 void LehPackageListaUsuario(tListaUsuario *usuarios, int num)
 {
-    for (tCelula *aux = usuarios->inicio; aux != NULL; aux = aux->prox)
+    for(tCelula *aux = usuarios->inicio; aux != NULL; aux = aux->prox)
     {
         LehPackageUsuario(aux->usuario, num);
-    }
-}
-
-void ExecutaEdMatch(tListaUsuario *usuarios, int num)
-{
-    char *nome;
-
-    for (int i = 0; i < num; i++)
-    {
-        for (tCelula *aux = usuarios->inicio; aux != NULL; aux = aux->prox)
-        {
-            nome = RegistraLikeUsuario(aux->usuario, i);
-
-            if (nome != NULL)
-            {
-                ConfereAmizade(usuarios, nome, aux->usuario);
-            }
-
-            // RegistraUnlike();
-
-            // RegistraAlteracaoHobbies();
-
-            // RegistraPost();
-        }
-    }
-}
-
-void ConfereAmizade(tListaUsuario *usuarios, char *nome, tUsuario *usuario)
-{
-    for (tCelula *aux = usuarios->inicio; aux != NULL; aux = aux->prox)
-    {
-        if (ConfereSeNomesSaoIguais(aux->usuario, nome) == 1)
-        {
-            if (GerouAmizadeEntreUsuarios(aux->usuario, usuario) == 1)
-            {
-                printf("# %s e %s viraram amigos\n", RetornaNomeUsuario(usuario), nome);
-            }
-        }
     }
 }

@@ -28,6 +28,7 @@ int EhNomeLikeIgual(tLike *like, char *nome)
 
 void LiberaLike(tLike *like)
 {
+    free(like->nomeLike);
     like->nomeLike = NULL;
 
     free(like);
@@ -47,4 +48,29 @@ void ImprimeLike(tLike *like)
     {
         printf("tipo: Unlike\n");
     }
+}
+
+int VerificaLike(tLike *like)
+{
+    if (like->nomeLike == ".")
+    {
+        return 0;
+    }
+
+    return 1;
+}
+
+char *RetornaNomeLike(tLike *like)
+{
+    return like->nomeLike;
+}
+
+int ComparaSeNomeLikeIgualNome(tLike *like, char *nome)
+{
+    if (strcmp(like->nomeLike, nome) == 0)
+    {
+        return 1;
+    }
+
+    return 0;
 }

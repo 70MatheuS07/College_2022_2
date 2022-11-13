@@ -1,0 +1,4 @@
+Xaolim Matador de Porco;67;Texas-EUA;matar porco
+Flavin do Pneu;35;Rio Branco-AC;consertar pneu
+Tonim Mecanico;48;Cariacica-ES;roubar parachoque
+Valdin do Picole;53;Cariacica-ES;vender picole

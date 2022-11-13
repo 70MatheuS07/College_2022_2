@@ -30,15 +30,19 @@ tPackage *LehPackageArquivo(char *nome, tPackage *package, int num)
 {
     package = CriaPackage(num);
 
-    char *leitura = calloc(101, sizeof(char));
-    char *prefixo = strdup("test1/input/");
-    char *posfixo = strdup(".package.txt");
-
-    strcat(leitura, prefixo);
-    strcat(leitura, nome);
-    strcat(leitura, posfixo);
-
     FILE *arquivo;
+
+    char *leitura = calloc(101, sizeof(char));
+    char *prefixo = calloc(101, sizeof(char));
+    char *posfixo = calloc(101, sizeof(char));
+
+    prefixo = "test1/input/\0";
+    posfixo = ".package.txt\0";
+
+    ColocaStringNoFimDoCharPointer(leitura, prefixo);
+    ColocaStringNoFimDoCharPointer(leitura, nome);
+    ColocaStringNoFimDoCharPointer(leitura, posfixo);
+
     arquivo = fopen(leitura, "r");
 
     char *string = calloc(101, sizeof(char));
@@ -56,7 +60,10 @@ tPackage *LehPackageArquivo(char *nome, tPackage *package, int num)
         fscanf(arquivo, "%[^;]", string);
         fscanf(arquivo, "%c", &caracter);
 
-        str = strdup(string);
+        // Trocar para strdup(str)! Se sobrar tempo...
+        qtd = strlen(string);
+        str = malloc((qtd + 1) * sizeof(char));
+        strcpy(str, string);
 
         package->likes[i] = CriaLike(str, 1);
 
@@ -64,7 +71,10 @@ tPackage *LehPackageArquivo(char *nome, tPackage *package, int num)
         fscanf(arquivo, "%[^;]", string);
         fscanf(arquivo, "%c", &caracter);
 
-        str = strdup(string);
+        // Trocar para strdup(str)! Se sobrar tempo...
+        qtd = strlen(string);
+        str = malloc((qtd + 1) * sizeof(char));
+        strcpy(str, string);
 
         package->unlikes[i] = CriaLike(str, 0);
 
@@ -115,11 +125,13 @@ tPackage *LehPackageArquivo(char *nome, tPackage *package, int num)
     free(leitura);
     leitura = NULL;
 
+/* Ta dando erro nao sei como!
     free(prefixo);
     prefixo = NULL;
 
     free(posfixo);
     posfixo = NULL;
+    */
 
     return package;
 }
@@ -210,6 +222,30 @@ char *LehCaracterCaracterPackagePost(FILE *arquivo)
     return result;
 }
 
+void ColocaStringNoFimDoCharPointer(char *leitura, char *string)
+{
+    int i = 0;
+
+    while (1)
+    {
+        if (leitura[i] == '\0')
+        {
+            break;
+        }
+
+        i++;
+    }
+
+    for (int j = 0; string[j] != '\0'; j++)
+    {
+        leitura[i] = string[j];
+
+        i++;
+    }
+
+    leitura[i] = '\0';
+}
+
 void ImprimePackage(tPackage *package, int num)
 {
     for (int i = 0; i < num; i++)
@@ -234,6 +270,7 @@ void LiberaPackage(tPackage *package)
         LiberaListaHobby(package->hobbies[i]);
 
         free(package->post[i]);
+        package->post[i] = NULL;
     }
 
     free(package->likes);
@@ -250,9 +287,4 @@ void LiberaPackage(tPackage *package)
 
     free(package);
     package = NULL;
-}
-
-tLike *RetornaLikePackage(tPackage *package, int i)
-{
-    return package->likes[i];
 }

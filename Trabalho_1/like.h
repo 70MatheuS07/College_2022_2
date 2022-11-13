@@ -15,4 +15,10 @@ int EhNomeLikeIgual(tLike *like, char *nome);
 
 void ImprimeLike(tLike *like);
 
+int VerificaLike(tLike *like);
+
+char *RetornaNomeLike(tLike *like);
+
+int ComparaSeNomeLikeIgualNome(tLike *like, char *nome);
+
 #endif

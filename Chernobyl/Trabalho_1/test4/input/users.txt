@@ -1,0 +1,11 @@
+Ava;20;Nova Iorque-NY;ContraBaixo
+Bruce;25;Houston-TX;Danca
+Emily;19;Chicago-IL;Violao
+Emma;43;Nova Iorque-NY;Meditacao
+James;24;Chicago-IL;Corrida
+Jimmy;24;Nova Iorque-NY;Pesca
+John;20;Nova Iorque-NY;Pintar
+Lucy;30;Houston-TX;Programar
+Mary;23;Sacramento-CA;Yoga
+Mia;27;Houston-TX;Teatro
+Peter;27;Houston-TX;Barbecue

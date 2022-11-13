@@ -98,7 +98,7 @@ void LiberaListaLike(tListaLike *listaLike)
 
         p = t;
     }
-    
+
     free(listaLike);
     listaLike = NULL;
 }
@@ -110,4 +110,17 @@ void ImprimeListaLike(tListaLike *listaLike)
     {
         ImprimeLike(celula->like);
     }
+}
+
+int ComparaListaLikeNome(tListaLike *lista, char *nome)
+{
+    for (tCelula *aux = lista->inicio; aux != NULL; aux = aux->prox)
+    {
+        if (ComparaSeNomeLikeIgualNome(aux->like, nome) == 1)
+        {
+            return 1;
+        }
+    }
+
+    return 0;
 }

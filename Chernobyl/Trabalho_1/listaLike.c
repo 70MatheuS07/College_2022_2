@@ -92,10 +92,15 @@ void LiberaListaLike(tListaLike *listaLike)
     {
         t = p->prox;
         LiberaLike(p->like);
+
         free(p);
+        p = NULL;
+
         p = t;
     }
+    
     free(listaLike);
+    listaLike = NULL;
 }
 
 void ImprimeListaLike(tListaLike *listaLike)
