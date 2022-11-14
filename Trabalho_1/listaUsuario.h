@@ -21,8 +21,9 @@ void LehPackageListaUsuario(tListaUsuario *usuarios, int num);
 
 void ExecutaEdMatch(tListaUsuario *usuarios, int num);
 
-void ConfereAmizadeFeita(tListaUsuario *usuarios, char *nome, tUsuario *usuario);
+void ConfereAmizadeFeita(tListaUsuario *usuarios, char *nome, tUsuario *usuario, FILE *arquivo);
 
-void ConfereAmizadeDesfeita(tListaUsuario *usuarios, char *nome, tUsuario *usuario);
+void ConfereAmizadeDesfeita(tListaUsuario *usuarios, char *nome, tUsuario *usuario, FILE *arquivo);
+
 
 #endif

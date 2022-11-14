@@ -30,4 +30,8 @@ tLike *RetornaLikePackage(tPackage *package, int i);
 
 tLike *RetornaUnlikePackage(tPackage *package, int i);
 
+tListaHobby *RetornaListaHobbyPackage(tPackage *package, int i);
+
+char *RetornaPostPackage(tPackage *package, int i);
+
 #endif

@@ -5,6 +5,15 @@ struct Hobby
     char *nome;
 };
 
+tHobby *CriaHobby(char *nome)
+{
+    tHobby *hobby = malloc(sizeof(tHobby));
+
+    hobby->nome = nome;
+
+    return hobby;
+}
+
 char *ColetaHobbyArquivo(FILE *arquivo)
 {
     int i = 0;
@@ -77,4 +86,16 @@ void LiberaHobby(tHobby *hobby)
 char *RetornaNomeHobby(tHobby *hobby)
 {
     return hobby->nome;
+}
+
+char *RetornaNomeHobbyParaCopiaEdMatch(tHobby *hobby)
+{
+    char *nome = strdup(hobby->nome);
+
+    return nome;
+}
+
+char RetornaCharHobby(tHobby *hobby)
+{
+    return hobby->nome[0];
 }

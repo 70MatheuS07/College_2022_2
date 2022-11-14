@@ -1,0 +1,88 @@
+* Joao publicou:
+-> Sou professor desde os 12 anos!
+* Maria publicou:
+-> Acabei de descobrir q meu pai nao vem me visitar T_T
+* Pablo publicou:
+-> To indo pro Brasil pessoal, querem que eu leve algo?
++ Joao curtiu Maria
+* Joao publicou:
+-> Partiu Brasilia!
++ Maria curtiu Joao
+# Maria e Joao viraram amigos
++ Jeremias curtiu Pablo
++ Joao curtiu Pablo
+! Joao mudou seu hobbie para:
+~ carpintaria
++ Maria curtiu Pablo
+! Maria mudou seu hobbie para:
+~ jardinagem
+~  programacao
+* Maria publicou:
+-> Alguem entende de C ai pra me ajudar?
++ Pablo curtiu Joao
+# Pablo e Joao viraram amigos
+! Pablo mudou seu hobbie para:
+~ viajar
+~ revendas
+* Pablo publicou:
+->  Pessoal, to indo pra Planaltina, alguém pra me ajudar com a revenda?
+! Joao mudou seu hobbie para:
+~ carpintaria
+~ revenda
+* Joao publicou:
+-> Opa, posso ajudar sim! Chama no direct
+* Maria publicou:
+-> Gente fiz um regador automatico que massa!
+! Jeremias mudou seu hobbie para:
+~ dancar
+~ vendas
+* Jeremias publicou:
+-> Opa, tem alguem revendendo coisa por aqui, sera que eu consigo um emprego?
++ Pablo curtiu Jeremias
+# Pablo e Jeremias viraram amigos
+* Pablo publicou:
+-> Opa meu chapa, manda mensagem no direct ai que a gnt trabalha!
+* Joao publicou:
+-> Sou professor desde os 12 anos!
+* Maria publicou:
+-> Acabei de descobrir q meu pai nao vem me visitar T_T
+* Pablo publicou:
+-> To indo pro Brasil pessoal, querem que eu leve algo?
++ Joao curtiu Maria
+* Joao publicou:
+-> Partiu Brasilia!
++ Maria curtiu Joao
+# Maria e Joao viraram amigos
++ Jeremias curtiu Pablo
++ Joao curtiu Pablo
+! Joao mudou seu hobbie para:
+~ carpintaria
++ Maria curtiu Pablo
+! Maria mudou seu hobbie para:
+~ jardinagem
+~  programacao
+* Maria publicou:
+-> Alguem entende de C ai pra me ajudar?
++ Pablo curtiu Joao
+# Pablo e Joao viraram amigos
+! Pablo mudou seu hobbie para:
+~ viajar
+~ revendas
+* Pablo publicou:
+->  Pessoal, to indo pra Planaltina, alguém pra me ajudar com a revenda?
+! Joao mudou seu hobbie para:
+~ carpintaria
+~ revenda
+* Joao publicou:
+-> Opa, posso ajudar sim! Chama no direct
+* Maria publicou:
+-> Gente fiz um regador automatico que massa!
+! Jeremias mudou seu hobbie para:
+~ dancar
+~ vendas
+* Jeremias publicou:
+-> Opa, tem alguem revendendo coisa por aqui, sera que eu consigo um emprego?
++ Pablo curtiu Jeremias
+# Pablo e Jeremias viraram amigos
+* Pablo publicou:
+-> Opa meu chapa, manda mensagem no direct ai que a gnt trabalha!

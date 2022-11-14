@@ -175,3 +175,63 @@ tPackage *RetornaPackageUsuario(tUsuario *usuario)
 {
     return usuario->package;
 }
+
+void RegistraListaHobby(tUsuario *usuario, int num, FILE *arquivo)
+{
+    tListaHobby *confereDado = usuario->hobbies;
+
+    usuario->hobbies = ConfereModificaHobbiesEdMatch(usuario->hobbies, usuario->package, num);
+
+    if (RetornaCharListaHobby(RetornaListaHobbyPackage(usuario->package, num)) != '.')
+    {
+        fprintf(arquivo, "! %s mudou seu hobbie para:\n", usuario->nome);
+
+        ImprimeHobbiesEdMatch(usuario->hobbies, arquivo);
+    }
+}
+
+tListaHobby *ConfereModificaHobbiesEdMatch(tListaHobby *hobbies, tPackage *package, int num)
+{
+    tListaHobby *hobbiesPackage;
+
+    hobbiesPackage = RetornaListaHobbyPackage(package, num);
+
+    if (ConfereListaHobbyPackage(hobbiesPackage) == 1)
+    {
+        LiberaListaHobby(hobbies);
+
+        tListaHobby *novo = CriaListaHobby();
+
+        CopiaHobbiesPackageParaHobbies(novo, hobbiesPackage);
+
+        return novo;
+    }
+
+    return hobbies;
+}
+
+void RegistraPostUsuario(tUsuario *usuario, int num, FILE *arquivo)
+{
+    if (RetornaPrimeiroCharPost(RetornaPostPackage(usuario->package, num)) != '.')
+    {
+        fprintf(arquivo, "* %s publicou:\n", usuario->nome);
+        fprintf(arquivo, "-> %s\n", RetornaPostPackage(usuario->package, num));
+    }
+}
+
+char RetornaPrimeiroCharPost(char *post)
+{
+    return post[0];
+}
+
+int UsuarioAmigoTemLike(tUsuario *usuario, tUsuario *amigoUsuario)
+{
+    char *nome;
+    
+    if (ProcuraNomeListaLike(amigoUsuario->likes, usuario->nome) == 1)
+    {
+        return 1;
+    }
+
+    return 0;
+}

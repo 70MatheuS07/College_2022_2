@@ -111,6 +111,8 @@ void ExecutaEdMatch(tListaUsuario *usuarios, int num)
     char *nomeLike;
     char *nomeUnlike;
 
+    FILE *arquivo = fopen("logs.txt", "a");
+
     for (int i = 0; i < num; i++)
     {
         for (tCelula *aux = usuarios->inicio; aux != NULL; aux = aux->prox)
@@ -119,26 +121,28 @@ void ExecutaEdMatch(tListaUsuario *usuarios, int num)
 
             if (nomeLike != NULL)
             {
-                printf("+ %s curtiu %s\n", RetornaNomeUsuario(aux->usuario), nomeLike);
-                ConfereAmizadeFeita(usuarios, nomeLike, aux->usuario);
+                fprintf(arquivo, "+ %s curtiu %s\n", RetornaNomeUsuario(aux->usuario), nomeLike);
+                ConfereAmizadeFeita(usuarios, nomeLike, aux->usuario, arquivo);
             }
 
             nomeUnlike = RegistraUnlikeUsuario(aux->usuario, i);
 
             if (nomeUnlike != NULL)
             {
-                printf("_ %s descurtiu %s\n", RetornaNomeUsuario(aux->usuario), nomeUnlike);
-                ConfereAmizadeDesfeita(usuarios, nomeUnlike, aux->usuario);
+                fprintf(arquivo, "_ %s descurtiu %s\n", RetornaNomeUsuario(aux->usuario), nomeUnlike);
+                ConfereAmizadeDesfeita(usuarios, nomeUnlike, aux->usuario, arquivo);
             }
 
-            //RegistraAlteracaoListaHobby(RetornaPackageUsuario(aux->usuario), RetornaListaHobbyUsuario(aux->usuario), num);
+            RegistraListaHobby(aux->usuario, i, arquivo);
 
-            // RegistraPost();
+            RegistraPostUsuario(aux->usuario, i, arquivo);
         }
     }
+
+    fclose(arquivo);
 }
 
-void ConfereAmizadeFeita(tListaUsuario *usuarios, char *nome, tUsuario *usuario)
+void ConfereAmizadeFeita(tListaUsuario *usuarios, char *nome, tUsuario *usuario, FILE *arquivo)
 {
     for (tCelula *aux = usuarios->inicio; aux != NULL; aux = aux->prox)
     {
@@ -146,21 +150,21 @@ void ConfereAmizadeFeita(tListaUsuario *usuarios, char *nome, tUsuario *usuario)
         {
             if (GerouAmizadeEntreUsuarios(aux->usuario, usuario) == 1)
             {
-                printf("# %s e %s viraram amigos\n", RetornaNomeUsuario(usuario), nome);
+                fprintf(arquivo, "# %s e %s viraram amigos\n", RetornaNomeUsuario(usuario), nome);
             }
         }
     }
 }
 
-void ConfereAmizadeDesfeita(tListaUsuario *usuarios, char *nome, tUsuario *usuario)
+void ConfereAmizadeDesfeita(tListaUsuario *usuarios, char *nome, tUsuario *usuario, FILE *arquivo)
 {
     for (tCelula *aux = usuarios->inicio; aux != NULL; aux = aux->prox)
     {
         if (ConfereSeNomesSaoIguais(aux->usuario, nome) == 1)
         {
-            if (GerouAmizadeEntreUsuarios(aux->usuario, usuario) == 1)
+            if (GerouAmizadeEntreUsuarios(aux->usuario, usuario) == 1 && UsuarioAmigoTemLike(usuario, aux->usuario) == 1)
             {
-                printf("# %s desfez amizade com %s \n", RetornaNomeUsuario(usuario), nome);
+                fprintf(arquivo, "$ %s desfez amizade com %s\n", RetornaNomeUsuario(usuario), nome);
             }
         }
     }

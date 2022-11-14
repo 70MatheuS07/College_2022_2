@@ -178,7 +178,7 @@ char *LehCaracterCaracterPackagePost(FILE *arquivo)
     {
         fscanf(arquivo, "%c", &caracter);
 
-        if (caracter == ';' || caracter == '\n')
+        if (caracter == '\n')
         {
             string[i] = caracter;
             i++;
@@ -260,4 +260,14 @@ tLike *RetornaLikePackage(tPackage *package, int i)
 tLike *RetornaUnlikePackage(tPackage *package, int i)
 {
     return package->unlikes[i];
+}
+
+tListaHobby *RetornaListaHobbyPackage(tPackage *package, int i)
+{
+    return package->hobbies[i];
+}
+
+char *RetornaPostPackage(tPackage *package, int i)
+{
+    return package->post[i];
 }

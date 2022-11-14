@@ -33,4 +33,14 @@ char *RegistraUnlikeUsuario(tUsuario *usuario, int i);
 
 tListaHobby *RetornaListaHobbyUsuario(tUsuario *usuario);
 
+void RegistraListaHobby(tUsuario *usuario, int num, FILE *arquivo);
+
+tListaHobby *ConfereModificaHobbiesEdMatch(tListaHobby *hobbies, tPackage *package, int num);
+
+void RegistraPostUsuario(tUsuario *usuario, int num, FILE *arquivo);
+
+char RetornaPrimeiroCharPost(char *post);
+
+int UsuarioAmigoTemLike(tUsuario *usuario, tUsuario *amigoUsuario);
+
 #endif

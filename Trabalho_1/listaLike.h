@@ -23,4 +23,6 @@ void LiberaListaLikeEdMatch(tListaLike *listaLike);
 
 void RetiraDaListaLikeEdMatch(tListaLike *listaLike, char *nome);
 
+int ProcuraNomeListaLike(tListaLike *listaLike, char *nome);
+
 #endif

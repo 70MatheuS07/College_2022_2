@@ -4,7 +4,7 @@ typedef struct Celula tCelula;
 
 struct Celula
 {
-    char *hobby;
+    tHobby *hobby;
     tCelula *prox;
 };
 
@@ -59,7 +59,9 @@ void InsereHobbyLista(tListaHobby *hobbies, char *hobby)
 {
     tCelula *nova = malloc(sizeof(tCelula));
 
-    nova->hobby = hobby;
+    tHobby *hobbyCriado = CriaHobby(hobby);
+
+    nova->hobby = hobbyCriado;
     nova->prox = NULL;
 
     if (hobbies->inicio == NULL)
@@ -78,7 +80,7 @@ void ImprimeListaHobby(tListaHobby *hobbies)
 {
     for (tCelula *aux = hobbies->inicio; aux != NULL; aux = aux->prox)
     {
-        printf("Hobby: %s\n", aux->hobby);
+        printf("Hobby: %s\n", RetornaNomeHobby(aux->hobby));
     }
 }
 
@@ -92,8 +94,7 @@ void LiberaListaHobby(tListaHobby *hobbies)
     {
         prox = aux->prox;
 
-        free(aux->hobby);
-        aux->hobby = NULL;
+        LiberaHobby(aux->hobby);
 
         free(aux);
         aux = NULL;
@@ -105,3 +106,64 @@ void LiberaListaHobby(tListaHobby *hobbies)
     hobbies = NULL;
 }
 
+int ConfereListaHobbyPackage(tListaHobby *hobby)
+{
+    tCelula *aux = hobby->inicio;
+
+    if (RetornaCharHobby(aux->hobby) == '.')
+    {
+        return 0;
+    }
+
+    return 1;
+}
+
+void ImprimeHobbiesEdMatch(tListaHobby *hobby, FILE *arquivo)
+{
+    char *nome;
+
+    for (tCelula *aux = hobby->inicio; aux != NULL; aux = aux->prox)
+    {
+        nome = RetornaNomeHobby(aux->hobby);
+
+        fprintf(arquivo, "~ %s\n", nome);
+    }
+}
+
+void LiberaListaHobbyEdMatch(tListaHobby *hobbies)
+{
+    tCelula *aux, *prox;
+
+    aux = hobbies->inicio;
+
+    while (aux != NULL)
+    {
+        prox = aux->prox;
+
+        LiberaHobby(aux->hobby);
+
+        free(aux);
+        aux = NULL;
+
+        aux = prox;
+    }
+}
+
+void CopiaHobbiesPackageParaHobbies(tListaHobby *hobbies, tListaHobby *copia)
+{
+    for (tCelula *aux = copia->inicio; aux != NULL; aux = aux->prox)
+    {
+        InsereHobbyLista(hobbies, RetornaNomeHobbyParaCopiaEdMatch(aux->hobby));
+    }
+}
+
+char RetornaCharListaHobby(tListaHobby *hobby)
+{
+    char caracter;
+
+    tCelula *aux = hobby->inicio;
+
+    caracter = RetornaCharHobby(aux->hobby);
+
+    return caracter;
+}

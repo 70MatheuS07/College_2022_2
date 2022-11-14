@@ -184,3 +184,16 @@ void RetiraDaListaLikeEdMatch(tListaLike *listaLike, char *nome)
 
     free(p);
 }
+
+int ProcuraNomeListaLike(tListaLike *listaLike, char *nome)
+{
+    for (tCelula *aux = listaLike->inicio; aux != NULL; aux = aux->prox)
+    {
+        if (strcmp(nome, RetornaNomeLike(aux->like)) == 0)
+        {
+            return 1;
+        }
+    }
+
+    return 0;
+}

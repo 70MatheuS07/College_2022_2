@@ -19,4 +19,14 @@ void LiberaListaHobby(tListaHobby *hobbies);
 
 void RetiraDaListaHobby(tListaHobby *listaHobby, char *nome);
 
+int ConfereListaHobbyPackage(tListaHobby *hobby);
+
+void ImprimeHobbiesEdMatch(tListaHobby *hobby, FILE *arquivo);
+
+void LiberaListaHobbyEdMatch(tListaHobby *hobbies);
+
+void CopiaHobbiesPackageParaHobbies(tListaHobby *hobbies, tListaHobby *copia);
+
+char RetornaCharListaHobby(tListaHobby *hobby);
+
 #endif
