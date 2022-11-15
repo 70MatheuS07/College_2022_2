@@ -74,4 +74,3 @@ int ComparaSeNomeLikeIgualNome(tLike *like, char *nome)
 
     return 0;
 }
-

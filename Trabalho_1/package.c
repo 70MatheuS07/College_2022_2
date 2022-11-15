@@ -31,7 +31,7 @@ tPackage *LehPackageArquivo(char *nome, tPackage *package, int num)
     package = CriaPackage(num);
 
     char *leitura = calloc(101, sizeof(char));
-    char *prefixo = strdup("test1/input/");
+    char *prefixo = strdup("test4/input/");
     char *posfixo = strdup(".package.txt");
 
     strcat(leitura, prefixo);

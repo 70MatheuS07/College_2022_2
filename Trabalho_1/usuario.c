@@ -155,7 +155,7 @@ char *RegistraUnlikeUsuario(tUsuario *usuario, int i)
     {
         nome = RetornaNomeLike(unlikeUsuario);
 
-        if (nome[0] != '.')
+        if (nome[0] != '.' && nome != NULL)
         {
             RetiraDaListaLikeEdMatch(usuario->likes, nome);
 
@@ -227,7 +227,7 @@ char RetornaPrimeiroCharPost(char *post)
 int UsuarioAmigoTemLike(tUsuario *usuario, tUsuario *amigoUsuario)
 {
     char *nome;
-    
+
     if (ProcuraNomeListaLike(amigoUsuario->likes, usuario->nome) == 1)
     {
         return 1;

@@ -33,7 +33,7 @@ tListaUsuario *LehUsuariosLista(tListaUsuario *lista)
     FILE *arquivo;
 
     // Pode mudar de acordo com arquivo de entrada
-    arquivo = fopen("test1/input/users.txt", "r");
+    arquivo = fopen("test4/input/users.txt", "r");
 
     while (!feof(arquivo))
     {

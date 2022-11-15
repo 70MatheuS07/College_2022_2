@@ -155,6 +155,11 @@ void RetiraDaListaLikeEdMatch(tListaLike *listaLike, char *nome)
         p = p->prox;
     }
 
+    if (p == NULL)
+    {
+        return;
+    }
+
     // unica celula
     if (p == listaLike->inicio && p == listaLike->fim)
     {
