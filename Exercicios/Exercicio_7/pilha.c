@@ -51,7 +51,7 @@ tLivro *RetiraLivroPilha(tPilha *pilha)
 void ImprimePilha(tPilha *pilha)
 {
     int i = pilha->topo - 1;
-    printf("\ndebug\n");
+    //printf("\ndebug\n");
 
     if (pilha->topo == 0 || pilha == NULL)
     {

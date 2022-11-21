@@ -11,7 +11,9 @@ typedef struct Fila tFila;
 
 tFila *CriaFila(int tam);
 
-void InsereFila(tFila *fila, tLista *pedido);
+void InsereFila(tFila *fila, tPedido *pedido);
+
+tLista *RetiraFila(tFila *fila);
 
 void LiberaFila(tFila *fila);
 

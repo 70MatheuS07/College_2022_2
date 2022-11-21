@@ -21,10 +21,11 @@ tFila *CriaFila(int tam)
     return fila;
 }
 
-void InsereFila(tFila *fila, tLista *pedido)
+void InsereFila(tFila *fila, tPedido *pedido)
 {
-    if (fila->n == fila->max)
+    if (fila->n >= fila->max)
     {
+        printf("\nFila cheia ou invalida!");
         return;
     }
 
@@ -34,14 +35,21 @@ void InsereFila(tFila *fila, tLista *pedido)
     fila->n++;
 }
 
-void RetiraFila(tFila *fila)
+tLista *RetiraFila(tFila *fila)
 {
-    if (fila->inicio == 0)
+    if (fila == NULL || fila->inicio == 0)
     {
         printf("Fila vazia\n");
         return;
     }
 
+    tPedido *pedido = fila->pedidos[fila->inicio];
+
+    fila->inicio = (fila->inicio + 1) % fila->max;
+
+    fila->n--;
+
+    /*
     if (fila->inicio == fila->max)
     {
         fila->pedidos[fila->inicio] = NULL;
@@ -53,6 +61,9 @@ void RetiraFila(tFila *fila)
     fila->pedidos[fila->inicio] = NULL;
     fila->inicio++;
     fila->n--;
+    */
+
+   return pedido;
 }
 
 void LiberaFila(tFila *fila)

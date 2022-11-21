@@ -26,7 +26,7 @@ int main()
     // Modificar o codigo do produto dependendo do codigo dele
     RetiraProdutoLista(lista, CODIGO);
 
-        ImprimeLista(lista);
+    ImprimeLista(lista);
 
     ImprimeListaInvertida(lista);
 

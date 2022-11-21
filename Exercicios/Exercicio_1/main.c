@@ -13,7 +13,7 @@ void inverte(int n, int *vet)
             vet[inverso] = vet[i];
             vet[i] = aux;
             inverso--;
-        }
+        } 
     }
 
     else

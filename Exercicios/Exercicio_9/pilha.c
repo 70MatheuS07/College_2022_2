@@ -43,6 +43,13 @@ tLivro *RetiraLivroPilha(tPilha *pilha)
 
     tLivro *livroRetirado = pilha->livros[pilha->topo - 1];
 
+    if (livroRetirado == NULL)
+    {
+        return NULL;
+    }
+
+    pilha->livros[pilha->topo - 1] = NULL;
+
     pilha->topo--;
 
     return livroRetirado;
@@ -65,6 +72,8 @@ void ImprimePilha(tPilha *pilha)
 
         i--;
     }
+
+    i = 0;
 }
 
 void LiberaPilha(tPilha *pilha)

@@ -23,6 +23,8 @@ tPilha *DevolvePilha1(tFila *fila)
 
 void InsereLivroFila(tFila *fila, tLivro *livro)
 {
+    printf("\ndebug\n");
+
     ColocaLivroPilha(fila->pilha1, livro);
 }
 
@@ -69,5 +71,5 @@ void LiberaFila(tFila *fila)
 {
     LiberaPilha(fila->pilha1);
 
-    LiberaPilha(fila->pilha2);
+    free(fila);
 }

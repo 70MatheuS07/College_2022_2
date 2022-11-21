@@ -4,6 +4,8 @@
 #include "livro.h"
 #include "fila.h"
 
+#define TAM 10
+
 int main()
 {
     int qtd = 0;
@@ -15,18 +17,25 @@ int main()
 
     scanf("%d%c", &qtd, &lixo);
 
-    tFila *fila = InicializaFila(qtd);
+    tFila *fila = InicializaFila(TAM);
 
     for (int i = 0; i < qtd; i++)
     {
         livro = CriaLivro();
 
+        if (livro == NULL)
+        {
+            break;
+        }
+
         InsereLivroFila(fila, livro);
     }
 
+    // wprintf("\ndebug\n");
+
     livro = RetiraLivroFila(fila, qtd);
 
-    //LiberaLivro(livro);
+    // LiberaLivro(livro);
 
     ImprimeFila(fila, qtd);
 
