@@ -8,6 +8,9 @@
 #include "listaHobby.h"
 #include "listaLike.h"
 #include "package.h"
+//adicao
+#include "listaAmigo.h"
+#include "listaPost.h"
 
 typedef struct Usuario tUsuario;
 
@@ -15,7 +18,7 @@ tUsuario *CriaUsuario();
 
 tUsuario *ColetaUsuario(FILE *arquivo);
 
-void ImprimeUsuario(tUsuario *usuario);
+void ImprimeUsuario(tUsuario *usuario, int num, FILE *arquivo);
 
 void LiberaUsuario(tUsuario *usuario);
 
@@ -42,5 +45,12 @@ void RegistraPostUsuario(tUsuario *usuario, int num, FILE *arquivo);
 char RetornaPrimeiroCharPost(char *post);
 
 int UsuarioAmigoTemLike(tUsuario *usuario, tUsuario *amigoUsuario);
+
+//adicao
+void CriaAmizadeListaAmigoUsuario(tUsuario *usuario, char* nome);
+
+void RetiraAmizadeListaAmigoUsuario(tUsuario *usuario, char* nome);
+
+tListaPost *RetornaListaPostUsuario(tUsuario *usuario);
 
 #endif

@@ -13,7 +13,7 @@ tListaHobby *ColetaHobbyLista(FILE *arquivo);
 
 void InsereHobbyLista(tListaHobby *hobbies, char *hobby);
 
-void ImprimeListaHobby(tListaHobby *hobbies);
+void ImprimeListaHobby(tListaHobby *hobbies, FILE *arquivo);
 
 void LiberaListaHobby(tListaHobby *hobbies);
 

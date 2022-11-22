@@ -32,8 +32,14 @@ tListaUsuario *LehUsuariosLista(tListaUsuario *lista)
 
     FILE *arquivo;
 
-    // Pode mudar de acordo com arquivo de entrada
-    arquivo = fopen("test4/input/users.txt", "r");
+    char *leitura = calloc(101, sizeof(char));
+    char *teste = strdup(TESTE);
+    char *posfixo = strdup("/input/users.txt");
+
+    strcat(leitura, teste);
+    strcat(leitura, posfixo);
+
+    arquivo = fopen(leitura, "r");
 
     while (!feof(arquivo))
     {
@@ -44,6 +50,15 @@ tListaUsuario *LehUsuariosLista(tListaUsuario *lista)
     }
 
     fclose(arquivo);
+
+    free(leitura);
+    leitura = NULL;
+
+    free(posfixo);
+    posfixo = NULL;
+
+    free(teste);
+    teste = NULL;
 
     return lista;
 }
@@ -67,13 +82,24 @@ void InsereUsuarioLista(tListaUsuario *lista, tUsuario *usuario)
     }
 }
 
-void ImprimeListaUsuario(tListaUsuario *lista)
+void ImprimeListaUsuario(tListaUsuario *lista, int num)
 {
+    FILE *arquivo = fopen("reports.txt", "a");
+
+    fprintf(arquivo, "====================\n");
+
     for (tCelula *aux = lista->inicio; aux != NULL; aux = aux->prox)
     {
-        ImprimeUsuario(aux->usuario);
-        printf("\n\n");
+        ImprimeUsuario(aux->usuario, num, arquivo);
+
+        ImprimeListaHobby(RetornaListaHobbyUsuario(aux->usuario), arquivo);
+
+        ImprimeListaPost(RetornaListaPostUsuario(aux->usuario), arquivo);
+
+        fprintf(arquivo, "====================\n");
     }
+
+    fclose(arquivo);
 }
 
 void LiberaListaUsuario(tListaUsuario *lista)
@@ -151,6 +177,11 @@ void ConfereAmizadeFeita(tListaUsuario *usuarios, char *nome, tUsuario *usuario,
             if (GerouAmizadeEntreUsuarios(aux->usuario, usuario) == 1)
             {
                 fprintf(arquivo, "# %s e %s viraram amigos\n", RetornaNomeUsuario(usuario), nome);
+
+                // adicao
+
+                CriaAmizadeListaAmigoUsuario(usuario, RetornaNomeUsuario(aux->usuario));
+                CriaAmizadeListaAmigoUsuario(aux->usuario, RetornaNomeUsuario(usuario));
             }
         }
     }
@@ -165,6 +196,11 @@ void ConfereAmizadeDesfeita(tListaUsuario *usuarios, char *nome, tUsuario *usuar
             if (GerouAmizadeEntreUsuarios(aux->usuario, usuario) == 1 && UsuarioAmigoTemLike(usuario, aux->usuario) == 1)
             {
                 fprintf(arquivo, "$ %s desfez amizade com %s\n", RetornaNomeUsuario(usuario), nome);
+
+                // adicao
+
+                RetiraAmizadeListaAmigoUsuario(usuario, RetornaNomeUsuario(aux->usuario));
+                RetiraAmizadeListaAmigoUsuario(aux->usuario, RetornaNomeUsuario(usuario));
             }
         }
     }

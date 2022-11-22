@@ -31,9 +31,11 @@ tPackage *LehPackageArquivo(char *nome, tPackage *package, int num)
     package = CriaPackage(num);
 
     char *leitura = calloc(101, sizeof(char));
-    char *prefixo = strdup("test4/input/");
+    char *teste = strdup(TESTE);
+    char *prefixo = strdup("/input/");
     char *posfixo = strdup(".package.txt");
 
+    strcat(leitura, teste);
     strcat(leitura, prefixo);
     strcat(leitura, nome);
     strcat(leitura, posfixo);
@@ -120,6 +122,9 @@ tPackage *LehPackageArquivo(char *nome, tPackage *package, int num)
 
     free(posfixo);
     posfixo = NULL;
+
+    free(teste);
+    teste = NULL;
 
     return package;
 }
@@ -210,6 +215,7 @@ char *LehCaracterCaracterPackagePost(FILE *arquivo)
     return result;
 }
 
+/*
 void ImprimePackage(tPackage *package, int num)
 {
     for (int i = 0; i < num; i++)
@@ -222,6 +228,7 @@ void ImprimePackage(tPackage *package, int num)
         printf("post: %s\n", package->post[i]);
     }
 }
+*/
 
 void LiberaPackage(tPackage *package)
 {

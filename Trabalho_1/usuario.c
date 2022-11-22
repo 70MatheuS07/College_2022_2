@@ -8,6 +8,9 @@ struct Usuario
     tListaHobby *hobbies;
     tListaLike *likes;
     tPackage *package;
+    // adicao
+    tListaAmigo *amigos;
+    tListaPost *posts;
 };
 
 tUsuario *CriaUsuario()
@@ -17,6 +20,10 @@ tUsuario *CriaUsuario()
     // Inserir tListaLike e tListaAmigo: malloc neles
 
     usuario->likes = CriaListaLike();
+
+    // adicao
+    usuario->amigos = CriaListaAmigo();
+    usuario->posts = CriaListaPost();
 
     return usuario;
 }
@@ -62,16 +69,22 @@ tUsuario *ColetaUsuario(FILE *arquivo)
     return usuario;
 }
 
-void ImprimeUsuario(tUsuario *usuario)
+// *************************************************************************************
+
+void ImprimeUsuario(tUsuario *usuario, int num, FILE *arquivo)
 {
-    printf("Nome: %s\n", usuario->nome);
-    printf("Idade: %d\n", usuario->idade);
-    printf("Localizacao: %s\n", usuario->localizacao);
+    fprintf(arquivo, "%s\n", usuario->nome);
+    fprintf(arquivo, "%d anos\n", usuario->idade);
+    fprintf(arquivo, "%s\n", usuario->localizacao);
+    fprintf(arquivo, "%d amigos\n", RetornaNumeroDeAmigos(usuario->amigos));
 
-    ImprimeListaHobby(usuario->hobbies);
+    // ImprimeListaHobby(usuario->hobbies);
+    // adicao
+    // ImprimeListaAmigo(usuario->amigos);
+    // ImprimeListaPost(usuario->posts);
 
-    // Passar o 2 por parametro (argv)
-    ImprimePackage(usuario->package, 2);
+    // Passar o argv.
+    // ImprimePackage(usuario->package, num);
 }
 
 void LiberaUsuario(tUsuario *usuario)
@@ -87,6 +100,9 @@ void LiberaUsuario(tUsuario *usuario)
     LiberaPackage(usuario->package);
 
     LiberaListaLikeEdMatch(usuario->likes);
+    // adicao
+    LiberaListaAmigo(usuario->amigos);
+    LiberaListaPost(usuario->posts);
 
     free(usuario);
     usuario = NULL;
@@ -155,7 +171,7 @@ char *RegistraUnlikeUsuario(tUsuario *usuario, int i)
     {
         nome = RetornaNomeLike(unlikeUsuario);
 
-        if (nome[0] != '.' && nome != NULL)
+        if (nome[0] != '.')
         {
             RetiraDaListaLikeEdMatch(usuario->likes, nome);
 
@@ -216,6 +232,9 @@ void RegistraPostUsuario(tUsuario *usuario, int num, FILE *arquivo)
     {
         fprintf(arquivo, "* %s publicou:\n", usuario->nome);
         fprintf(arquivo, "-> %s\n", RetornaPostPackage(usuario->package, num));
+        // adicao
+        char *msg = RetornaPostPackage(usuario->package, num);
+        CriaInserePostNaLista(usuario->posts, msg, RetornaNumeroDeAmigos(usuario->amigos));
     }
 }
 
@@ -234,4 +253,22 @@ int UsuarioAmigoTemLike(tUsuario *usuario, tUsuario *amigoUsuario)
     }
 
     return 0;
+}
+
+// adicao
+void CriaAmizadeListaAmigoUsuario(tUsuario *usuario, char *nome)
+{
+
+    CriaInsereAmigoNaLista(usuario->amigos, nome);
+}
+
+void RetiraAmizadeListaAmigoUsuario(tUsuario *usuario, char *nome)
+{
+
+    RetiraDaListaAmigo(usuario->amigos, nome);
+}
+
+tListaPost *RetornaListaPostUsuario(tUsuario *usuario)
+{
+    return usuario->posts;
 }

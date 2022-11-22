@@ -1,0 +1,282 @@
+====================
+Ava
+20 anos
+Nova Iorque-NY
+1 amigos
+
+HOBBIES
+Correr
+
+POSTS PUBLICADOS
+"Acabei de chegar pessoal!" alcance: 0
+"Acordar cedo bom demais!" alcance: 0
+"Transito ta horrivel hoje" alcance: 1
+
+POSTS DO FEED
+"Meu fone quebrou :(, alguem sabe um bom?" - Mary
+"Meu deus eu to ouvindo os vizinhos contarem a maior fofoca kkkk amo" - Mary
+
+MATCHES
+Mary
+
+SUGESTOES DE AMIZADE
+Jimmy
+John
+
+====================
+Bruce
+25 anos
+Houston-TX
+2 amigos
+
+HOBBIES
+Danca
+Canto
+
+POSTS PUBLICADOS
+"Fala pessoal!" alcance: 0
+"Comecei aulas de canto!" alcance: 2
+"Minha primeira apresentacao eh amanha!" alcance: 1
+"Deu tudo certo!! :)" alcance: 1
+
+POSTS DO FEED
+"Desenho nao foi minha praia :(" - John
+"Pelamor o dia NAO ACABA" - Mia
+"oq uma noite de sono decente nao faz" - Mia
+"Apareceu um cara legal na minha aula de atuacao, mas ele ta sujo de argila kkk" - Mia
+
+MATCHES
+Mia
+Lucy
+
+SUGESTOES DE AMIZADE
+Peter
+
+====================
+Emily
+19 anos
+Chicago-IL
+3 amigos
+
+HOBBIES
+Violao
+
+POSTS PUBLICADOS
+"Vou postar eu tocando violao aqui!" alcance: 0
+"Postei video novo pessoal!" alcance: 2
+"Pessoal, alguem sabe uma loja de intrumentos boa?" alcance: 3
+"consegui pessoal, obrigado quem indicou" alcance: 3
+
+POSTS DO FEED
+"Desenho nao foi minha praia :(" - John
+"Pelamor o dia NAO ACABA" - Mia
+"Escultura eh muito interessante" - John
+"oq uma noite de sono decente nao faz" - Mia
+"Acabou a argila" - John
+"Terminei o trabalho!" - Lucy
+"Apareceu um cara legal na minha aula de atuacao, mas ele ta sujo de argila kkk" - Mia
+
+MATCHES
+John
+Mia
+Lucy
+
+SUGESTOES DE AMIZADE
+James
+
+====================
+Emma
+43 anos
+Nova Iorque-NY
+0 amigos
+
+HOBBIES
+Meditacao
+
+POSTS PUBLICADOS
+"To muito bem sozinha pessoal" alcance: 0
+"Meditacao de hoje rendeu" alcance: 0
+"vou usar esse app como bloco de notas" alcance: 0
+
+POSTS DO FEED
+
+MATCHES
+
+SUGESTOES DE AMIZADE
+
+====================
+James
+24 anos
+Chicago-IL
+0 amigos
+
+HOBBIES
+Corrida
+
+POSTS PUBLICADOS
+"Me mandaram criar, vou fazer nada kk" alcance: 0
+
+POSTS DO FEED
+
+MATCHES
+
+SUGESTOES DE AMIZADE
+Emily
+
+====================
+Jimmy
+24 anos
+Nova Iorque-NY
+0 amigos
+
+HOBBIES
+Pesca
+
+POSTS PUBLICADOS
+"Procurando um amigo de pesca" alcance: 0
+"Calor da peste hoje" alcance: 0
+"Vou andar pelo central park" alcance: 0
+
+POSTS DO FEED
+
+MATCHES
+
+SUGESTOES DE AMIZADE
+Ava
+John
+
+====================
+John
+20 anos
+Nova Iorque-NY
+1 amigos
+
+HOBBIES
+Atuar
+
+POSTS PUBLICADOS
+"Vou tentar um pouco de tudo pelos meses a seguir pessoal" alcance: 0
+"Desenho nao foi minha praia :(" alcance: 2
+"Escultura eh muito interessante" alcance: 1
+"Acabou a argila" alcance: 1
+
+POSTS DO FEED
+"Comecei aulas de canto!" - Bruce
+"Postei video novo pessoal!" - Emily
+"Pessoal, alguem sabe uma loja de intrumentos boa?" - Emily
+"consegui pessoal, obrigado quem indicou" - Emily
+
+MATCHES
+Emily
+
+SUGESTOES DE AMIZADE
+Ava
+Jimmy
+
+====================
+Lucy
+30 anos
+Houston-TX
+3 amigos
+
+HOBBIES
+Programar
+
+POSTS PUBLICADOS
+"Pessoal, to com duvida no trabalho de ED, alguem me ajuda?" alcance: 0
+"Consegui resolver aqui!" alcance: 0
+"Terminei o trabalho!" alcance: 1
+
+POSTS DO FEED
+"Pessoal, alguem sabe uma loja de intrumentos boa?" - Emily
+"Apareceu um cara legal na minha aula de atuacao, mas ele ta sujo de argila kkk" - Mia
+"consegui pessoal, obrigado quem indicou" - Emily
+
+MATCHES
+Emily
+Mia
+Bruce
+
+SUGESTOES DE AMIZADE
+Peter
+
+====================
+Mary
+23 anos
+Sacramento-CA
+1 amigos
+
+HOBBIES
+Yoga
+
+POSTS PUBLICADOS
+"Mais um dia pessoal" alcance: 0
+"Encontrei uma playlist muito boa!" alcance: 0
+"Meu fone quebrou :(, alguem sabe um bom?" alcance: 1
+"Meu deus eu to ouvindo os vizinhos contarem a maior fofoca kkkk amo" alcance: 1
+
+POSTS DO FEED
+"Transito ta horrivel hoje" - Ava
+
+MATCHES
+Ava
+
+SUGESTOES DE AMIZADE
+
+====================
+Mia
+27 anos
+Houston-TX
+3 amigos
+
+HOBBIES
+Teatro
+
+POSTS PUBLICADOS
+"Pelamor o dia NAO ACABA" alcance: 2
+"oq uma noite de sono decente nao faz" alcance: 2
+"Apareceu um cara legal na minha aula de atuacao, mas ele ta sujo de argila kkk" alcance: 3
+
+POSTS DO FEED
+"Comecei aulas de canto!" - Bruce
+"Postei video novo pessoal!" - Emily
+"Minha primeira apresentacao eh amanha!" - Bruce
+"Pessoal, alguem sabe uma loja de intrumentos boa?" - Emily
+"Deu tudo certo!! :)" - Bruce
+"consegui pessoal, obrigado quem indicou" - Emily
+
+MATCHES
+Bruce
+Emily
+Lucy
+
+SUGESTOES DE AMIZADE
+Peter
+
+====================
+Peter
+27 anos
+Houston-TX
+0 amigos
+
+HOBBIES
+Barbecue
+Vendas
+
+POSTS PUBLICADOS
+"Acordando quatro da manha pra preparar churras" alcance: 0
+"Valeu a pena!" alcance: 0
+"Vou tentar fazer mais vezes" alcance: 0
+"Pessoal nas tercas eu vou fazer pra vender!" alcance: 0
+"Muito obrigado a todos que vieram! Foi muito legal!" alcance: 0
+"Semana que vem tem mais!" alcance: 0
+
+POSTS DO FEED
+
+MATCHES
+
+SUGESTOES DE AMIZADE
+Bruce
+Lucy
+Mia
+

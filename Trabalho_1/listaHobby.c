@@ -76,12 +76,16 @@ void InsereHobbyLista(tListaHobby *hobbies, char *hobby)
     }
 }
 
-void ImprimeListaHobby(tListaHobby *hobbies)
+void ImprimeListaHobby(tListaHobby *hobbies, FILE *arquivo)
 {
+    fprintf(arquivo, "HOBBIES\n");
+    
     for (tCelula *aux = hobbies->inicio; aux != NULL; aux = aux->prox)
     {
-        printf("Hobby: %s\n", RetornaNomeHobby(aux->hobby));
+        fprintf(arquivo, "%s\n", RetornaNomeHobby(aux->hobby));
     }
+
+    fprintf(arquivo, "\n");
 }
 
 void LiberaListaHobby(tListaHobby *hobbies)

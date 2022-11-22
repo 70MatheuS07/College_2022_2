@@ -1,0 +1,4 @@
+Joao;25;Brasilia-DF;ensinar
+Maria;28;Brasilia-DF;jardinagem
+Jeremias;43;Planaltina-DF;dancar
+Pablo;34;La Paz-Bolivia;viajar

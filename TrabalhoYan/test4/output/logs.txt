@@ -115,7 +115,6 @@ _ Ava descurtiu John
 * Emily publicou:
 -> Pessoal, alguem sabe uma loja de intrumentos boa?
 _ Emma descurtiu Bruce
-$ Emma desfez amizade com Bruce
 + Jimmy curtiu Bruce
 _ Jimmy descurtiu Peter
 ! John mudou seu hobbie para:
