@@ -86,17 +86,15 @@ void ImprimeListaUsuario(tListaUsuario *lista, int num)
 {
     FILE *arquivo = fopen("reports.txt", "a");
 
-    fprintf(arquivo, "====================\n");
-
     for (tCelula *aux = lista->inicio; aux != NULL; aux = aux->prox)
     {
+        fprintf(arquivo, "====================\n");
+
         ImprimeUsuario(aux->usuario, num, arquivo);
 
         ImprimeListaHobby(RetornaListaHobbyUsuario(aux->usuario), arquivo);
 
         ImprimeListaPost(RetornaListaPostUsuario(aux->usuario), arquivo);
-
-        fprintf(arquivo, "====================\n");
     }
 
     fclose(arquivo);

@@ -19,7 +19,7 @@ tPost *CriaPost(char *msg, int alcance)
 
 void ImprimePost(tPost *post, FILE *arquivo)
 {
-    fprintf(arquivo, "\"%s\" - alcance: % d\n ", post->msg, post->alcance);
+    fprintf(arquivo, "\"%s\" alcance: %d\n", post->msg, post->alcance);
 }
 
 void LiberaPost(tPost *post)

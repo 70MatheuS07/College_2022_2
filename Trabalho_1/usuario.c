@@ -11,6 +11,7 @@ struct Usuario
     // adicao
     tListaAmigo *amigos;
     tListaPost *posts;
+    tListaFeed *feed;
 };
 
 tUsuario *CriaUsuario()
@@ -24,6 +25,7 @@ tUsuario *CriaUsuario()
     // adicao
     usuario->amigos = CriaListaAmigo();
     usuario->posts = CriaListaPost();
+    usuario->feed = CriaListaFeed();
 
     return usuario;
 }
@@ -76,8 +78,7 @@ void ImprimeUsuario(tUsuario *usuario, int num, FILE *arquivo)
     fprintf(arquivo, "%s\n", usuario->nome);
     fprintf(arquivo, "%d anos\n", usuario->idade);
     fprintf(arquivo, "%s\n", usuario->localizacao);
-    fprintf(arquivo, "%d amigos\n", RetornaNumeroDeAmigos(usuario->amigos));
-
+    fprintf(arquivo, "%d amigos\n\n", RetornaNumeroDeAmigos(usuario->amigos));
     // ImprimeListaHobby(usuario->hobbies);
     // adicao
     // ImprimeListaAmigo(usuario->amigos);
@@ -103,6 +104,7 @@ void LiberaUsuario(tUsuario *usuario)
     // adicao
     LiberaListaAmigo(usuario->amigos);
     LiberaListaPost(usuario->posts);
+    LiberaListaFeed(usuario->feed);
 
     free(usuario);
     usuario = NULL;
@@ -235,6 +237,11 @@ void RegistraPostUsuario(tUsuario *usuario, int num, FILE *arquivo)
         // adicao
         char *msg = RetornaPostPackage(usuario->package, num);
         CriaInserePostNaLista(usuario->posts, msg, RetornaNumeroDeAmigos(usuario->amigos));
+
+        if (RetornaNumeroDeAmigos(usuario->amigos) > 0)
+        {
+            MandaFeedParaListaAmigo(usuario->amigos, usuario->nome, msg);
+        }
     }
 }
 

@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "amigo.h"
+#include "listaFeed.h"
 
 typedef struct ListaAmigo tListaAmigo;
 
@@ -25,5 +26,7 @@ int RetornaNumeroDeAmigos(tListaAmigo *listaAmigo);
 void LiberaListaAmigo(tListaAmigo *listaAmigo);
 
 void ImprimeListaAmigo(tListaAmigo *listaAmigo);
+
+void MandaFeedParaListaAmigo(tListaAmigo *listaAmigo, tListaFeed *listaFeed, char *nome, char *mensagem);
 
 #endif

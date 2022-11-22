@@ -43,8 +43,9 @@ void InsereAmigoLista(tListaAmigo *listaAmigo, tAmigo *amigo)
     }
 }
 
-int NomeNaLista(tListaAmigo *listaAmigo, char* nome){
-  
+int NomeNaLista(tListaAmigo *listaAmigo, char *nome)
+{
+
     tCelula *p = listaAmigo->inicio;
     tCelula *ant = NULL;
 
@@ -53,26 +54,29 @@ int NomeNaLista(tListaAmigo *listaAmigo, char* nome){
         ant = p;
         p = p->prox;
     }
-  
-    if(p == NULL){
+
+    if (p == NULL)
+    {
         return 0;
     }
-  
+
     return 1;
 }
 
-void CriaInsereAmigoNaLista(tListaAmigo *listaAmigo, char* nome){
+void CriaInsereAmigoNaLista(tListaAmigo *listaAmigo, char *nome)
+{
 
-    if(NomeNaLista(listaAmigo, nome) == 0){
-      
-        tAmigo* amigo = CriaAmigo(nome);
-      
+    if (NomeNaLista(listaAmigo, nome) == 0)
+    {
+
+        tAmigo *amigo = CriaAmigo(nome);
+
         InsereAmigoLista(listaAmigo, amigo);
-      
     }
 }
 
-int RetornaNumeroDeAmigos(tListaAmigo *listaAmigo){
+int RetornaNumeroDeAmigos(tListaAmigo *listaAmigo)
+{
     tCelula *celula;
     int n = 0;
 
@@ -82,7 +86,6 @@ int RetornaNumeroDeAmigos(tListaAmigo *listaAmigo){
     }
 
     return n;
- 
 }
 
 void RetiraDaListaAmigo(tListaAmigo *listaAmigo, char *nome)
@@ -97,7 +100,8 @@ void RetiraDaListaAmigo(tListaAmigo *listaAmigo, char *nome)
         p = p->prox;
     }
 
-    if(p == NULL){
+    if (p == NULL)
+    {
         return;
     }
 
@@ -158,5 +162,14 @@ void ImprimeListaAmigo(tListaAmigo *listaAmigo)
     for (celula = listaAmigo->inicio; celula != NULL; celula = celula->prox)
     {
         ImprimeAmigo(celula->amigo);
+    }
+}
+
+void MandaFeedParaListaAmigo(tListaAmigo *listaAmigo, tListaFeed *listaFeed, char *nome, char *mensagem)
+{
+    for (tCelula *aux = listaAmigo->inicio; aux != NULL; aux = aux->prox)
+    {
+        // PARAMOS AQUI!
+        EnviaNomeMensagemFeedAmigo();
     }
 }

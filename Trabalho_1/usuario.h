@@ -11,6 +11,7 @@
 //adicao
 #include "listaAmigo.h"
 #include "listaPost.h"
+#include "listaFeed.h"
 
 typedef struct Usuario tUsuario;
 

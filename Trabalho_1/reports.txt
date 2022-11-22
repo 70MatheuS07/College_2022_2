@@ -1,0 +1,49 @@
+====================
+Joao
+23 anos
+Vitoria-ES
+0 amigos
+
+HOBBIES
+bike
+carro
+
+POSTS PUBLICADOS
+
+====================
+Afonso
+19 anos
+Vitoria-ES
+1 amigos
+
+HOBBIES
+mountain bike
+
+POSTS PUBLICADOS
+"e ae galera, tudo bem?" alcance: 0
+"cheguei cansado hoje" alcance: 1
+
+====================
+Caio
+20 anos
+Vitoria-ES
+1 amigos
+
+HOBBIES
+carro
+
+POSTS PUBLICADOS
+"Bom dia rapeize!!!" alcance: 1
+
+====================
+Kevin
+21 anos
+DomingosMartins-ES
+0 amigos
+
+HOBBIES
+programar
+
+POSTS PUBLICADOS
+"Brabeza" alcance: 0
+
