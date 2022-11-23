@@ -15,4 +15,6 @@ int EhNomeAmigoIgual(tAmigo *amigo, char *nome);
 
 void ImprimeAmigo(tAmigo *amigo);
 
+char *RetornaNomeAmigo(tAmigo *amigo);
+
 #endif

@@ -95,6 +95,8 @@ void ImprimeListaUsuario(tListaUsuario *lista, int num)
         ImprimeListaHobby(RetornaListaHobbyUsuario(aux->usuario), arquivo);
 
         ImprimeListaPost(RetornaListaPostUsuario(aux->usuario), arquivo);
+
+        ImprimeListaFeed(RetornaListaFeedUsuario(aux->usuario), arquivo);
     }
 
     fclose(arquivo);
@@ -159,11 +161,28 @@ void ExecutaEdMatch(tListaUsuario *usuarios, int num)
 
             RegistraListaHobby(aux->usuario, i, arquivo);
 
-            RegistraPostUsuario(aux->usuario, i, arquivo);
+            RegistraPostFeedListaUsuario(usuarios, aux->usuario, i, arquivo);
         }
     }
 
     fclose(arquivo);
+}
+
+void RegistraPostFeedListaUsuario(tListaUsuario *listaUsuario, tUsuario *usuario, int num, FILE *arquivo)
+{
+    if (RetornaPrimeiroCharPost(RetornaPostPackage(RetornaPackageUsuario(usuario), num)) != '.')
+    {
+        fprintf(arquivo, "* %s publicou:\n", RetornaNomeUsuario(usuario));
+        fprintf(arquivo, "-> %s\n", RetornaPostPackage(RetornaPackageUsuario(usuario), num));
+        // adicao
+        char *msg = RetornaPostPackage(RetornaPackageUsuario(usuario), num);
+        CriaInserePostNaLista(RetornaListaPostUsuario(usuario), msg, RetornaNumeroDeAmigos(RetornaListaAmigoUsuario(usuario)));
+
+        if (RetornaNumeroDeAmigos(RetornaListaAmigoUsuario(usuario)) > 0)
+        {
+            MandaFeedParaListaAmigo(listaUsuario, RetornaListaAmigoUsuario(usuario), RetornaNomeUsuario(usuario), msg);
+        }
+    }
 }
 
 void ConfereAmizadeFeita(tListaUsuario *usuarios, char *nome, tUsuario *usuario, FILE *arquivo)
@@ -200,6 +219,19 @@ void ConfereAmizadeDesfeita(tListaUsuario *usuarios, char *nome, tUsuario *usuar
                 RetiraAmizadeListaAmigoUsuario(usuario, RetornaNomeUsuario(aux->usuario));
                 RetiraAmizadeListaAmigoUsuario(aux->usuario, RetornaNomeUsuario(usuario));
             }
+        }
+    }
+}
+
+void MandaFeedParaListaAmigo(tListaUsuario *listaUsuario, tListaAmigo *listaAmigo, char *nome, char *mensagem)
+{
+    tUsuario *usuario;
+
+    for (tCelula *aux = listaUsuario->inicio; aux != NULL; aux = aux->prox)
+    {
+        if (NomeUsuarioIgualNomeAmigo(listaAmigo, RetornaNomeUsuario(aux->usuario)) == 0)
+        {
+            EnviaNomeMensagemParaListaFeedUsuarioAmigo(aux->usuario, nome, mensagem);
         }
     }
 }

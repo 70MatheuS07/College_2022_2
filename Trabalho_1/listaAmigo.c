@@ -165,11 +165,13 @@ void ImprimeListaAmigo(tListaAmigo *listaAmigo)
     }
 }
 
-void MandaFeedParaListaAmigo(tListaAmigo *listaAmigo, tListaFeed *listaFeed, char *nome, char *mensagem)
+int NomeUsuarioIgualNomeAmigo(tListaAmigo *listaAmigo, char *nome)
 {
     for (tCelula *aux = listaAmigo->inicio; aux != NULL; aux = aux->prox)
     {
-        // PARAMOS AQUI!
-        EnviaNomeMensagemFeedAmigo();
+        if (strcmp(RetornaNomeAmigo(aux->amigo), nome) == 0)
+        {
+            return 0;
+        }
     }
 }

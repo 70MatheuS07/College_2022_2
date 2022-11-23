@@ -62,3 +62,20 @@ void LiberaListaFeed(tListaFeed *listaFeed)
     free(listaFeed);
     listaFeed = NULL;
 }
+
+void ColocaNomeMensagemNaListaFeed(tListaFeed *listaFeed, char *nome, char *mensagem)
+{
+    tFeed *feed = CriaFeed(nome, mensagem);
+
+    InsereFeedLista(listaFeed, feed);
+}
+
+void ImprimeListaFeed(tListaFeed *listaFeed, FILE *arquivo)
+{
+    fprintf(arquivo, "POSTS DO FEED\n");
+
+    for (tCelula *aux = listaFeed->inicio; aux != NULL; aux = aux->prox)
+    {
+        ImprimeFeed(aux->feed, arquivo);
+    }
+}

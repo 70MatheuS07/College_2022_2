@@ -228,23 +228,6 @@ tListaHobby *ConfereModificaHobbiesEdMatch(tListaHobby *hobbies, tPackage *packa
     return hobbies;
 }
 
-void RegistraPostUsuario(tUsuario *usuario, int num, FILE *arquivo)
-{
-    if (RetornaPrimeiroCharPost(RetornaPostPackage(usuario->package, num)) != '.')
-    {
-        fprintf(arquivo, "* %s publicou:\n", usuario->nome);
-        fprintf(arquivo, "-> %s\n", RetornaPostPackage(usuario->package, num));
-        // adicao
-        char *msg = RetornaPostPackage(usuario->package, num);
-        CriaInserePostNaLista(usuario->posts, msg, RetornaNumeroDeAmigos(usuario->amigos));
-
-        if (RetornaNumeroDeAmigos(usuario->amigos) > 0)
-        {
-            MandaFeedParaListaAmigo(usuario->amigos, usuario->nome, msg);
-        }
-    }
-}
-
 char RetornaPrimeiroCharPost(char *post)
 {
     return post[0];
@@ -279,3 +262,24 @@ tListaPost *RetornaListaPostUsuario(tUsuario *usuario)
 {
     return usuario->posts;
 }
+
+void EnviaNomeMensagemParaListaFeedUsuarioAmigo(tUsuario *usuario, char *nome, char *mensagem)
+{
+    ColocaNomeMensagemNaListaFeed(usuario->feed, nome, mensagem);
+}
+
+tPackage *RetornaListaPackageUsuario(tUsuario *usuario)
+{
+    return usuario->package;
+}
+
+tListaAmigo *RetornaListaAmigoUsuario(tUsuario *usuario)
+{
+    return usuario->amigos;
+}
+
+tListaFeed *RetornaListaFeedUsuario(tUsuario *usuario)
+{
+    return usuario->feed;
+}
+

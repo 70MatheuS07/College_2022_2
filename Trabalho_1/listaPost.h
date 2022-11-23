@@ -1,7 +1,11 @@
 #ifndef LISTAPOST_H
 #define LISTAPOST_H
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 #include "post.h"
+
 typedef struct listaPost tListaPost;
 
 tListaPost* CriaListaPost();

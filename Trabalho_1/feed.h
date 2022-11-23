@@ -11,4 +11,6 @@ tFeed *CriaFeed(char *nome, char *mensagem);
 
 void LiberaFeed(tFeed *feed);
 
+void ImprimeFeed(tFeed *feed, FILE *arquivo);
+
 #endif

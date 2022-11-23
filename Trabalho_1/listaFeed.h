@@ -14,4 +14,8 @@ void InsereFeedLista(tListaFeed *listaFeed, tFeed *feed);
 
 void LiberaListaFeed(tListaFeed *listaFeed);
 
+void ImprimeListaFeed(tListaFeed *listaFeed, FILE *arquivo);
+
+void ColocaNomeMensagemNaListaFeed(tListaFeed *listaFeed, char *nome, char *mensagem);
+
 #endif

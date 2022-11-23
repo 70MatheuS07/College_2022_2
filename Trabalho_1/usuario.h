@@ -4,14 +4,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "like.h"
 #include "listaHobby.h"
 #include "listaLike.h"
 #include "package.h"
-//adicao
-#include "listaAmigo.h"
 #include "listaPost.h"
 #include "listaFeed.h"
+#include "listaAmigo.h"
 
 typedef struct Usuario tUsuario;
 
@@ -41,17 +39,22 @@ void RegistraListaHobby(tUsuario *usuario, int num, FILE *arquivo);
 
 tListaHobby *ConfereModificaHobbiesEdMatch(tListaHobby *hobbies, tPackage *package, int num);
 
-void RegistraPostUsuario(tUsuario *usuario, int num, FILE *arquivo);
-
 char RetornaPrimeiroCharPost(char *post);
 
 int UsuarioAmigoTemLike(tUsuario *usuario, tUsuario *amigoUsuario);
 
-//adicao
-void CriaAmizadeListaAmigoUsuario(tUsuario *usuario, char* nome);
+void CriaAmizadeListaAmigoUsuario(tUsuario *usuario, char *nome);
 
-void RetiraAmizadeListaAmigoUsuario(tUsuario *usuario, char* nome);
+void RetiraAmizadeListaAmigoUsuario(tUsuario *usuario, char *nome);
 
 tListaPost *RetornaListaPostUsuario(tUsuario *usuario);
+
+void EnviaNomeMensagemParaListaFeedUsuarioAmigo(tUsuario *usuario, char *nome, char *mensagem);
+
+tPackage *RetornaPackageUsuario(tUsuario *usuario);
+
+tListaAmigo *RetornaListaAmigoUsuario(tUsuario *usuario);
+
+tListaFeed *RetornaListaFeedUsuario(tUsuario *usuario);
 
 #endif

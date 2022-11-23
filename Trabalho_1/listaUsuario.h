@@ -3,8 +3,8 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "usuario.h"
-#include "package.h"
 
 typedef struct ListaUsuario tListaUsuario;
 
@@ -25,5 +25,9 @@ void ExecutaEdMatch(tListaUsuario *usuarios, int num);
 void ConfereAmizadeFeita(tListaUsuario *usuarios, char *nome, tUsuario *usuario, FILE *arquivo);
 
 void ConfereAmizadeDesfeita(tListaUsuario *usuarios, char *nome, tUsuario *usuario, FILE *arquivo);
+
+void MandaFeedParaListaAmigo(tListaUsuario *listaUsuario, tListaAmigo *listaAmigo, char *nome, char *mensagem);
+
+void RegistraPostFeedListaUsuario(tListaUsuario *listaUsuario, tUsuario *usuario, int num, FILE *arquivo);
 
 #endif

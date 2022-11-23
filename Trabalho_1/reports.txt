@@ -10,6 +10,9 @@ carro
 
 POSTS PUBLICADOS
 
+POSTS DO FEED
+"cheguei cansado hoje" - Afonso
+"Bom dia rapeize!!!" - Caio
 ====================
 Afonso
 19 anos
@@ -23,6 +26,9 @@ POSTS PUBLICADOS
 "e ae galera, tudo bem?" alcance: 0
 "cheguei cansado hoje" alcance: 1
 
+POSTS DO FEED
+"cheguei cansado hoje" - Afonso
+"Bom dia rapeize!!!" - Caio
 ====================
 Caio
 20 anos
@@ -35,6 +41,9 @@ carro
 POSTS PUBLICADOS
 "Bom dia rapeize!!!" alcance: 1
 
+POSTS DO FEED
+"cheguei cansado hoje" - Afonso
+"Bom dia rapeize!!!" - Caio
 ====================
 Kevin
 21 anos
@@ -47,3 +56,6 @@ programar
 POSTS PUBLICADOS
 "Brabeza" alcance: 0
 
+POSTS DO FEED
+"cheguei cansado hoje" - Afonso
+"Bom dia rapeize!!!" - Caio

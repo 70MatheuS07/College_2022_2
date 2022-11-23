@@ -24,3 +24,8 @@ void LiberaFeed(tFeed *feed)
     free(feed);
     feed = NULL;
 }
+
+void ImprimeFeed(tFeed *feed, FILE *arquivo)
+{
+    fprintf(arquivo, "\"%s\" - %s\n", feed->mensagem, feed->nome);
+}

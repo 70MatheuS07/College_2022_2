@@ -36,3 +36,8 @@ void ImprimeAmigo(tAmigo *amigo)
 {
     printf("Amigo: %s\n", amigo->nome);
 }
+
+char *RetornaNomeAmigo(tAmigo *amigo)
+{
+    return amigo->nome;
+}
