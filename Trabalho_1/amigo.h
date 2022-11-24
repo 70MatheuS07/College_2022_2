@@ -13,7 +13,7 @@ void LiberaAmigo(tAmigo *amigo);
 
 int EhNomeAmigoIgual(tAmigo *amigo, char *nome);
 
-void ImprimeAmigo(tAmigo *amigo);
+void ImprimeAmigo(tAmigo *amigo, FILE *arquivo);
 
 char *RetornaNomeAmigo(tAmigo *amigo);
 

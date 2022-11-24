@@ -97,6 +97,8 @@ void ImprimeListaUsuario(tListaUsuario *lista, int num)
         ImprimeListaPost(RetornaListaPostUsuario(aux->usuario), arquivo);
 
         ImprimeListaFeed(RetornaListaFeedUsuario(aux->usuario), arquivo);
+
+        ImprimeListaAmigo(RetornaListaAmigoUsuario(aux->usuario), arquivo);
     }
 
     fclose(arquivo);

@@ -3,7 +3,7 @@
 
 #define LIKE 1
 #define UNLIKE 0
-#define TESTE "test1"
+#define TESTE "test3"
 
 #include <stdlib.h>
 #include <stdio.h>

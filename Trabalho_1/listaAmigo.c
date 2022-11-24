@@ -155,13 +155,15 @@ void LiberaListaAmigo(tListaAmigo *listaAmigo)
     listaAmigo = NULL;
 }
 
-void ImprimeListaAmigo(tListaAmigo *listaAmigo)
+void ImprimeListaAmigo(tListaAmigo *listaAmigo, FILE *arquivo)
 {
     tCelula *celula;
 
+    fprintf(arquivo, "\nMATCHES\n");
+
     for (celula = listaAmigo->inicio; celula != NULL; celula = celula->prox)
     {
-        ImprimeAmigo(celula->amigo);
+        ImprimeAmigo(celula->amigo, arquivo);
     }
 }
 
@@ -174,4 +176,6 @@ int NomeUsuarioIgualNomeAmigo(tListaAmigo *listaAmigo, char *nome)
             return 0;
         }
     }
+
+    return 1;
 }

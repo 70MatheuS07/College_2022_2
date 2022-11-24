@@ -32,9 +32,9 @@ int EhNomeAmigoIgual(tAmigo *amigo, char *nome)
     return 0;
 }
 
-void ImprimeAmigo(tAmigo *amigo)
+void ImprimeAmigo(tAmigo *amigo, FILE *arquivo)
 {
-    printf("Amigo: %s\n", amigo->nome);
+    fprintf(arquivo, "%s\n", amigo->nome);
 }
 
 char *RetornaNomeAmigo(tAmigo *amigo)

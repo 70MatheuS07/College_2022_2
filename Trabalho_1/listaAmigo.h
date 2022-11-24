@@ -24,7 +24,7 @@ int RetornaNumeroDeAmigos(tListaAmigo *listaAmigo);
 
 void LiberaListaAmigo(tListaAmigo *listaAmigo);
 
-void ImprimeListaAmigo(tListaAmigo *listaAmigo);
+void ImprimeListaAmigo(tListaAmigo *listaAmigo, FILE *arquivo);
 
 int NomeUsuarioIgualNomeAmigo(tListaAmigo *listaAmigo, char *nome);
 

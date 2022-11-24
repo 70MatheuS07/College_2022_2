@@ -282,4 +282,3 @@ tListaFeed *RetornaListaFeedUsuario(tUsuario *usuario)
 {
     return usuario->feed;
 }
-

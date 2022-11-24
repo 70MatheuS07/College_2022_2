@@ -5,6 +5,11 @@
 
 int main(int argc, char *argv[])
 {
+    /*
+    argv[1] = strdup("2\0");
+    argc++;
+    */
+
     int num = atoi(argv[argc - 1]);
 
     tListaUsuario *usuarios = CriaListaUsuario();

@@ -1,19 +1,102 @@
-+ Joao curtiu Kevin
-_ Joao descurtiu Kevin
-+ Afonso curtiu Caio
-* Afonso publicou:
--> e ae galera, tudo bem?
-+ Caio curtiu Afonso
-# Caio e Afonso viraram amigos
-+ Kevin curtiu Joao
-* Kevin publicou:
--> Brabeza
-+ Afonso curtiu Joao
-! Afonso mudou seu hobbie para:
-~ mountain bike
-* Afonso publicou:
--> cheguei cansado hoje
-* Caio publicou:
--> Bom dia rapeize!!!
-! Kevin mudou seu hobbie para:
-~ programar
++ Xaolim Matador de Porco curtiu Valdin do Picole
+* Xaolim Matador de Porco publicou:
+-> Algum porco online?
++ Flavin do Pneu curtiu Tonim Mecanico
+* Flavin do Pneu publicou:
+-> Bom dia, borracharia aberta!
++ Tonim Mecanico curtiu Flavin do Pneu
+# Tonim Mecanico e Flavin do Pneu viraram amigos
+* Tonim Mecanico publicou:
+-> Esse mundo so tem borracha fraca...
+* Valdin do Picole publicou:
+-> Partiu trabalhar, bom dia.
++ Xaolim Matador de Porco curtiu Tonim Mecanico
+* Xaolim Matador de Porco publicou:
+-> Meu carro deu problema, @.;#$...
+* Tonim Mecanico publicou:
+-> Nunca se para de aprender!!!
++ Valdin do Picole curtiu Xaolim Matador de Porco
+# Valdin do Picole e Xaolim Matador de Porco viraram amigos
+* Valdin do Picole publicou:
+-> OLHA AEEEE O PICOLEEEEE
+* Xaolim Matador de Porco publicou:
+-> AGUA PURA NINGUEM QUEEEEEEER
++ Flavin do Pneu curtiu Xaolim Matador de Porco
+_ Flavin do Pneu descurtiu Xaolim Matador de Porco
+! Tonim Mecanico mudou seu hobbie para:
+~ roubar parachoque
+~ desmontar carro
+* Tonim Mecanico publicou:
+-> Tem um uno dando sopa na minha rua :P
+_ Valdin do Picole descurtiu Xaolim Matador de Porco
+$ Valdin do Picole desfez amizade com Xaolim Matador de Porco
+* Valdin do Picole publicou:
+-> Nao se pode confiar em ninguem hoje em dia...
+* Xaolim Matador de Porco publicou:
+-> KKKKKKKKKKKKKKKK nao aguentou a pressao
+* Flavin do Pneu publicou:
+-> Tonim fortaleceu com esse pneu de Uno
++ Tonim Mecanico curtiu Xaolim Matador de Porco
+# Tonim Mecanico e Xaolim Matador de Porco viraram amigos
+! Tonim Mecanico mudou seu hobbie para:
+~ roubar parachoque
+~ desmontar carrro
+~ fazer churrasco
+* Tonim Mecanico publicou:
+-> Sobrou dinheiro esse mes, vai rolar churrasco
+! Valdin do Picole mudou seu hobbie para:
+~ procurar justica
+* Valdin do Picole publicou:
+-> Procura-se Fiat Uno branco: placa - VDP2OO7
+! Xaolim Matador de Porco mudou seu hobbie para:
+~ veganismo
+* Xaolim Matador de Porco publicou:
+-> As coisas ja nao fazem mais sentido
+* Tonim Mecanico publicou:
+-> Carne dura...
+* Valdin do Picole publicou:
+-> Saudades do meu branquelo
+* Joao publicou:
+-> Sou professor desde os 12 anos!
+* Maria publicou:
+-> Acabei de descobrir q meu pai nao vem me visitar T_T
+* Pablo publicou:
+-> To indo pro Brasil pessoal, querem que eu leve algo?
++ Joao curtiu Maria
+* Joao publicou:
+-> Partiu Brasilia!
++ Maria curtiu Joao
+# Maria e Joao viraram amigos
++ Jeremias curtiu Pablo
++ Joao curtiu Pablo
+! Joao mudou seu hobbie para:
+~ carpintaria
++ Maria curtiu Pablo
+! Maria mudou seu hobbie para:
+~ jardinagem
+~  programacao
+* Maria publicou:
+-> Alguem entende de C ai pra me ajudar?
++ Pablo curtiu Joao
+# Pablo e Joao viraram amigos
+! Pablo mudou seu hobbie para:
+~ viajar
+~ revendas
+* Pablo publicou:
+->  Pessoal, to indo pra Planaltina, alguém pra me ajudar com a revenda?
+! Joao mudou seu hobbie para:
+~ carpintaria
+~ revenda
+* Joao publicou:
+-> Opa, posso ajudar sim! Chama no direct
+* Maria publicou:
+-> Gente fiz um regador automatico que massa!
+! Jeremias mudou seu hobbie para:
+~ dancar
+~ vendas
+* Jeremias publicou:
+-> Opa, tem alguem revendendo coisa por aqui, sera que eu consigo um emprego?
++ Pablo curtiu Jeremias
+# Pablo e Jeremias viraram amigos
+* Pablo publicou:
+-> Opa meu chapa, manda mensagem no direct ai que a gnt trabalha!
