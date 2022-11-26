@@ -57,4 +57,16 @@ tListaAmigo *RetornaListaAmigoUsuario(tUsuario *usuario);
 
 tListaFeed *RetornaListaFeedUsuario(tUsuario *usuario);
 
+int ConfereUsuariosNomesDiferentes(tUsuario *usuario1, tUsuario *usuario2);
+
+char *RetornaLocalizacaoUsuario(tUsuario *usuario);
+
+int RetornaDiferencaIdadesUsuarios(tUsuario *usuario1, tUsuario *usuario2);
+
+void CriaInsereAmigoListaSugestoes(tUsuario *usuario, char *nome);
+
+tListaAmigo *RetornaListaAmigoSugestoesUsuario(tUsuario *usuario);
+
+int ConfereListaAmigoAmizadeUsuarios(tUsuario *usuario, char *nome);
+
 #endif

@@ -1,6 +1,8 @@
 #ifndef LISTAUSUARIO_H
 #define LISTAUSUARIO_H
 
+#define DIFERENCA_IDADE_MAX 5
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -29,5 +31,7 @@ void ConfereAmizadeDesfeita(tListaUsuario *usuarios, char *nome, tUsuario *usuar
 void MandaFeedParaListaAmigo(tListaUsuario *listaUsuario, tListaAmigo *listaAmigo, char *nome, char *mensagem);
 
 void RegistraPostFeedListaUsuario(tListaUsuario *listaUsuario, tUsuario *usuario, int num, FILE *arquivo);
+
+void RegistraSugestoesAmizadesListaUsuario(tListaUsuario *usuarios);   
 
 #endif

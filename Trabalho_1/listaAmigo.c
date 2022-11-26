@@ -45,7 +45,6 @@ void InsereAmigoLista(tListaAmigo *listaAmigo, tAmigo *amigo)
 
 int NomeNaLista(tListaAmigo *listaAmigo, char *nome)
 {
-
     tCelula *p = listaAmigo->inicio;
     tCelula *ant = NULL;
 
@@ -68,7 +67,6 @@ void CriaInsereAmigoNaLista(tListaAmigo *listaAmigo, char *nome)
 
     if (NomeNaLista(listaAmigo, nome) == 0)
     {
-
         tAmigo *amigo = CriaAmigo(nome);
 
         InsereAmigoLista(listaAmigo, amigo);
@@ -178,4 +176,18 @@ int NomeUsuarioIgualNomeAmigo(tListaAmigo *listaAmigo, char *nome)
     }
 
     return 1;
+}
+
+void ImprimeListaAmigoSugestoes(tListaAmigo *sugestoes, FILE *arquivo)
+{
+    tCelula *celula;
+
+    fprintf(arquivo, "\nSUGESTOES DE AMIZADE\n");
+
+    for (celula = sugestoes->inicio; celula != NULL; celula = celula->prox)
+    {
+        ImprimeAmigo(celula->amigo, arquivo);
+    }
+
+    fprintf(arquivo, "\n");
 }

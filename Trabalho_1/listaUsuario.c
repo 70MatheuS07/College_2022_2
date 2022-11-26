@@ -99,6 +99,8 @@ void ImprimeListaUsuario(tListaUsuario *lista, int num)
         ImprimeListaFeed(RetornaListaFeedUsuario(aux->usuario), arquivo);
 
         ImprimeListaAmigo(RetornaListaAmigoUsuario(aux->usuario), arquivo);
+
+        ImprimeListaAmigoSugestoes(RetornaListaAmigoSugestoesUsuario(aux->usuario), arquivo);
     }
 
     fclose(arquivo);
@@ -167,6 +169,8 @@ void ExecutaEdMatch(tListaUsuario *usuarios, int num)
         }
     }
 
+    RegistraSugestoesAmizadesListaUsuario(usuarios);
+
     fclose(arquivo);
 }
 
@@ -234,6 +238,29 @@ void MandaFeedParaListaAmigo(tListaUsuario *listaUsuario, tListaAmigo *listaAmig
         if (NomeUsuarioIgualNomeAmigo(listaAmigo, RetornaNomeUsuario(aux->usuario)) == 0)
         {
             EnviaNomeMensagemParaListaFeedUsuarioAmigo(aux->usuario, nome, mensagem);
+        }
+    }
+}
+
+void RegistraSugestoesAmizadesListaUsuario(tListaUsuario *usuarios)
+{
+    for (tCelula *aux1 = usuarios->inicio; aux1 != NULL; aux1 = aux1->prox)
+    {
+        for (tCelula *aux2 = usuarios->inicio; aux2 != NULL; aux2 = aux2->prox)
+        {
+            if (ConfereUsuariosNomesDiferentes(aux1->usuario, aux2->usuario) == 1)
+            {
+                if (strcmp(RetornaLocalizacaoUsuario(aux1->usuario), RetornaLocalizacaoUsuario(aux2->usuario)) == 0)
+                {
+                    if (RetornaDiferencaIdadesUsuarios(aux1->usuario, aux2->usuario) <= DIFERENCA_IDADE_MAX)
+                    {
+                        if(ConfereListaAmigoAmizadeUsuarios(aux1->usuario, RetornaNomeUsuario(aux2->usuario)) == 1)
+                        {
+                            CriaInsereAmigoListaSugestoes(aux1->usuario, RetornaNomeUsuario(aux2->usuario));
+                        }
+                    }
+                }
+            }
         }
     }
 }

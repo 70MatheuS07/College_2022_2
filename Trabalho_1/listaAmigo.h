@@ -28,4 +28,6 @@ void ImprimeListaAmigo(tListaAmigo *listaAmigo, FILE *arquivo);
 
 int NomeUsuarioIgualNomeAmigo(tListaAmigo *listaAmigo, char *nome);
 
+void ImprimeListaAmigoSugestoes(tListaAmigo *sugestoes, FILE *arquivo);
+
 #endif

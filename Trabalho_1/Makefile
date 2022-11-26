@@ -7,3 +7,5 @@ run:
 	@./main
 clean:
 	@rm -rf *.o main
+	@rm -rf logs.txt
+	@rm -rf reports.txt

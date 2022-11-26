@@ -12,6 +12,7 @@ struct Usuario
     tListaAmigo *amigos;
     tListaPost *posts;
     tListaFeed *feed;
+    tListaAmigo *sugestoes;
 };
 
 tUsuario *CriaUsuario()
@@ -26,6 +27,7 @@ tUsuario *CriaUsuario()
     usuario->amigos = CriaListaAmigo();
     usuario->posts = CriaListaPost();
     usuario->feed = CriaListaFeed();
+    usuario->sugestoes = CriaListaAmigo();
 
     return usuario;
 }
@@ -105,6 +107,7 @@ void LiberaUsuario(tUsuario *usuario)
     LiberaListaAmigo(usuario->amigos);
     LiberaListaPost(usuario->posts);
     LiberaListaFeed(usuario->feed);
+    LiberaListaAmigo(usuario->sugestoes);
 
     free(usuario);
     usuario = NULL;
@@ -281,4 +284,48 @@ tListaAmigo *RetornaListaAmigoUsuario(tUsuario *usuario)
 tListaFeed *RetornaListaFeedUsuario(tUsuario *usuario)
 {
     return usuario->feed;
+}
+
+int ConfereUsuariosNomesDiferentes(tUsuario *usuario1, tUsuario *usuario2)
+{
+    if (strcmp(usuario1->nome, usuario2->nome) == 0)
+    {
+        return 0;
+    }
+
+    return 1;
+}
+
+char *RetornaLocalizacaoUsuario(tUsuario *usuario)
+{
+    return usuario->localizacao;
+}
+
+int RetornaDiferencaIdadesUsuarios(tUsuario *usuario1, tUsuario *usuario2)
+{
+    int result = 0;
+
+    result = usuario1->idade - usuario2->idade;
+
+    if (result < 0)
+    {
+        result *= -1;
+    }
+
+    return result;
+}
+
+int ConfereListaAmigoAmizadeUsuarios(tUsuario *usuario, char *nome)
+{
+    return NomeUsuarioIgualNomeAmigo(usuario->amigos, nome);
+}
+
+void CriaInsereAmigoListaSugestoes(tUsuario *usuario, char *nome)
+{
+    CriaInsereAmigoNaLista(usuario->sugestoes, nome);
+}
+
+tListaAmigo *RetornaListaAmigoSugestoesUsuario(tUsuario *usuario)
+{
+    return usuario->sugestoes;
 }
