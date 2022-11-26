@@ -1,6 +1,0 @@
-Lucy;.;.;Fala pessoal!
-John;.;.;.
-Mia;.;.;Comecei aulas de canto!
-Emma;John;.;.
-.;.;Danca,Canto;Minha primeira apresentacao eh amanha!
-.;.;.;Deu tudo certo!! :)

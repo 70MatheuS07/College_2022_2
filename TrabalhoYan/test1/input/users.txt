@@ -1,4 +1,0 @@
-Joao;23;Vitoria-ES;bike,carro
-Afonso;19;Vitoria-ES;esqueca,pc
-Caio;20;Vitoria-ES;carro
-Kevin;21;DomingosMartins-ES;academia,paraquedas

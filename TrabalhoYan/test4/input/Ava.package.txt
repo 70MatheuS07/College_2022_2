@@ -1,6 +1,0 @@
-Bruce;.;.;Acabei de chegar pessoal!
-John;Bruce;ContraBaixo,Correr;.
-Mary;John;.;Acordar cedo bom demais!
-John;.;Correr;.
-James;John;.;Transito ta horrivel hoje
-Mia;.;.;.
