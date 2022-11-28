@@ -110,17 +110,20 @@ void RetiraDaListaAmigo(tListaAmigo *listaAmigo, char *nome)
         listaAmigo->inicio = NULL;
         listaAmigo->fim = NULL;
     }
+
     // primeira celula
     else if (p == listaAmigo->inicio)
     {
         listaAmigo->inicio = p->prox;
     }
+
     // ultima celula
     else if (p == listaAmigo->fim)
     {
         listaAmigo->fim = ant;
         listaAmigo->fim->prox = NULL;
     }
+
     // entre duas celulas
     else
     {

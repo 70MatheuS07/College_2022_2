@@ -11,8 +11,6 @@ tListaAmigo *CriaListaAmigo();
 
 void InsereAmigoLista(tListaAmigo *listaAmigo, tAmigo *amigo);
 
-// adicao
-
 void RetiraDaListaAmigo(tListaAmigo *listaAmigo, char *nome);
 
 int NomeNaLista(tListaAmigo *listaAmigo, char *nome);
@@ -20,7 +18,6 @@ int NomeNaLista(tListaAmigo *listaAmigo, char *nome);
 void CriaInsereAmigoNaLista(tListaAmigo *listaAmigo, char *nome);
 
 int RetornaNumeroDeAmigos(tListaAmigo *listaAmigo);
-//
 
 void LiberaListaAmigo(tListaAmigo *listaAmigo);
 

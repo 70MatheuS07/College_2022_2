@@ -54,7 +54,6 @@ tPackage *LehPackageArquivo(char *nome, tPackage *package, int num)
     {
         package->hobbies[i] = CriaListaHobby();
 
-        // Pega likes arquivo
         fscanf(arquivo, "%[^;]", string);
         fscanf(arquivo, "%c", &caracter);
 
@@ -62,7 +61,6 @@ tPackage *LehPackageArquivo(char *nome, tPackage *package, int num)
 
         package->likes[i] = CriaLike(str, 1);
 
-        // Pega unlikes arquivo;
         fscanf(arquivo, "%[^;]", string);
         fscanf(arquivo, "%c", &caracter);
 
@@ -214,21 +212,6 @@ char *LehCaracterCaracterPackagePost(FILE *arquivo)
 
     return result;
 }
-
-/*
-void ImprimePackage(tPackage *package, int num)
-{
-    for (int i = 0; i < num; i++)
-    {
-        ImprimeLike(package->likes[i]);
-        ImprimeLike(package->unlikes[i]);
-        printf("\n");
-        ImprimeListaHobby(package->hobbies[i]);
-
-        printf("post: %s\n", package->post[i]);
-    }
-}
-*/
 
 void LiberaPackage(tPackage *package)
 {

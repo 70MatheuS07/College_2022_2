@@ -187,8 +187,9 @@ void RegistraPostFeedListaUsuario(tListaUsuario *listaUsuario, tUsuario *usuario
     {
         fprintf(arquivo, "* %s publicou:\n", RetornaNomeUsuario(usuario));
         fprintf(arquivo, "-> %s\n", RetornaPostPackage(RetornaPackageUsuario(usuario), num));
-        // adicao
+
         char *msg = RetornaPostPackage(RetornaPackageUsuario(usuario), num);
+        
         CriaInserePostNaLista(RetornaListaPostUsuario(usuario), msg, RetornaNumeroDeAmigos(RetornaListaAmigoUsuario(usuario)));
 
         if (RetornaNumeroDeAmigos(RetornaListaAmigoUsuario(usuario)) > 0)
@@ -208,8 +209,6 @@ void ConfereAmizadeFeita(tListaUsuario *usuarios, char *nome, tUsuario *usuario,
             {
                 fprintf(arquivo, "# %s e %s viraram amigos\n", RetornaNomeUsuario(usuario), nome);
 
-                // adicao
-
                 CriaAmizadeListaAmigoUsuario(usuario, RetornaNomeUsuario(aux->usuario));
                 CriaAmizadeListaAmigoUsuario(aux->usuario, RetornaNomeUsuario(usuario));
             }
@@ -226,8 +225,6 @@ void ConfereAmizadeDesfeita(tListaUsuario *usuarios, char *nome, tUsuario *usuar
             if (GerouAmizadeEntreUsuarios(aux->usuario, usuario) == 1 && UsuarioAmigoTemLike(usuario, aux->usuario) == 1)
             {
                 fprintf(arquivo, "$ %s desfez amizade com %s\n", RetornaNomeUsuario(usuario), nome);
-
-                // adicao
 
                 RetiraAmizadeListaAmigoUsuario(usuario, RetornaNomeUsuario(aux->usuario));
                 RetiraAmizadeListaAmigoUsuario(aux->usuario, RetornaNomeUsuario(usuario));

@@ -24,7 +24,5 @@ void ImprimePost(tPost *post, FILE *arquivo)
 
 void LiberaPost(tPost *post)
 {
-
-    // free(post->msg);
     free(post);
 }

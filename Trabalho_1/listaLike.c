@@ -66,17 +66,20 @@ void RetiraDaListaLike(tListaLike *listaLike, char *nome)
         listaLike->inicio = NULL;
         listaLike->fim = NULL;
     }
+
     // primeira celula
     else if (p == listaLike->inicio)
     {
         listaLike->inicio = p->prox;
     }
+
     // ultima celula
     else if (p == listaLike->fim)
     {
         listaLike->fim = ant;
         listaLike->fim->prox = NULL;
     }
+    
     // entre duas celulas
     else
     {
