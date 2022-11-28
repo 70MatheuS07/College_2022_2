@@ -21,7 +21,7 @@ int ComparaListaLikeNome(tListaLike *lista, char *nome);
 
 void LiberaListaLikeEdMatch(tListaLike *listaLike);
 
-void RetiraDaListaLikeEdMatch(tListaLike *listaLike, char *nome);
+int RetiraDaListaLikeEdMatch(tListaLike *listaLike, char *nome);
 
 int ProcuraNomeListaLike(tListaLike *listaLike, char *nome);
 

@@ -32,6 +32,8 @@ char *RetornaNomeUsuario(tUsuario *usuario);
 int ConfereSeNomesSaoIguais(tUsuario *usuario, char *nome);
 
 char *RegistraUnlikeUsuario(tUsuario *usuario, int i);
+//add
+int RetiraDaListaLikeUsuario(tUsuario *usuario, char* nome);
 
 tListaHobby *RetornaListaHobbyUsuario(tUsuario *usuario);
 

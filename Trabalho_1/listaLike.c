@@ -133,7 +133,7 @@ void LiberaListaLikeEdMatch(tListaLike *listaLike)
 {
     tCelula *p = listaLike->inicio;
     tCelula *t;
-
+    char* nome;
     while (p != NULL)
     {
         t = p->prox;
@@ -148,7 +148,7 @@ void LiberaListaLikeEdMatch(tListaLike *listaLike)
     listaLike = NULL;
 }
 
-void RetiraDaListaLikeEdMatch(tListaLike *listaLike, char *nome)
+int RetiraDaListaLikeEdMatch(tListaLike *listaLike, char *nome)
 {
     tCelula *p = listaLike->inicio;
     tCelula *ant = NULL;
@@ -160,8 +160,9 @@ void RetiraDaListaLikeEdMatch(tListaLike *listaLike, char *nome)
     }
 
     if(p == NULL){
-        return;
+        return 0;
     }
+    
 
     // unica celula
     if (p == listaLike->inicio && p == listaLike->fim)
@@ -191,6 +192,7 @@ void RetiraDaListaLikeEdMatch(tListaLike *listaLike, char *nome)
     }
 
     free(p);
+    return 1;
 }
 
 int ProcuraNomeListaLike(tListaLike *listaLike, char *nome)

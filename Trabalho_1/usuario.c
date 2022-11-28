@@ -178,7 +178,7 @@ char *RegistraUnlikeUsuario(tUsuario *usuario, int i)
 
         if (nome[0] != '.')
         {
-            RetiraDaListaLikeEdMatch(usuario->likes, nome);
+           // RetiraDaListaLikeEdMatch(usuario->likes, nome);
 
             return nome;
         }
@@ -186,6 +186,13 @@ char *RegistraUnlikeUsuario(tUsuario *usuario, int i)
 
     return NULL;
 }
+
+int RetiraDaListaLikeUsuario(tUsuario *usuario, char* nome){
+
+    return RetiraDaListaLikeEdMatch(usuario->likes, nome);
+}
+
+
 
 tListaHobby *RetornaListaHobbyUsuario(tUsuario *usuario)
 {

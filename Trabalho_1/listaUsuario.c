@@ -152,7 +152,9 @@ void ExecutaEdMatch(tListaUsuario *usuarios, int num)
             if (nomeLike != NULL)
             {
                 fprintf(arquivo, "+ %s curtiu %s\n", RetornaNomeUsuario(aux->usuario), nomeLike);
+                  
                 ConfereAmizadeFeita(usuarios, nomeLike, aux->usuario, arquivo);
+                  
             }
 
             nomeUnlike = RegistraUnlikeUsuario(aux->usuario, i);
@@ -160,7 +162,12 @@ void ExecutaEdMatch(tListaUsuario *usuarios, int num)
             if (nomeUnlike != NULL)
             {
                 fprintf(arquivo, "_ %s descurtiu %s\n", RetornaNomeUsuario(aux->usuario), nomeUnlike);
-                ConfereAmizadeDesfeita(usuarios, nomeUnlike, aux->usuario, arquivo);
+
+                if(RetiraDaListaLikeUsuario(aux->usuario, nomeUnlike) == 1){
+                  
+                    ConfereAmizadeDesfeita(usuarios, nomeUnlike, aux->usuario, arquivo);
+                }
+
             }
 
             RegistraListaHobby(aux->usuario, i, arquivo);
