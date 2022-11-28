@@ -170,12 +170,10 @@ char *RegistraUnlikeUsuario(tUsuario *usuario, int i)
     return NULL;
 }
 
-int RetiraDaListaLikeUsuario(tUsuario *usuario, char* nome){
-
+int RetiraDaListaLikeUsuario(tUsuario *usuario, char *nome)
+{
     return RetiraDaListaLikeEdMatch(usuario->likes, nome);
 }
-
-
 
 tListaHobby *RetornaListaHobbyUsuario(tUsuario *usuario)
 {

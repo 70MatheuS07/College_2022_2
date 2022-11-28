@@ -152,9 +152,8 @@ void ExecutaEdMatch(tListaUsuario *usuarios, int num)
             if (nomeLike != NULL)
             {
                 fprintf(arquivo, "+ %s curtiu %s\n", RetornaNomeUsuario(aux->usuario), nomeLike);
-                  
+
                 ConfereAmizadeFeita(usuarios, nomeLike, aux->usuario, arquivo);
-                  
             }
 
             nomeUnlike = RegistraUnlikeUsuario(aux->usuario, i);
@@ -163,11 +162,10 @@ void ExecutaEdMatch(tListaUsuario *usuarios, int num)
             {
                 fprintf(arquivo, "_ %s descurtiu %s\n", RetornaNomeUsuario(aux->usuario), nomeUnlike);
 
-                if(RetiraDaListaLikeUsuario(aux->usuario, nomeUnlike) == 1){
-                  
+                if (RetiraDaListaLikeUsuario(aux->usuario, nomeUnlike) == 1)
+                {
                     ConfereAmizadeDesfeita(usuarios, nomeUnlike, aux->usuario, arquivo);
                 }
-
             }
 
             RegistraListaHobby(aux->usuario, i, arquivo);
@@ -189,7 +187,7 @@ void RegistraPostFeedListaUsuario(tListaUsuario *listaUsuario, tUsuario *usuario
         fprintf(arquivo, "-> %s\n", RetornaPostPackage(RetornaPackageUsuario(usuario), num));
 
         char *msg = RetornaPostPackage(RetornaPackageUsuario(usuario), num);
-        
+
         CriaInserePostNaLista(RetornaListaPostUsuario(usuario), msg, RetornaNumeroDeAmigos(RetornaListaAmigoUsuario(usuario)));
 
         if (RetornaNumeroDeAmigos(RetornaListaAmigoUsuario(usuario)) > 0)
@@ -258,7 +256,7 @@ void RegistraSugestoesAmizadesListaUsuario(tListaUsuario *usuarios)
                 {
                     if (RetornaDiferencaIdadesUsuarios(aux1->usuario, aux2->usuario) <= DIFERENCA_IDADE_MAX)
                     {
-                        if(ConfereListaAmigoAmizadeUsuarios(aux1->usuario, RetornaNomeUsuario(aux2->usuario)) == 1)
+                        if (ConfereListaAmigoAmizadeUsuarios(aux1->usuario, RetornaNomeUsuario(aux2->usuario)) == 1)
                         {
                             CriaInsereAmigoListaSugestoes(aux1->usuario, RetornaNomeUsuario(aux2->usuario));
                         }
