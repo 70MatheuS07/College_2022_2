@@ -1,5 +1,4 @@
 #include "arvore.h"
-#include "aluno.h"
 
 struct arv
 {
@@ -26,7 +25,7 @@ Arv *arv_cria(tAluno *aluno, Arv *e, Arv *d)
 
 Arv *arv_libera(Arv *a)
 {
-    if (arv_vazia(a) != NULL)
+    if (!arv_vazia(a))
     {
         arv_libera(a->esquerda); /* libera esquerda */
         arv_libera(a->direita);  /* libera direita */
@@ -55,7 +54,7 @@ int arv_pertence(Arv *a, tAluno *aluno)
 
     else
     {
-        if (strcmp(RetornaNomeAluno(a->aluno), RetornaNomeAluno(aluno) == 0))
+        if (strcmp(RetornaNomeAluno(a->aluno), RetornaNomeAluno(aluno)) == 0)
         {
             return 1;
         }
@@ -76,7 +75,7 @@ int arv_pertence(Arv *a, tAluno *aluno)
 
 void arv_imprime(Arv *a)
 {
-    if (arv_vazia(a) != NULL)
+    if (!arv_vazia(a))
     {
         ImprimeAluno(a->aluno);   /* mostra nó */
         arv_imprime(a->esquerda); /* mostra sae */
@@ -86,12 +85,12 @@ void arv_imprime(Arv *a)
 
 Arv *arv_pai(Arv *a, tAluno *aluno)
 {
-    if (arv_vazia(a) == NULL)
+    if (arv_vazia(a))
     {
         return NULL;
     }
 
-    if (((arv_vazia(a->esquerda) != NULL) && (a->esquerda->aluno == aluno)) || ((arv_vazia(a->direita) != NULL) && (a->direita->aluno)))
+    if ((!(arv_vazia(a->esquerda)) && (aluno == a->esquerda->aluno)) || (!(arv_vazia(a->direita)) && (aluno == a->direita->aluno)))
     {
         return a;
     }
@@ -108,7 +107,7 @@ Arv *arv_pai(Arv *a, tAluno *aluno)
 
 int folhas(Arv *a)
 {
-    if (arv_vazia(a) == NULL)
+    if (arv_vazia(a))
     {
         return 0;
     }
@@ -119,4 +118,29 @@ int folhas(Arv *a)
     }
 
     return (folhas(a->esquerda) + folhas(a->direita));
+}
+
+int ocorrencias(Arv *a, tAluno *aluno)
+{
+    if (arv_vazia(a) == 1)
+    {
+        return 0; /* árvore vazia: não encontrou */
+    }
+
+    if (strcmp(RetornaNomeAluno(a->aluno), RetornaNomeAluno(aluno)) == 0)
+    {
+        return 1;
+    }
+
+    return (ocorrencias(a->esquerda, aluno) + ocorrencias(a->direita, aluno));
+}
+
+tAluno *info(Arv *a)
+{
+    if (!arv_vazia(a))
+    {
+        return a->aluno;
+    }
+
+    return NULL;
 }

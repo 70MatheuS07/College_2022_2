@@ -13,4 +13,6 @@ char *RetornaNomeAluno(tAluno *aluno);
 
 void ImprimeAluno(tAluno *aluno);
 
+void LiberaAluno(tAluno *aluno);
+
 #endif

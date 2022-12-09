@@ -29,3 +29,8 @@ void ImprimeAluno(tAluno *aluno)
            aluno->nome, aluno->idade, aluno->matricula);
 }
 
+void LiberaAluno(tAluno *aluno)
+{
+    free(aluno->nome);
+    free(aluno);
+}
