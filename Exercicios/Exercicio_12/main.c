@@ -14,7 +14,19 @@ int main()
 
     tListaAluno *lista = CriaListaAluno();
 
-    InsereAlunoListaAluno(aluno1);
+    InsereAlunoListaAluno(lista, aluno1);
+    InsereAlunoListaAluno(lista, aluno2);
+    InsereAlunoListaAluno(lista, aluno3);
+    InsereAlunoListaAluno(lista, aluno4);
+    InsereAlunoListaAluno(lista, aluno5);
+    InsereAlunoListaAluno(lista, aluno6);
+    InsereAlunoListaAluno(lista, aluno7);
+
+    ImprimeListaAluno(lista);
+
+    printf("\n\n");
+    RetiraAlunoListaAluno(lista, 1001);
+    ImprimeListaAluno(lista);
 
     return 0;
 }

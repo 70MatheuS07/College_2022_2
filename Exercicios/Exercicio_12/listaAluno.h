@@ -13,12 +13,10 @@ tListaAluno *CriaListaAluno();
 
 tListaAluno *InsereAlunoListaAluno(tListaAluno *lista, tAluno *aluno);
 
-void RetiraAlunoListaAluno(tListaGenerica *lista, int codigo);
+tListaAluno *RetiraAlunoListaAluno(tListaAluno *lista, int matricula);
 
-void ImprimeListaAluno(tListaGenerica *lista);
+void ImprimeListaAluno(tListaAluno *lista);
 
-void LiberaListaAluno(tListaGenerica *lista);
-
-int ImprimeCB(void *item, void *dado);
+void LiberaListaAluno(tListaAluno *lista);
 
 #endif

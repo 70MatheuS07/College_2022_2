@@ -1,5 +1,9 @@
 #include "listaAluno.h"
 
+int ComparaMatriculaCB(void *aluno, void *chave);
+
+int ImprimeCB(void *item, void *dado);
+
 struct ListaAluno
 {
     tListaGenerica *listaGen;
@@ -16,79 +20,23 @@ tListaAluno *CriaListaAluno()
 
 tListaAluno *InsereAlunoListaAluno(tListaAluno *lista, tAluno *aluno)
 {
-    return InsereItemListaGenerica(lista->listaGen, aluno);
+    lista->listaGen = InsereItemListaGenerica(lista->listaGen, aluno);
+
+    return lista;
 }
 
-void RetiraAlunoListaAluno(tListaAluno *lista, int matricula);
+tListaAluno *RetiraAlunoListaAluno(tListaAluno *lista, int matricula)
 {
-    tCelula *aux = lista->inicio;
-    tCelula *ant;
-    int codigoReturn;
+    void *numero = &matricula;
 
-    while (1)
-    {
-        codigoReturn = RetornaCodigoProduto(aux->produto);
+    lista->listaGen = RetiraItemListaGenerica(lista->listaGen, ComparaMatriculaCB, numero);
 
-        if (codigoReturn == codigo)
-        {
-            break;
-        }
-
-        if (aux == NULL)
-        {
-            printf("\nNao existe esse produto para ser retirado");
-            return;
-        }
-
-        ant = aux;
-        aux = aux->prox;
-    }
-
-    if (aux == lista->inicio && aux == lista->fim)
-    {
-        lista->inicio = NULL;
-        lista->fim = NULL;
-
-        LiberaProduto(aux->produto);
-        aux->prox = NULL;
-        free(aux);
-        aux = NULL;
-    }
-
-    else if (aux == lista->inicio)
-    {
-        lista->inicio = aux->prox;
-
-        LiberaProduto(aux->produto);
-        aux->prox = NULL;
-        free(aux);
-        aux = NULL;
-    }
-
-    else if (aux == lista->fim)
-    {
-        lista->fim = ant;
-        ant->prox = NULL;
-
-        LiberaProduto(aux->produto);
-        aux->prox = NULL;
-        free(aux);
-        aux = NULL;
-    }
-
-    else
-    {
-        ant->prox = aux->prox;
-        LiberaProduto(aux->produto);
-        aux->prox = NULL;
-        free(aux);
-        aux = NULL;
-    }
+    return lista;
 }
 
-void ImprimeListaAluno(tListaGenerica *lista)
+void ImprimeListaAluno(tListaAluno *lista)
 {
-    PercorreListaGenerica(lista, ImprimeCB, NULL);
+    int n = PercorreListaGenerica(lista->listaGen, ImprimeCB, NULL);
 }
 
 int ImprimeCB(void *item, void *dado)
@@ -100,9 +48,11 @@ int ImprimeCB(void *item, void *dado)
     return 1;
 }
 
-void LiberaListaAluno(tListaGenerica *lista)
+void LiberaListaAluno(tListaAluno *lista)
 {
-    LiberaListaGenerica(lista);
+    LiberaListaGenerica(lista->listaGen);
+    free(lista);
+    lista = NULL;
 }
 
 int ComparaMatriculaCB(void *aluno, void *chave)
@@ -110,7 +60,7 @@ int ComparaMatriculaCB(void *aluno, void *chave)
     tAluno *aux1 = (tAluno *)aluno;
     int *aux2 = (int *)chave;
 
-    if (RetornaMatriculaAluno(aux1) == &aux2)
+    if (RetornaMatriculaAluno(aux1) == *aux2)
     {
         return 0;
     }
