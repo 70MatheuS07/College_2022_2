@@ -4,7 +4,7 @@
 #include "ListaArv.h"
 #include "VetorFreq.h"
 
-#define NUM_ASCII 256  
+#define NUM_ASCII 256
 
 int main(void)
 {
@@ -20,7 +20,11 @@ int main(void)
 
     ImprimeListaArv(lista);
 
-    
+    Arv *arvore = ExecutaAlgoritimoDeHuffman(lista);
+
+    printf("\n\n");
+
+    Imprime(arvore);
 
     LiberaListaArv(lista);
 

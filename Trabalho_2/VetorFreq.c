@@ -2,9 +2,9 @@
 
 /**
  * @brief Zera os valores da frequencia do vetor.
- * 
- * @param V 
- * @param tam 
+ *
+ * @param V
+ * @param tam
  */
 void ZeraVetorFreq(int V[], int tam)
 {
@@ -17,10 +17,10 @@ void ZeraVetorFreq(int V[], int tam)
 /**
  * @brief Abre o arquivo e preenche o vetor com o caracter especifico
  *        e sua frequência.
- * 
- * @param V 
- * @param tam 
- * @param nomeArq 
+ *
+ * @param V
+ * @param tam
+ * @param nomeArq
  */
 void PreencheVetorFreq(int V[], int tam, char *nomeArq)
 {
@@ -40,14 +40,17 @@ void PreencheVetorFreq(int V[], int tam, char *nomeArq)
         V[caractere]++;
     }
 
+    // Problema de bug de duplicacao do ultimo caracter do arq.txt
+    V[caractere]--;
+
     fclose(file);
 }
 
 /**
  * @brief Imprime o vetor de frequência.
- * 
- * @param V 
- * @param tam 
+ *
+ * @param V
+ * @param tam
  */
 void ImprimeVetorFreq(int V[], int tam)
 {

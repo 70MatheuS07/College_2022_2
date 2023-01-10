@@ -22,4 +22,8 @@ void PreencheListaArvFrequencia(ListaArv* lista, int V[], int tam);
 //Precisa fazer essa função pra pra executar o algoritimo de Huffman
 void OrdenaListaArvFrequencia(ListaArv* lista);
 
+int RetornaNumListaArv(ListaArv *lista);
+
+Arv *ExecutaAlgoritimoDeHuffman(ListaArv *lista);
+
 #endif

@@ -17,4 +17,8 @@ Arv* JuntaArvs(Arv* arv_e, Arv* arv_d);
 
 Arv* Libera(Arv* a);
 
+int RetornaFreqArv(Arv *arvore);
+
+//int ComparaFreqArv(void *arv_1, void *arv_2);
+
 #endif

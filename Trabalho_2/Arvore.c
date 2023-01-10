@@ -55,3 +55,17 @@ Arv *Libera(Arv *a)
 
     return NULL;
 }
+/*
+int ComparaFreqArv(void *arv_1, void *arv_2)
+{
+    Arv *arvore_1 = (Arv *)arv_1;
+    Arv *arvore_2 = (Arv *)arv_2;
+
+    return (arvore_1->frequencia - arvore_2->frequencia);
+}
+*/
+
+int RetornaFreqArv(Arv *arvore)
+{
+    return arvore->frequencia;
+}

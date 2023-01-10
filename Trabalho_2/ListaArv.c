@@ -88,7 +88,7 @@ void LiberaListaArv(ListaArv *lista)
         free(p);
         p = t;
     }
-    
+
     free(lista);
 }
 // Cria arvores para os caracteres com frequencia diferente de 0 e insere na lista
@@ -99,9 +99,67 @@ void PreencheListaArvFrequencia(ListaArv *lista, int V[], int tam)
     for (int cont = 0; cont < tam; cont++)
     {
         c = cont;
+
         if (V[cont] != 0)
         {
             InsereListaArv(lista, CriaArv(V[cont], c));
         }
+    }
+}
+
+int RetornaNumListaArv(ListaArv *lista)
+{
+    tCelula *celula;
+    int num = 0;
+    for (celula = lista->prim; celula != NULL; celula = celula->prox)
+    {
+        num++;
+    }
+
+    return num;
+}
+
+// Retorna a arvore de codificação de huffman
+Arv *ExecutaAlgoritimoDeHuffman(ListaArv *lista)
+{
+    while (RetornaNumListaArv(lista) > 1)
+    {
+        // n fiz
+        OrdenaListaArvFrequencia(lista);
+
+        Arv *t1 = RetiraPrimeiraArvDaLista(lista);
+        Arv *t2 = RetiraPrimeiraArvDaLista(lista);
+
+        Arv *tr = JuntaArvs(t1, t2);
+
+        InsereListaArv(lista, tr);
+    }
+
+    return RetiraPrimeiraArvDaLista(lista);
+}
+
+void OrdenaListaArvFrequencia(ListaArv *lista)
+{
+    tCelula *pi;
+    tCelula *pj;
+    tCelula *pfim = NULL;
+
+    if (lista->prim == NULL)
+    {
+        return;
+    }
+
+    for (pi = lista->prim; pi->prox != NULL; pi = pi->prox)
+    {
+        for (pj = lista->prim; pj->prox != pfim; pj = pj->prox)
+        {
+            if (RetornaFreqArv(pj->arv) > RetornaFreqArv(pj->prox->arv))
+            {
+                Arv *temp = pj->arv;
+                pj->arv = pj->prox->arv;
+                pj->prox->arv = temp;
+            }
+        }
+        pfim = pj;
     }
 }
