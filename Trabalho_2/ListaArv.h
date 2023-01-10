@@ -1,23 +1,25 @@
-#ifndef LISTAARV_H
-#define LISTAARV_H
+#ifndef LISTA_H
+#define LISTA_H
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 #include "Arvore.h"
-
+#define NUM_ASCII 256
 typedef struct listaArv ListaArv;
 
-ListaArv *IniciaListaArv();
+ListaArv* IniciaListaArv ();
 
-void InsereListaArv(ListaArv *lista, Arv *arv);
+void InsereListaArv (ListaArv* lista, Arv* arv);
 
-void ImprimeListaArv(ListaArv *lista);
+void ImprimeListaArv (ListaArv* lista);
 
-// Arv *RetiraPrimeiraArvDaLista(ListaArv *lista);
+//essa função vai servir pra executar o algoritimo de Huffman
+Arv* RetiraPrimeiraArvDaLista (ListaArv* lista);
 
-void LiberaListaArv(ListaArv *lista);
+void LiberaListaArv (ListaArv* lista);
 
-void PreencheListaArvFrequencia(ListaArv *lista, int V[], int tam);
+//Cria arvores para os caracteres com frequencia diferente de 0 e insere na lista
+void PreencheListaArvFrequencia(ListaArv* lista, int V[], int tam);
+
+//Precisa fazer essa função pra pra executar o algoritimo de Huffman
+void OrdenaListaArvFrequencia(ListaArv* lista);
 
 #endif
