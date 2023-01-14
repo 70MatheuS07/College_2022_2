@@ -5,6 +5,7 @@
 #include "VetorFreq.h"
 
 #define NUM_ASCII 256
+#define INICIALIZA_NUM 2
 
 int main(void)
 {
@@ -23,8 +24,14 @@ int main(void)
     Arv *arvore = ExecutaAlgoritimoDeHuffman(lista);
 
     printf("\n\n");
-
     Imprime(arvore);
+    printf("\n\n");
+
+    char *binario = calloc(9, sizeof(char));
+
+    VarreArvore(arvore, 'b', INICIALIZA_NUM, binario);
+
+    printf("\n%s\n", binario);
 
     LiberaListaArv(lista);
 

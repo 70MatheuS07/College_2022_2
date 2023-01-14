@@ -69,3 +69,68 @@ int RetornaFreqArv(Arv *arvore)
 {
     return arvore->frequencia;
 }
+
+int VarreArvore(Arv *a, char caractere, int num, char *palavra)
+{
+
+    if (a != NULL)
+    {
+        // fazer a concatenação
+        if (num == 0)
+            strcat(palavra, "0");
+
+        else if (num == 1)
+            strcat(palavra, "1");
+
+        // se for folha
+        if (a->e == NULL && a->d == NULL)
+        {
+            // se for o caractere
+            if (a->caractere == caractere)
+            {
+                printf("\n caractere: %c, freq: %d\n\n", a->caractere, a->frequencia);
+                return 1;
+            }
+            // limpar o último caractere da palavra
+            else
+            {
+                for (int i = 0;; i++)
+                {
+                    if (palavra[i] == '\0')
+                    {
+                        palavra[i - 1] = '\0';
+                        break;
+                    }
+                }
+
+                return 0;
+            }
+        }
+
+        // concatenar um 0 na palavra
+        if (VarreArvore(a->e, caractere, 0, palavra) == 1)
+        {
+            return 1;
+        }
+
+        // concatenar um 1 na palavra
+        if (VarreArvore(a->d, caractere, 1, palavra) == 1)
+        {
+            return 1;
+        }
+
+        else
+        {
+            for (int i = 0;; i++)
+            {
+                if (palavra[i] == '\0')
+                {
+                    palavra[i - 1] = '\0';
+                    break;
+                }
+            }
+        }
+    }
+
+    return 0;
+}

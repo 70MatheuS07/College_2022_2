@@ -1,5 +1,5 @@
-#ifndef  ARVORE_H
-#define  ARVORE_H
+#ifndef ARVORE_H
+#define ARVORE_H
 
 typedef struct arv Arv;
 
@@ -7,18 +7,20 @@ typedef struct arv Arv;
 #include <stdio.h>
 #include <string.h>
 
-Arv* CriaArv_Vazia(void);
+Arv *CriaArv_Vazia(void);
 
-Arv* CriaArv(int frequencia, char caractere);
+Arv *CriaArv(int frequencia, char caractere);
 
-void Imprime(Arv* a);
-//essa função vai servir pra executar o algoritimo de Huffman
-Arv* JuntaArvs(Arv* arv_e, Arv* arv_d);
+void Imprime(Arv *a);
+// essa função vai servir pra executar o algoritimo de Huffman
+Arv *JuntaArvs(Arv *arv_e, Arv *arv_d);
 
-Arv* Libera(Arv* a);
+Arv *Libera(Arv *a);
 
 int RetornaFreqArv(Arv *arvore);
 
-//int ComparaFreqArv(void *arv_1, void *arv_2);
+// int ComparaFreqArv(void *arv_1, void *arv_2);
+
+int VarreArvore(Arv *a, char caractere, int num, char *palavra);
 
 #endif
