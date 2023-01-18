@@ -72,7 +72,7 @@ Arv *RetiraPrimeiraArvDaLista(ListaArv *lista)
     {
         lista->prim = p->prox;
     }
-
+    free(p);
     return arv;
 }
 
@@ -84,7 +84,6 @@ void LiberaListaArv(ListaArv *lista)
     while (p != NULL)
     {
         t = p->prox;
-        Libera(p->arv);
         free(p);
         p = t;
     }
@@ -120,21 +119,23 @@ int RetornaNumListaArv(ListaArv *lista)
 }
 
 // Retorna a arvore de codificação de huffman
-Arv *ExecutaAlgoritimoDeHuffman(ListaArv *lista)
+Arv* ExecutaAlgoritimoDeHuffman(ListaArv *lista)
 {
+    Arv *t1;
+    Arv *t2;
+    Arv *tr;
     while (RetornaNumListaArv(lista) > 1)
     {
         // n fiz
-        OrdenaListaArvFrequencia(lista);
+        //OrdenaListaArvFrequencia(lista);
 
-        Arv *t1 = RetiraPrimeiraArvDaLista(lista);
-        Arv *t2 = RetiraPrimeiraArvDaLista(lista);
+        t1 = RetiraPrimeiraArvDaLista(lista);
+        t2 = RetiraPrimeiraArvDaLista(lista);
 
-        Arv *tr = JuntaArvs(t1, t2);
+        tr = JuntaArvs(t1, t2);
 
         InsereListaArv(lista, tr);
     }
-
     return RetiraPrimeiraArvDaLista(lista);
 }
 

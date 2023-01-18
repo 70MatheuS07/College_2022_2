@@ -32,12 +32,16 @@ void Imprime(Arv *a)
         printf("caractere: %c, freq: %d\n", a->caractere, a->frequencia);
         Imprime(a->d);
     }
+
+    return;
 }
+
 // essa função vai servir pra executar o algoritimo de Huffman
 Arv *JuntaArvs(Arv *arv_e, Arv *arv_d)
 {
     Arv *arv = malloc(sizeof(Arv));
     arv->frequencia = arv_e->frequencia + arv_d->frequencia;
+    arv->caractere = '\0';
     arv->e = arv_e;
     arv->d = arv_d;
 
@@ -55,15 +59,6 @@ Arv *Libera(Arv *a)
 
     return NULL;
 }
-/*
-int ComparaFreqArv(void *arv_1, void *arv_2)
-{
-    Arv *arvore_1 = (Arv *)arv_1;
-    Arv *arvore_2 = (Arv *)arv_2;
-
-    return (arvore_1->frequencia - arvore_2->frequencia);
-}
-*/
 
 int RetornaFreqArv(Arv *arvore)
 {
@@ -72,7 +67,6 @@ int RetornaFreqArv(Arv *arvore)
 
 int VarreArvore(Arv *a, char caractere, int num, char *palavra)
 {
-
     if (a != NULL)
     {
         // fazer a concatenação

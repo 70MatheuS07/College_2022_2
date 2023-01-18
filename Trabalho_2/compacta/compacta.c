@@ -13,15 +13,16 @@ int main(void)
 
     ZeraVetorFreq(V, NUM_ASCII);
     PreencheVetorFreq(V, NUM_ASCII, "arq.txt");
-    ImprimeVetorFreq(V, NUM_ASCII);
+    //ImprimeVetorFreq(V, NUM_ASCII);
 
     ListaArv *lista = IniciaListaArv();
 
     PreencheListaArvFrequencia(lista, V, NUM_ASCII);
 
     ImprimeListaArv(lista);
-
-    Arv *arvore = ExecutaAlgoritimoDeHuffman(lista);
+  
+    Arv* arvore = CriaArv_Vazia();
+    arvore = ExecutaAlgoritimoDeHuffman(lista);
 
     printf("\n\n");
     Imprime(arvore);
@@ -31,9 +32,14 @@ int main(void)
 
     VarreArvore(arvore, 'b', INICIALIZA_NUM, binario);
 
-    printf("\n%s\n", binario);
-
+    printf("\n%s\n\n", binario);
+  
+    free(binario);
+  
+    ImprimeListaArv(lista);
+    Libera(arvore);
     LiberaListaArv(lista);
+    
 
     return 0;
 }
