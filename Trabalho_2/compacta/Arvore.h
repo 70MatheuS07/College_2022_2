@@ -6,6 +6,9 @@ typedef struct arv Arv;
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "bitmap.h"
+
+#define TAM_CHAR 8
 
 Arv *CriaArv_Vazia(void);
 
@@ -19,8 +22,14 @@ Arv *Libera(Arv *a);
 
 int RetornaFreqArv(Arv *arvore);
 
-// int ComparaFreqArv(void *arv_1, void *arv_2);
-
 int VarreArvore(Arv *a, char caractere, int num, char *palavra);
+
+int CaminhaArvoreRecurssiva(bitmap *mapaBits, Arv *arvore);
+
+int RetornaQtdFolhas(Arv *a);
+
+int arv_vazia(Arv *a);
+
+void TransformaInteiroBinario(int n, int *vet, int id);
 
 #endif

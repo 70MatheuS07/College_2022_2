@@ -127,7 +127,7 @@ Arv* ExecutaAlgoritimoDeHuffman(ListaArv *lista)
     while (RetornaNumListaArv(lista) > 1)
     {
         // n fiz
-        //OrdenaListaArvFrequencia(lista);
+        OrdenaListaArvFrequencia(lista);
 
         t1 = RetiraPrimeiraArvDaLista(lista);
         t2 = RetiraPrimeiraArvDaLista(lista);

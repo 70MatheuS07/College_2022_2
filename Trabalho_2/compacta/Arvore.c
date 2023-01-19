@@ -128,3 +128,79 @@ int VarreArvore(Arv *a, char caractere, int num, char *palavra)
 
     return 0;
 }
+
+int RetornaQtdFolhas(Arv *a)
+{
+    if (arv_vazia(a))
+    {
+        return 0;
+    }
+
+    if (arv_vazia(a->e) || arv_vazia(a->d))
+    {
+        return 1;
+    }
+
+    return (RetornaQtdFolhas(a->e) + RetornaQtdFolhas(a->d));
+}
+
+int CaminhaArvoreRecurssiva(bitmap *mapaBits, Arv *arvore)
+{
+    if (arvore != NULL)
+    {
+        if (arvore->e == NULL && arvore->d == NULL)
+        {
+            bitmapAppendLeastSignificantBit(mapaBits, 1);
+
+            int letra = arvore->caractere;
+
+            int vetor[TAM_CHAR];
+
+            for (int i = 0; i < TAM_CHAR; i++)
+            {
+                vetor[i] = 0;
+            }
+
+            TransformaInteiroBinario(letra, vetor, TAM_CHAR - 1);
+
+            for (int i = 0; i < TAM_CHAR; i++)
+            {
+                bitmapAppendLeastSignificantBit(mapaBits, vetor[i]);
+            }
+        }
+        else
+        {
+            bitmapAppendLeastSignificantBit(mapaBits, 0);
+        }
+
+        CaminhaArvoreRecurssiva(mapaBits, arvore->e);
+        CaminhaArvoreRecurssiva(mapaBits, arvore->d);
+
+        return 1;
+    }
+
+    return 0;
+}
+
+int arv_vazia(Arv *a)
+{
+    if (a == NULL)
+    {
+        return 1;
+    }
+
+    return 0;
+}
+
+void TransformaInteiroBinario(int n, int *vet, int id)
+{
+    if (n == 0)
+    {
+        vet[id] = n;
+    }
+    else
+    {
+        TransformaInteiroBinario(n / 2, vet, id - 1);
+        vet[id] = n % 2;
+    }
+}
