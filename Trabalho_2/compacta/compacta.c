@@ -5,18 +5,17 @@
 #include "VetorFreq.h"
 #include "geraBinario.h"
 
-#define NUM_ASCII 256
-#define INICIALIZA_NUM 2
+#define ARQUIVO 1
 
-int main(void)
+int main(int argc, char *argv[])
 {
     int V[NUM_ASCII];
 
     ZeraVetorFreq(V, NUM_ASCII);
-    PreencheVetorFreq(V, NUM_ASCII, "arq.txt");
+    PreencheVetorFreq(V, NUM_ASCII, argv[ARQUIVO]);
     // ImprimeVetorFreq(V, NUM_ASCII);
 
-    ListaArv *lista = IniciaListaArv();
+        ListaArv *lista = IniciaListaArv();
 
     PreencheListaArvFrequencia(lista, V, NUM_ASCII);
 
@@ -38,7 +37,7 @@ int main(void)
     free(binario);
     // ImprimeListaArv(lista);
 
-    CompactaArvoreTexto(arvore, "arq.txt");
+    CompactaArvoreTexto(arvore, argv[ARQUIVO]);
 
     ImprimeListaArv(lista);
 

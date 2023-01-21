@@ -9,6 +9,8 @@ typedef struct arv Arv;
 #include "bitmap.h"
 
 #define TAM_CHAR 8
+#define NUM_ASCII 256
+#define INICIALIZA_NUM 2
 
 Arv *CriaArv_Vazia(void);
 

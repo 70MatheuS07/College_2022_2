@@ -15,4 +15,6 @@ bitmap *CompactaArvore(Arv *arvore);
 
 bitmap *CompactaTexto(Arv *arvore, char *nomeArquivo);
 
+int RetornaTamanhoTexto(char *nomeArquivo);
+
 #endif
