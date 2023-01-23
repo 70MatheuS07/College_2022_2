@@ -19,4 +19,6 @@ int RetornaTamanhoTexto(char *nomeArquivo);
 
 bitmap *CorrigiTamanhoTextoBits(char *nomeArquivo, Arv *arvore, bitmap *textoBits);
 
+bitmap *JuntaMapasDeBits(bitmap *arvoreBits, bitmap *textoBits);
+
 #endif

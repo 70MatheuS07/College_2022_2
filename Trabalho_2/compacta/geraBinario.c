@@ -10,14 +10,24 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo)
 
     textoBits = CorrigiTamanhoTextoBits(nomeArquivo, arvore, textoBits);
 
-    int num1 = bitmapGetMaxSize(arvoreBits);
-    int num2 = bitmapGetMaxSize(textoBits);
+    bitmap *arquivoBits;
 
-    printf("\n%d  %d\n", num1, num2);
+    arquivoBits = JuntaMapasDeBits(arvoreBits, textoBits);
+
+    // int num1 = bitmapGetLength(arvoreBits);
+    // int num2 = bitmapGetLength(textoBits);
+    //int num1 = bitmapGetMaxSize(arvoreBits);
+    //int num2 = bitmapGetMaxSize(textoBits);
+
+    //printf("\n%d %d", num1, num2);
 
     FILE *arquivo = fopen(nomeArquivo, "ab");
 
     fclose(arquivo);
+
+    bitmapLibera(arquivoBits);
+    bitmapLibera(arvoreBits);
+    bitmapLibera(textoBits);
 }
 
 bitmap *CompactaArvore(Arv *arvore)
@@ -41,7 +51,7 @@ bitmap *CompactaArvore(Arv *arvore)
 
     TransformaInteiroBinario(qtd_folhas, vetor, TAM_CHAR - 1);
 
-    for (int i = 0; i < TAM_INT; i++)
+    for (int i = 0; i < TAM_CHAR; i++)
     {
         bitmapAppendLeastSignificantBit(arvoreBits, vetor[i]);
     }
@@ -126,9 +136,7 @@ bitmap *CompactaTexto(Arv *arvore, char *nomeArquivo)
     printf("%0xh\n", bitmapGetContents(textoBits)[8]);
     printf("%0xh\n", bitmapGetContents(textoBits)[9]);
     printf("\n");
-
     */
-
     return textoBits;
 }
 
@@ -199,4 +207,65 @@ bitmap *CorrigiTamanhoTextoBits(char *nomeArquivo, Arv *arvore, bitmap *textoBit
     fclose(arquivo);
 
     return totalRealBits;
+}
+
+bitmap *JuntaMapasDeBits(bitmap *arvoreBits, bitmap *textoBits)
+{
+    int num1 = bitmapGetMaxSize(arvoreBits);
+    int num2 = bitmapGetMaxSize(textoBits);
+
+    int numTotal = num1 + num2;
+
+    bitmap *mapaBits = bitmapInit(numTotal);
+
+    unsigned char bit;
+
+    int j = 0;
+
+    for (int i = 0; i < numTotal; i++)
+    {
+        if (i < num1)
+        {
+            bit = bitmapGetBit(arvoreBits, i);
+        }
+
+        else
+        {
+            bit = bitmapGetBit(textoBits, j);
+            j++;
+        }
+
+        bitmapAppendLeastSignificantBit(mapaBits, bit);
+    }
+
+    /*
+
+    printf("\n%d\n", num1);
+    printf("\n%d\n", num2);
+    printf("\n%d\n", numTotal);
+
+    printf("\n\n");
+    printf("%0xh\n", bitmapGetContents(mapaBits)[0]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[1]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[2]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[3]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[4]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[5]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[6]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[7]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[8]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[9]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[10]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[11]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[12]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[13]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[14]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[15]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[16]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[17]);
+    printf("%0xh\n", bitmapGetContents(mapaBits)[18]);
+    printf("\n");
+    */
+
+    return mapaBits;
 }
