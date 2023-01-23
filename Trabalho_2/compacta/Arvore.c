@@ -82,7 +82,6 @@ int VarreArvore(Arv *a, char caractere, int num, char *palavra)
             // se for o caractere
             if (a->caractere == caractere)
             {
-                printf("\n caractere: %c, freq: %d\n\n", a->caractere, a->frequencia);
                 return 1;
             }
             // limpar o último caractere da palavra

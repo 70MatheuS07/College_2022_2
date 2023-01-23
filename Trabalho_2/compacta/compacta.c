@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     PreencheVetorFreq(V, NUM_ASCII, argv[ARQUIVO]);
     // ImprimeVetorFreq(V, NUM_ASCII);
 
-        ListaArv *lista = IniciaListaArv();
+    ListaArv *lista = IniciaListaArv();
 
     PreencheListaArvFrequencia(lista, V, NUM_ASCII);
 
@@ -28,13 +28,6 @@ int main(int argc, char *argv[])
     Imprime(arvore);
     printf("\n\n");
 
-    char *binario = calloc(9, sizeof(char));
-
-    VarreArvore(arvore, 'b', INICIALIZA_NUM, binario);
-
-    printf("\n%s\n\n", binario);
-
-    free(binario);
     // ImprimeListaArv(lista);
 
     CompactaArvoreTexto(arvore, argv[ARQUIVO]);

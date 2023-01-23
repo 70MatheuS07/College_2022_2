@@ -79,7 +79,7 @@ bitmap *CompactaTexto(Arv *arvore, char *nomeArquivo)
 
     char *binario = calloc(TAM_CHAR + 1, sizeof(char));
 
-    printf("\n\ntamanho texto:%d\n\n", tamanho_texto);
+    printf("\n\ntamanho texto: %d\n\n", tamanho_texto);
 
     bitmap *textoBits = bitmapInit(tamanho_texto);
 
@@ -113,6 +113,7 @@ bitmap *CompactaTexto(Arv *arvore, char *nomeArquivo)
             bitmapAppendLeastSignificantBit(textoBits, valorBit);
         }
     }
+    /*
     printf("\n\n");
     printf("%0xh\n", bitmapGetContents(textoBits)[0]);
     printf("%0xh\n", bitmapGetContents(textoBits)[1]);
@@ -125,6 +126,8 @@ bitmap *CompactaTexto(Arv *arvore, char *nomeArquivo)
     printf("%0xh\n", bitmapGetContents(textoBits)[8]);
     printf("%0xh\n", bitmapGetContents(textoBits)[9]);
     printf("\n");
+
+    */
 
     return textoBits;
 }
@@ -143,6 +146,9 @@ int RetornaTamanhoTexto(char *nomeArquivo)
     }
 
     fclose(arquivo);
+
+    // BUG DE LEITURA, SEMPRE LÊ 1 CARACTER A MAIS
+    i--;
 
     return i;
 }
