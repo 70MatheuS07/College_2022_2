@@ -4,11 +4,18 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo)
 {
     // falta tratar o nome do arquivo.
 
-    FILE *arquivo = fopen(nomeArquivo, "ab");
-
     bitmap *arvoreBits = CompactaArvore(arvore);
 
     bitmap *textoBits = CompactaTexto(arvore, nomeArquivo);
+
+    textoBits = CorrigiTamanhoTextoBits(nomeArquivo, arvore, textoBits);
+
+    int num1 = bitmapGetMaxSize(arvoreBits);
+    int num2 = bitmapGetMaxSize(textoBits);
+
+    printf("\n%d  %d\n", num1, num2);
+
+    FILE *arquivo = fopen(nomeArquivo, "ab");
 
     fclose(arquivo);
 }
@@ -21,18 +28,18 @@ bitmap *CompactaArvore(Arv *arvore)
 
     int qtd_caracteres_folhas = qtd_folhas * TAM_CHAR;
 
-    int total_bits = qtd_folhas + qtd_nos + qtd_caracteres_folhas + TAM_INT;
+    int total_bits = TAM_CHAR + qtd_nos + qtd_folhas + qtd_caracteres_folhas;
 
     bitmap *arvoreBits = bitmapInit(total_bits);
 
-    int vetor[TAM_INT];
+    int vetor[TAM_CHAR];
 
-    for (int i = 0; i < TAM_INT; i++)
+    for (int i = 0; i < TAM_CHAR; i++)
     {
         vetor[i] = 0;
     }
 
-    TransformaInteiroBinario(qtd_folhas, vetor, TAM_INT - 1);
+    TransformaInteiroBinario(qtd_folhas, vetor, TAM_CHAR - 1);
 
     for (int i = 0; i < TAM_INT; i++)
     {
@@ -83,19 +90,12 @@ bitmap *CompactaTexto(Arv *arvore, char *nomeArquivo)
 
     bitmap *textoBits = bitmapInit(tamanho_texto);
 
-    while (1)
+    while (fscanf(arquivo, "%c", &caracter) != EOF)
     {
         for (int i = 0; i < TAM_CHAR + 1; i++)
         {
             binario[i] = '\0';
         }
-
-        if (feof(arquivo))
-        {
-            break;
-        }
-
-        fscanf(arquivo, "%c", &caracter);
 
         VarreArvore(arvore, caracter, INICIALIZA_NUM, binario);
 
@@ -139,16 +139,64 @@ int RetornaTamanhoTexto(char *nomeArquivo)
     char lixo;
     int i = 0;
 
-    while (!feof(arquivo))
+    while (fscanf(arquivo, "%c", &lixo) != EOF)
     {
-        fscanf(arquivo, "%c", &lixo);
         i++;
     }
 
+    printf("\n\n%d\n\n", i);
     fclose(arquivo);
 
-    // BUG DE LEITURA, SEMPRE LÊ 1 CARACTER A MAIS
-    i--;
-
     return i;
+}
+
+bitmap *CorrigiTamanhoTextoBits(char *nomeArquivo, Arv *arvore, bitmap *textoBits)
+{
+    FILE *arquivo = fopen(nomeArquivo, "r");
+
+    char caracter;
+    int total = 0;
+
+    char *binario = calloc(TAM_CHAR + 1, sizeof(char));
+
+    while (fscanf(arquivo, "%c", &caracter) != EOF)
+    {
+        for (int i = 0; i < TAM_CHAR + 1; i++)
+        {
+            binario[i] = '\0';
+        }
+
+        VarreArvore(arvore, caracter, INICIALIZA_NUM, binario);
+
+        for (int i = 0; i < TAM_CHAR + 1; i++)
+        {
+            if (binario[i] == '\0')
+            {
+                break;
+            }
+
+            total++;
+        }
+    }
+
+    bitmap *totalRealBits = bitmapInit(total);
+
+    unsigned char bit;
+
+    for (int i = 0; i < total; i++)
+    {
+        bit = bitmapGetBit(textoBits, i);
+        bitmapAppendLeastSignificantBit(totalRealBits, bit);
+    }
+
+    int num1 = bitmapGetMaxSize(totalRealBits);
+    int num2 = bitmapGetMaxSize(textoBits);
+
+    printf("\n%d  %d\n", num1, num2);
+
+    bitmapLibera(textoBits);
+
+    fclose(arquivo);
+
+    return totalRealBits;
 }

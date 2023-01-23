@@ -17,4 +17,6 @@ bitmap *CompactaTexto(Arv *arvore, char *nomeArquivo);
 
 int RetornaTamanhoTexto(char *nomeArquivo);
 
+bitmap *CorrigiTamanhoTextoBits(char *nomeArquivo, Arv *arvore, bitmap *textoBits);
+
 #endif
