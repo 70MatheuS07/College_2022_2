@@ -6,6 +6,8 @@
 #include "bitmap.h"
 #include "Arvore.h"
 
+#define TAM_LONG_LONG_INT 64
+
 #define TAM_INT 16
 #define TAM_CHAR 8
 
@@ -20,5 +22,7 @@ int RetornaTamanhoTexto(char *nomeArquivo);
 bitmap *CorrigiTamanhoTextoBits(char *nomeArquivo, Arv *arvore, bitmap *textoBits);
 
 bitmap *JuntaMapasDeBits(bitmap *arvoreBits, bitmap *textoBits);
+
+bitmap *JuntaTotalBitsComArquivoBits(long long int numTotalBits, bitmap *arvoreTextoBits);
 
 #endif

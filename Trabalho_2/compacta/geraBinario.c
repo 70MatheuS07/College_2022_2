@@ -8,26 +8,26 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo)
 
     bitmap *textoBits = CompactaTexto(arvore, nomeArquivo);
 
-    textoBits = CorrigiTamanhoTextoBits(nomeArquivo, arvore, textoBits);
+    bitmap *arvoreTextoBits = CorrigiTamanhoTextoBits(nomeArquivo, arvore, textoBits);
 
-    bitmap *arquivoBits;
+    bitmap *arquivoBits = JuntaMapasDeBits(arvoreBits, textoBits);
 
-    arquivoBits = JuntaMapasDeBits(arvoreBits, textoBits);
+    long long int totalBitsArquivo = (TAM_LONG_LONG_INT + bitmapGetLength(arquivoBits));
 
-    // int num1 = bitmapGetLength(arvoreBits);
-    // int num2 = bitmapGetLength(textoBits);
-    //int num1 = bitmapGetMaxSize(arvoreBits);
-    //int num2 = bitmapGetMaxSize(textoBits);
-
-    //printf("\n%d %d", num1, num2);
+    // O inicio do arquivo sempre terá 64 bits direcionados para o long long int
+    bitmap *arquivoFinalBits = JuntaTotalBitsComArquivoBits(totalBitsArquivo, arquivoBits);
 
     FILE *arquivo = fopen(nomeArquivo, "ab");
 
+    
+
     fclose(arquivo);
 
-    bitmapLibera(arquivoBits);
     bitmapLibera(arvoreBits);
     bitmapLibera(textoBits);
+    bitmapLibera(arvoreTextoBits);
+    bitmapLibera(arquivoBits);
+    bitmapLibera(arquivoFinalBits);
 }
 
 bitmap *CompactaArvore(Arv *arvore)
@@ -87,18 +87,18 @@ bitmap *CompactaTexto(Arv *arvore, char *nomeArquivo)
     int tamanho_texto = RetornaTamanhoTexto(nomeArquivo);
 
     // Multiplica pelo maior valor de um CHAR
-    tamanho_texto *= TAM_CHAR;
+    tamanho_texto = tamanho_texto * TAM_CHAR;
 
-    FILE *arquivo = fopen(nomeArquivo, "r");
-
-    char caracter;
-    int valorBit;
+    char caracter = '\0';
+    int valorBit = 0;
 
     char *binario = calloc(TAM_CHAR + 1, sizeof(char));
 
     printf("\n\ntamanho texto: %d\n\n", tamanho_texto);
 
     bitmap *textoBits = bitmapInit(tamanho_texto);
+
+    FILE *arquivo = fopen(nomeArquivo, "r");
 
     while (fscanf(arquivo, "%c", &caracter) != EOF)
     {
@@ -123,6 +123,10 @@ bitmap *CompactaTexto(Arv *arvore, char *nomeArquivo)
             bitmapAppendLeastSignificantBit(textoBits, valorBit);
         }
     }
+
+    fclose(arquivo);
+
+    free(binario);
     /*
     printf("\n\n");
     printf("%0xh\n", bitmapGetContents(textoBits)[0]);
@@ -144,7 +148,7 @@ int RetornaTamanhoTexto(char *nomeArquivo)
 {
     FILE *arquivo = fopen("arq.txt", "r");
 
-    char lixo;
+    char lixo = '\0';
     int i = 0;
 
     while (fscanf(arquivo, "%c", &lixo) != EOF)
@@ -160,12 +164,12 @@ int RetornaTamanhoTexto(char *nomeArquivo)
 
 bitmap *CorrigiTamanhoTextoBits(char *nomeArquivo, Arv *arvore, bitmap *textoBits)
 {
-    FILE *arquivo = fopen(nomeArquivo, "r");
-
-    char caracter;
+    char caracter = '\0';
     int total = 0;
 
     char *binario = calloc(TAM_CHAR + 1, sizeof(char));
+
+    FILE *arquivo = fopen(nomeArquivo, "r");
 
     while (fscanf(arquivo, "%c", &caracter) != EOF)
     {
@@ -182,14 +186,18 @@ bitmap *CorrigiTamanhoTextoBits(char *nomeArquivo, Arv *arvore, bitmap *textoBit
             {
                 break;
             }
-
-            total++;
+            else
+            {
+                total++;
+            }
         }
     }
 
+    fclose(arquivo);
+
     bitmap *totalRealBits = bitmapInit(total);
 
-    unsigned char bit;
+    unsigned char bit = 0;
 
     for (int i = 0; i < total; i++)
     {
@@ -202,19 +210,19 @@ bitmap *CorrigiTamanhoTextoBits(char *nomeArquivo, Arv *arvore, bitmap *textoBit
 
     printf("\n%d  %d\n", num1, num2);
 
-    bitmapLibera(textoBits);
-
-    fclose(arquivo);
+    free(binario);
 
     return totalRealBits;
 }
 
 bitmap *JuntaMapasDeBits(bitmap *arvoreBits, bitmap *textoBits)
 {
-    int num1 = bitmapGetMaxSize(arvoreBits);
-    int num2 = bitmapGetMaxSize(textoBits);
+    int num1 = bitmapGetLength(arvoreBits);
 
-    int numTotal = num1 + num2;
+    int num2 = bitmapGetLength(textoBits);
+
+    int numTotal = 0;
+    numTotal = num1 + num2;
 
     bitmap *mapaBits = bitmapInit(numTotal);
 
@@ -268,4 +276,40 @@ bitmap *JuntaMapasDeBits(bitmap *arvoreBits, bitmap *textoBits)
     */
 
     return mapaBits;
+}
+
+bitmap *JuntaTotalBitsComArquivoBits(long long int numTotalBits, bitmap *arvoreTextoBits)
+{
+    int vetor[TAM_LONG_LONG_INT];
+
+    for (int i = 0; i < TAM_LONG_LONG_INT; i++)
+    {
+        vetor[i] = '\0';
+    }
+
+    TransformaInteiroBinario(numTotalBits, vetor, TAM_LONG_LONG_INT - 1);
+
+    bitmap *mapaBitsFinal = bitmapInit(numTotalBits);
+
+    unsigned char bit;
+
+    int j = 0;
+
+    for (int i = 0; i < numTotalBits; i++)
+    {
+        if (i < TAM_LONG_LONG_INT)
+        {
+            bit = vetor[i];
+        }
+
+        else
+        {
+            bit = bitmapGetBit(arvoreTextoBits, j);
+            j++;
+        }
+
+        bitmapAppendLeastSignificantBit(mapaBitsFinal, bit);
+    }
+
+    return mapaBitsFinal;
 }
