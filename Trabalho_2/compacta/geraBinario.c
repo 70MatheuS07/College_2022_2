@@ -17,11 +17,47 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo)
     // O inicio do arquivo sempre terá 64 bits direcionados para o long long int
     bitmap *arquivoFinalBits = JuntaTotalBitsComArquivoBits(totalBitsArquivo, arquivoBits);
 
-    FILE *arquivo = fopen(nomeArquivo, "ab");
+    FILE *arquivo = fopen("arquivo.comp", "ab");
 
-    
+    fwrite(arquivoFinalBits, sizeof(char), (1024 * 1024), arquivo);
 
     fclose(arquivo);
+
+    /*
+
+    bitmap *teste;
+
+    FILE *arquivoLeh = fopen("arquivo.comp", "rb");
+
+    fread(teste, sizeof(char), (1024 * 1024), arquivoLeh);
+
+    fclose(arquivoLeh);
+
+    printf("%0xh\n", bitmapGetContents(arquivoFinalBits)[0]);
+    printf("%0xh\n", bitmapGetContents(arquivoFinalBits)[1]);
+    printf("%0xh\n", bitmapGetContents(arquivoFinalBits)[2]);
+    printf("%0xh\n", bitmapGetContents(arquivoFinalBits)[3]);
+    printf("%0xh\n", bitmapGetContents(arquivoFinalBits)[4]);
+    printf("%0xh\n", bitmapGetContents(arquivoFinalBits)[5]);
+    printf("%0xh\n", bitmapGetContents(arquivoFinalBits)[6]);
+    printf("%0xh\n", bitmapGetContents(arquivoFinalBits)[7]);
+    printf("%0xh\n", bitmapGetContents(arquivoFinalBits)[8]);
+    printf("%0xh\n", bitmapGetContents(arquivoFinalBits)[9]);
+
+    printf("\n\n");
+
+    printf("%0xh\n", bitmapGetContents(teste)[0]);
+    printf("%0xh\n", bitmapGetContents(teste)[1]);
+    printf("%0xh\n", bitmapGetContents(teste)[2]);
+    printf("%0xh\n", bitmapGetContents(teste)[3]);
+    printf("%0xh\n", bitmapGetContents(teste)[4]);
+    printf("%0xh\n", bitmapGetContents(teste)[5]);
+    printf("%0xh\n", bitmapGetContents(teste)[6]);
+    printf("%0xh\n", bitmapGetContents(teste)[7]);
+    printf("%0xh\n", bitmapGetContents(teste)[8]);
+    printf("%0xh\n", bitmapGetContents(teste)[9]);
+
+    */
 
     bitmapLibera(arvoreBits);
     bitmapLibera(textoBits);

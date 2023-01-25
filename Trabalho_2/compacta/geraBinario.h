@@ -7,7 +7,6 @@
 #include "Arvore.h"
 
 #define TAM_LONG_LONG_INT 64
-
 #define TAM_INT 16
 #define TAM_CHAR 8
 
