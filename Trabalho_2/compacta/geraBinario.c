@@ -17,11 +17,18 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo)
     // O inicio do arquivo sempre terá 64 bits direcionados para o long long int
     bitmap *arquivoFinalBits = JuntaTotalBitsComArquivoBits(totalBitsArquivo, arquivoBits);
 
+    unsigned char *pointer = bitmapGetContents(arquivoFinalBits);
+
     FILE *arquivo = fopen("arquivo.comp", "ab");
 
-    fwrite(arquivoFinalBits, sizeof(char), (1024 * 1024), arquivo);
+    fwrite(pointer, sizeof(unsigned char*), strlen(pointer), arquivo);
 
     fclose(arquivo);
+
+    while(1)
+    {
+        
+    }
 
     /*
 
