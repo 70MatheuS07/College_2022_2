@@ -12,23 +12,57 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo)
 
     bitmap *arquivoBits = JuntaMapasDeBits(arvoreBits, textoBits);
 
+    /*-----------------------------Acrescenta long long int no inicio dentro do bitmap----------------------*/
+
     long long int totalBitsArquivo = (TAM_LONG_LONG_INT + bitmapGetLength(arquivoBits));
 
-    // O inicio do arquivo sempre terá 64 bits direcionados para o long long int
     bitmap *arquivoFinalBits = JuntaTotalBitsComArquivoBits(totalBitsArquivo, arquivoBits);
+
+    /*------------------------------------------------------------------------------------------------------*/
 
     unsigned char *pointer = bitmapGetContents(arquivoFinalBits);
 
-    FILE *arquivo = fopen("arquivo.comp", "ab");
+    unsigned int tamanhoBitsArquivo = bitmapGetLength(arquivoFinalBits);
 
-    fwrite(pointer, sizeof(unsigned char*), strlen(pointer), arquivo);
+    /*---------------------------------Faz a mudança do .txt para .comp-------------------------------------*/
+
+    int tamanhoNomeArquivo = strlen(nomeArquivo);
+
+    // O txt tem tamanho 3 e comp tamanho 4, por isso o +1;
+    tamanhoNomeArquivo++;
+
+    char *nomeArquivoCompactado = calloc(tamanhoNomeArquivo, sizeof(char));
+
+    strcpy(nomeArquivoCompactado, nomeArquivo);
+
+    /*-------------------------------------------------------------------------------------------------------*/
+
+    for (int i = 0; i < tamanhoNomeArquivo; i++)
+    {
+        if (nomeArquivoCompactado[i] == '.')
+        {
+            nomeArquivoCompactado[i + 1] = 'c';
+            nomeArquivoCompactado[i + 2] = 'o';
+            nomeArquivoCompactado[i + 3] = 'm';
+            nomeArquivoCompactado[i + 4] = 'p';
+            nomeArquivoCompactado[i + 5] = '\0';
+
+            break;
+        }
+    }
+
+    FILE *arquivo = fopen(nomeArquivoCompactado, "ab");
+
+    if (tamanhoBitsArquivo % 8 == 0)
+    {
+        fwrite(pointer, sizeof(unsigned char), tamanhoBitsArquivo / 8, arquivo);
+    }
+    else
+    {
+        fwrite(pointer, sizeof(unsigned char), (tamanhoBitsArquivo / 8) + 1, arquivo);
+    }
 
     fclose(arquivo);
-
-    while(1)
-    {
-        
-    }
 
     /*
 
