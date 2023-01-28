@@ -203,3 +203,16 @@ void TransformaInteiroBinario(int n, int *vet, int id)
         vet[id] = n % 2;
     }
 }
+
+void TransformaInteiroBinarioLongLong(long long int n, int *vet, int id)
+{
+    if (n == 0)
+    {
+        vet[id] = n;
+    }
+    else
+    {
+        TransformaInteiroBinarioLongLong(n / 2, vet, id - 1);
+        vet[id] = n % 2;
+    }
+}

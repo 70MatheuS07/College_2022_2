@@ -16,13 +16,13 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo)
 
     long long int totalBitsArquivo = (TAM_LONG_LONG_INT + bitmapGetLength(arquivoBits));
 
-    bitmap *arquivoFinalBits = JuntaTotalBitsComArquivoBits(totalBitsArquivo, arquivoBits);
+    // bitmap *arquivoFinalBits = JuntaTotalBitsComArquivoBits(totalBitsArquivo, arquivoBits);
 
     /*------------------------------------------------------------------------------------------------------*/
 
-    unsigned char *pointer = bitmapGetContents(arquivoFinalBits);
+    // unsigned char *pointer = bitmapGetContents(arquivoFinalBits);
 
-    unsigned int tamanhoBitsArquivo = bitmapGetLength(arquivoFinalBits);
+    // unsigned int tamanhoBitsArquivo = bitmapGetLength(arquivoFinalBits);
 
     /*---------------------------------Faz a mudança do .txt para .comp-------------------------------------*/
 
@@ -34,8 +34,6 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo)
     char *nomeArquivoCompactado = calloc(tamanhoNomeArquivo, sizeof(char));
 
     strcpy(nomeArquivoCompactado, nomeArquivo);
-
-    /*-------------------------------------------------------------------------------------------------------*/
 
     for (int i = 0; i < tamanhoNomeArquivo; i++)
     {
@@ -51,15 +49,19 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo)
         }
     }
 
-    FILE *arquivo = fopen(nomeArquivoCompactado, "ab");
+    /*-------------------------------------------------------------------------------------------------------*/
 
-    if (tamanhoBitsArquivo % 8 == 0)
+    FILE *arquivo = fopen(nomeArquivoCompactado, "wb");
+
+    fwrite(&totalBitsArquivo, sizeof(long long int), 1, arquivo);
+
+    if (totalBitsArquivo % 8 == 0)
     {
-        fwrite(pointer, sizeof(unsigned char), tamanhoBitsArquivo / 8, arquivo);
+        fwrite((bitmapGetContents(arquivoBits)), sizeof(unsigned char), totalBitsArquivo / 8, arquivo);
     }
     else
     {
-        fwrite(pointer, sizeof(unsigned char), (tamanhoBitsArquivo / 8) + 1, arquivo);
+        fwrite((bitmapGetContents(arquivoBits)), sizeof(unsigned char), (totalBitsArquivo / 8) + 1, arquivo);
     }
 
     fclose(arquivo);
@@ -104,7 +106,7 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo)
     bitmapLibera(textoBits);
     bitmapLibera(arvoreTextoBits);
     bitmapLibera(arquivoBits);
-    bitmapLibera(arquivoFinalBits);
+    //bitmapLibera(arquivoFinalBits);
 }
 
 bitmap *CompactaArvore(Arv *arvore)
@@ -364,7 +366,7 @@ bitmap *JuntaTotalBitsComArquivoBits(long long int numTotalBits, bitmap *arvoreT
         vetor[i] = '\0';
     }
 
-    TransformaInteiroBinario(numTotalBits, vetor, TAM_LONG_LONG_INT - 1);
+    TransformaInteiroBinarioLongLong(numTotalBits, vetor, TAM_LONG_LONG_INT - 1);
 
     bitmap *mapaBitsFinal = bitmapInit(numTotalBits);
 
