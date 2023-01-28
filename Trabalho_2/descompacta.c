@@ -11,13 +11,13 @@ long long unsigned int binary_to_int(unsigned char *binary);
 
 int main(int argc, char *argv[])
 {
-    long long int tamanhoArquivoBits = 0;
+    unsigned long long int tamanhoArquivoBits = 0;
 
     bitmap *mapaBits = bitmapInit(64);
 
     FILE *arquivo = fopen(argv[1], "rb");
 
-    fread(&tamanhoArquivoBits, sizeof(long long int), 1, arquivo);
+    fread(&tamanhoArquivoBits, sizeof(unsigned long long int), 1, arquivo);
 
     printf("\n\n%lld\n\n", tamanhoArquivoBits);
 

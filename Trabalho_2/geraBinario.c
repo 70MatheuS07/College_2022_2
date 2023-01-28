@@ -14,7 +14,7 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo)
 
     /*-----------------------------Acrescenta long long int no inicio dentro do bitmap----------------------*/
 
-    long long int totalBitsArquivo = (TAM_LONG_LONG_INT + bitmapGetLength(arquivoBits));
+    unsigned long long int totalBitsArquivo = (TAM_LONG_LONG_INT + bitmapGetLength(arquivoBits));
 
     // bitmap *arquivoFinalBits = JuntaTotalBitsComArquivoBits(totalBitsArquivo, arquivoBits);
 
@@ -53,7 +53,7 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo)
 
     FILE *arquivo = fopen(nomeArquivoCompactado, "wb");
 
-    fwrite(&totalBitsArquivo, sizeof(long long int), 1, arquivo);
+    fwrite(&totalBitsArquivo, sizeof(unsigned long long int), 1, arquivo);
 
     if (totalBitsArquivo % 8 == 0)
     {
