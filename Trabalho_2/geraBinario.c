@@ -1,21 +1,21 @@
 #include "geraBinario.h"
 
-void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo)
+void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo, int vet[])
 {
     // falta tratar o nome do arquivo.
 
-    bitmap *arvoreBits = CompactaArvore(arvore);
+    // bitmap *arvoreBits = CompactaArvore(arvore);
 
     bitmap *textoBits = CompactaTexto(arvore, nomeArquivo);
 
-    bitmap *arvoreTextoBits = CorrigiTamanhoTextoBits(nomeArquivo, arvore, textoBits);
+    // bitmap *arvoreTextoBits = CorrigiTamanhoTextoBits(nomeArquivo, arvore, textoBits);
 
-    bitmap *arquivoBits = JuntaMapasDeBits(arvoreBits, textoBits);
+    // bitmap *arquivoBits = JuntaMapasDeBits(arvoreBits, textoBits);
 
     /*-----------------------------Acrescenta long long int no inicio dentro do bitmap----------------------*/
 
-    unsigned long int totalBitsArquivo = (TAM_LONG_INT + bitmapGetLength(arquivoBits));
-    printf("\nlength %d\n", bitmapGetLength(arquivoBits));
+    unsigned long int totalBitsTexto = (bitmapGetLength(textoBits));
+    //printf("\nlength %d\n", bitmapGetLength(arquivoBits));
 
     // bitmap *arquivoFinalBits = JuntaTotalBitsComArquivoBits(totalBitsArquivo, arquivoBits);
 
@@ -54,26 +54,30 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo)
 
     FILE *arquivo = fopen(nomeArquivoCompactado, "wb");
 
-    fwrite(&totalBitsArquivo, sizeof(unsigned long int), 1, arquivo);
+    fwrite(&totalBitsTexto, sizeof(unsigned long int), 1, arquivo);
 
-    int bytesArq = totalBitsArquivo - 32;
+    fwrite(vet, sizeof(int), NUM_ASCII, arquivo);
+
+    int bytesArq = totalBitsTexto;
     unsigned char byte;
+    int cont = 0;
+
     printf("conteudo compacta\n");
-    for (int cont = 0; bytesArq > 0; cont++)
+    for (int bytesArq = totalBitsTexto; bytesArq > 0; bytesArq -= 8)
     {
-        byte = bitmapGetContents(arquivoBits)[cont];
-        printf("%0xh\n", bitmapGetContents(arquivoBits)[cont]);
+        byte = bitmapGetContents(textoBits)[cont];
+        printf("%0xh\n", bitmapGetContents(textoBits)[cont]);
         // printf("%d ", byte);
         fwrite(&byte, sizeof(unsigned char), 1, arquivo);
-        bytesArq = bytesArq - 8;
+        cont++;
     }
 
     fclose(arquivo);
 
-    bitmapLibera(arvoreBits);
+    // bitmapLibera(arvoreBits);
     bitmapLibera(textoBits);
-    bitmapLibera(arvoreTextoBits);
-    bitmapLibera(arquivoBits);
+    // bitmapLibera(arvoreTextoBits);
+    // bitmapLibera(arquivoBits);
     free(nomeArquivoCompactado);
 }
 

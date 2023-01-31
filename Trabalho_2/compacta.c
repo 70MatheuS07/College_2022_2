@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
     // ImprimeListaArv(lista);
 
-    CompactaArvoreTexto(arvore, argv[ARQUIVO]);
+    CompactaArvoreTexto(arvore, argv[ARQUIVO], V);
 
     ImprimeListaArv(lista);
 
