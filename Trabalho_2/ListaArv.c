@@ -164,3 +164,8 @@ void OrdenaListaArvFrequencia(ListaArv *lista)
         pfim = pj;
     }
 }
+
+Arv *RetornaArvListaArv(ListaArv *lista)
+{
+    return lista->prim->arv;
+}

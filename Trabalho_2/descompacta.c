@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "bitmap.h"
-#include "Arvore.h"
 #include "VetorFreq.h"
+#include "ListaArv.h"
 
 #define TAM_CHAR 8
 
@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 
     fread(&tamanhoArquivoBits, sizeof(unsigned long int), 1, arquivo);
 
-    printf("\n\n%lld\n\n", tamanhoArquivoBits);
+    printf("\n\n%ld\n\n", tamanhoArquivoBits);
 
     int vetor[NUM_ASCII];
     ZeraVetorFreq(vetor, NUM_ASCII);
@@ -30,12 +30,25 @@ int main(int argc, char *argv[])
     {
         printf("%d ", vetor[i]);
     }
+    /////////////////////////////////////////
+    ListaArv *lista = IniciaListaArv();
+
+    PreencheListaArvFrequencia(lista, vetor, NUM_ASCII);
+
+    ImprimeListaArv(lista);
+
+    Arv *arvore = CriaArv_Vazia();
+    arvore = ExecutaAlgoritimoDeHuffman(lista);
+
+    printf("\n\n");
+    Imprime(arvore);
+    printf("\n\n");
+
+    /////////////////////////////////////////
+    bitmap *bm;
 
     int bytesArq = tamanhoArquivoBits;
     printf("\n\nbites: %d\n\n", bytesArq);
-
-    ////////////////////////////
-    bitmap *bm;
 
     if (bytesArq % TAM_CHAR == 0)
     {
@@ -74,22 +87,6 @@ int main(int argc, char *argv[])
     }
 
     fclose(arquivo);
-    /*
-    printf("\n%0xh\n", bitmapGetContents(mapaBits)[0]);
-    printf("%0xh\n", bitmapGetContents(mapaBits)[1]);
-    printf("%0xh\n", bitmapGetContents(mapaBits)[2]);
-    printf("%0xh\n", bitmapGetContents(mapaBits)[3]);
-    printf("%0xh\n", bitmapGetContents(mapaBits)[4]);
-    printf("%0xh\n", bitmapGetContents(mapaBits)[5]);
-    printf("%0xh\n", bitmapGetContents(mapaBits)[6]);
-    printf("%0xh\n", bitmapGetContents(mapaBits)[7]);
-
-    printf("%0xh\n", bitmapGetContents(mapaBits)[8]);
-    printf("%0xh\n", bitmapGetContents(mapaBits)[9]);
-    printf("%0xh\n", bitmapGetContents(mapaBits)[10]);
-    printf("%0xh\n", bitmapGetContents(mapaBits)[11]);
-    printf("%0xh\n", bitmapGetContents(mapaBits)[12]);
-    */
 
     return 0;
 }
