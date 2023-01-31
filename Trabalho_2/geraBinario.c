@@ -14,7 +14,7 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo)
 
     /*-----------------------------Acrescenta long long int no inicio dentro do bitmap----------------------*/
 
-    unsigned long int totalBitsArquivo = (TAM_LONG_INT + bitmapGetLength(arquivoBits));
+    unsigned long long int totalBitsArquivo = (TAM_LONG_LONG_INT + bitmapGetLength(arquivoBits));
     printf("\nlength %d\n", bitmapGetLength(arquivoBits));
 
     // bitmap *arquivoFinalBits = JuntaTotalBitsComArquivoBits(totalBitsArquivo, arquivoBits);
@@ -54,9 +54,9 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo)
 
     FILE *arquivo = fopen(nomeArquivoCompactado, "wb");
 
-    fwrite(&totalBitsArquivo, sizeof(unsigned long int), 1, arquivo);
+    fwrite(&totalBitsArquivo, sizeof(unsigned long long int), 1, arquivo);
 
-    int bytesArq = totalBitsArquivo - 32;
+    int bytesArq = (int)totalBitsArquivo - 64;
     unsigned char byte;
     printf("conteudo compacta\n");
     for (int cont = 0; bytesArq > 0; cont++)
@@ -121,7 +121,7 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo)
     bitmapLibera(textoBits);
     bitmapLibera(arvoreTextoBits);
     bitmapLibera(arquivoBits);
-    //bitmapLibera(arquivoFinalBits);
+    // bitmapLibera(arquivoFinalBits);
 }
 
 bitmap *CompactaArvore(Arv *arvore)
@@ -345,14 +345,14 @@ bitmap *JuntaMapasDeBits(bitmap *arvoreBits, bitmap *textoBits)
 
 bitmap *JuntaTotalBitsComArquivoBits(long long int numTotalBits, bitmap *arvoreTextoBits)
 {
-    int vetor[TAM_LONG_INT];
+    int vetor[TAM_LONG_LONG_INT];
 
-    for (int i = 0; i < TAM_LONG_INT; i++)
+    for (int i = 0; i < TAM_LONG_LONG_INT; i++)
     {
         vetor[i] = '\0';
     }
 
-    TransformaInteiroBinarioLongLong(numTotalBits, vetor, TAM_LONG_INT - 1);
+    TransformaInteiroBinarioLongLong(numTotalBits, vetor, TAM_LONG_LONG_INT - 1);
 
     bitmap *mapaBitsFinal = bitmapInit(numTotalBits);
 
@@ -362,7 +362,7 @@ bitmap *JuntaTotalBitsComArquivoBits(long long int numTotalBits, bitmap *arvoreT
 
     for (int i = 0; i < numTotalBits; i++)
     {
-        if (i < TAM_LONG_INT)
+        if (i < TAM_LONG_LONG_INT)
         {
             bit = vetor[i];
         }
