@@ -34,6 +34,6 @@ int arv_vazia(Arv *a);
 
 void TransformaInteiroBinario(int n, int *vet, int id);
 
-void TransformaInteiroBinarioLongLong(long long int n, int *vet, int id);
+void TransformaInteiroBinarioLongInt(unsigned long int n, int *vet, int id);
 
 #endif

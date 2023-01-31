@@ -204,7 +204,7 @@ void TransformaInteiroBinario(int n, int *vet, int id)
     }
 }
 
-void TransformaInteiroBinarioLongLong(long long int n, int *vet, int id)
+void TransformaInteiroBinarioLongInt(unsigned long int n, int *vet, int id)
 {
     if (n == 0)
     {
@@ -212,7 +212,7 @@ void TransformaInteiroBinarioLongLong(long long int n, int *vet, int id)
     }
     else
     {
-        TransformaInteiroBinarioLongLong(n / 2, vet, id - 1);
+        TransformaInteiroBinarioLongInt(n / 2, vet, id - 1);
         vet[id] = n % 2;
     }
 }
