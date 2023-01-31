@@ -4,25 +4,23 @@
 #include "bitmap.h"
 #include "Arvore.h"
 
-#define TAM_CHAR 8
-
 void TransformaInteiroBinarioDescompacta(int n, int *vet, int id);
 
 long long unsigned int binary_to_int(unsigned char *binary);
 
 int main(int argc, char *argv[])
 {
-    unsigned long long int tamanhoArquivoBits = 0;
+    unsigned long int tamanhoArquivoBits = 0;
 
-    bitmap *mapaBits = bitmapInit(64);
+    bitmap *mapaBits = bitmapInit(32);
 
     FILE *arquivo = fopen(argv[1], "rb");
 
-    fread(&tamanhoArquivoBits, sizeof(unsigned long long int), 1, arquivo);
+    fread(&tamanhoArquivoBits, sizeof(unsigned long int), 1, arquivo);
 
-    printf("\n\n%lld\n\n", tamanhoArquivoBits);
+    printf("\n\n%ld\n\n", tamanhoArquivoBits);
 
-    int bytesArq = (int)tamanhoArquivoBits - 64;
+    int bytesArq = (int)tamanhoArquivoBits - 32;
     printf("\n\nbites: %d\n\n", bytesArq);
 
     ////////////////////////////
