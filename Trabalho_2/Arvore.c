@@ -216,3 +216,28 @@ void TransformaInteiroBinarioLongInt(unsigned long int n, int *vet, int id)
         vet[id] = n % 2;
     }
 }
+
+char RetornaValorCharArvore(Arv *arvore)
+{
+    return arvore->caractere;
+}
+
+Arv *RetornaArvoreEsquerda(Arv *arvore)
+{
+    return arvore->e;
+}
+
+Arv *RetornaArvoreDireita(Arv *arvore)
+{
+    return arvore->d;
+}
+
+int RetornaTrueSeForFolha(Arv *arvore)
+{
+    if (arvore->e == NULL && arvore->d == NULL)
+    {
+        return 1;
+    }
+
+    return 0;
+}

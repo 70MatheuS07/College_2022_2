@@ -15,7 +15,7 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo, int vet[])
     /*-----------------------------Acrescenta long long int no inicio dentro do bitmap----------------------*/
 
     unsigned long int totalBitsTexto = (bitmapGetLength(textoBits));
-    //printf("\nlength %d\n", bitmapGetLength(arquivoBits));
+    // printf("\nlength %d\n", bitmapGetLength(arquivoBits));
 
     // bitmap *arquivoFinalBits = JuntaTotalBitsComArquivoBits(totalBitsArquivo, arquivoBits);
 
@@ -59,7 +59,7 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo, int vet[])
     fwrite(vet, sizeof(int), NUM_ASCII, arquivo);
 
     int bytesArq = totalBitsTexto;
-    unsigned char byte;
+    unsigned char byte = 0;
     int cont = 0;
 
     printf("conteudo compacta\n");

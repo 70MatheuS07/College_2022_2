@@ -7,29 +7,23 @@
 
 #define TAM_CHAR 8
 
-void TransformaInteiroBinarioDescompacta(int n, int *vet, int id);
-
-long long unsigned int binary_to_int(unsigned char *binary);
+void CriaArquivoTxt(char *nomeArquivo, Arv *arvore, bitmap *mapaBits, int totalBitsTexto);
 
 int main(int argc, char *argv[])
 {
-    unsigned long int tamanhoArquivoBits = 0;
+    unsigned long int tamanhoTextoBits = 0;
 
     FILE *arquivo = fopen(argv[1], "rb");
 
-    fread(&tamanhoArquivoBits, sizeof(unsigned long int), 1, arquivo);
+    fread(&tamanhoTextoBits, sizeof(unsigned long int), 1, arquivo);
 
-    printf("\n\n%ld\n\n", tamanhoArquivoBits);
+    printf("\n\n%ld\n\n", tamanhoTextoBits);
 
     int vetor[NUM_ASCII];
     ZeraVetorFreq(vetor, NUM_ASCII);
 
     fread(vetor, sizeof(int), NUM_ASCII, arquivo);
 
-    for (int i = 0; i < NUM_ASCII; i++)
-    {
-        printf("%d ", vetor[i]);
-    }
     /////////////////////////////////////////
     ListaArv *lista = IniciaListaArv();
 
@@ -47,7 +41,7 @@ int main(int argc, char *argv[])
     /////////////////////////////////////////
     bitmap *bm;
 
-    int bytesArq = tamanhoArquivoBits;
+    int bytesArq = tamanhoTextoBits;
     printf("\n\nbites: %d\n\n", bytesArq);
 
     if (bytesArq % TAM_CHAR == 0)
@@ -88,34 +82,74 @@ int main(int argc, char *argv[])
 
     fclose(arquivo);
 
+    CriaArquivoTxt(argv[1], arvore, bm, tamanhoTextoBits);
+
     return 0;
 }
 
-long long unsigned int binary_to_int(unsigned char *binary)
+void CriaArquivoTxt(char *nomeArquivo, Arv *arvore, bitmap *mapaBits, int totalBitsTexto)
 {
-    int i;
-    unsigned long long int n = 0;
+    int tamanhoNomeArquivo = strlen(nomeArquivo);
 
-    for (i = 0; i < 64; i++)
+    // O comp tem tamanho 4 e txt tamanho 3, por isso o -1;
+    tamanhoNomeArquivo--;
+
+    char *nomeArquivoTxt = calloc(tamanhoNomeArquivo, sizeof(char));
+
+    strcpy(nomeArquivoTxt, nomeArquivo);
+
+    for (int i = 0; i < tamanhoNomeArquivo; i++)
     {
-        if (binary[i] == '1')
+        if (nomeArquivoTxt[i] == '.')
         {
-            n |= (1LL << (63 - i));
+            nomeArquivoTxt[i + 1] = 't';
+            nomeArquivoTxt[i + 2] = 'x';
+            nomeArquivoTxt[i + 3] = 't';
+            nomeArquivoTxt[i + 4] = '\0';
+
+            break;
         }
     }
 
-    return n;
-}
+    FILE *arquivo = fopen(nomeArquivoTxt, "a");
 
-void TransformaInteiroBinarioDescompacta(int n, int *vet, int id)
-{
-    if (n == 0)
+    int cont = 0;
+    unsigned char bit = 0;
+    char caracter = '\0';
+
+    Arv *arvoreBackupInicio = arvore;
+
+    while (cont < totalBitsTexto)
     {
-        vet[id] = n;
+        bit = bitmapGetBit(mapaBits, cont);
+
+        printf("\n%d\n", bit);
+
+        if (bit == 0)
+        {
+            arvore = RetornaArvoreEsquerda(arvore);
+
+            if (RetornaTrueSeForFolha(arvore) == 1)
+            {
+                caracter = RetornaValorCharArvore(arvore);
+                fprintf(arquivo, "%c", caracter);
+                arvore = arvoreBackupInicio;
+            }
+        }
+        else
+        {
+            arvore = RetornaArvoreDireita(arvore);
+
+            if (RetornaTrueSeForFolha(arvore) == 1)
+            {
+                caracter = RetornaValorCharArvore(arvore);
+                fprintf(arquivo, "%c", caracter);
+                arvore = arvoreBackupInicio;
+            }
+        }
+
+        cont++;
     }
-    else
-    {
-        TransformaInteiroBinarioDescompacta(n / 2, vet, id - 1);
-        vet[id] = n % 2;
-    }
+
+    fclose(arquivo);
 }

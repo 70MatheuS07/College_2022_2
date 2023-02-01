@@ -36,4 +36,12 @@ void TransformaInteiroBinario(int n, int *vet, int id);
 
 void TransformaInteiroBinarioLongInt(unsigned long int n, int *vet, int id);
 
+char RetornaValorCharArvore(Arv *arvore);
+
+Arv *RetornaArvoreEsquerda(Arv *arvore);
+
+Arv *RetornaArvoreDireita(Arv *arvore);
+
+int RetornaTrueSeForFolha(Arv *arvore);
+
 #endif
