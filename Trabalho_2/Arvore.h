@@ -17,7 +17,7 @@ Arv *CriaArv_Vazia(void);
 Arv *CriaArv(int frequencia, char caractere);
 
 void Imprime(Arv *a);
-// essa função vai servir pra executar o algoritimo de Huffman
+
 Arv *JuntaArvs(Arv *arv_e, Arv *arv_d);
 
 Arv *Libera(Arv *a);
@@ -33,8 +33,6 @@ int RetornaQtdFolhas(Arv *a);
 int arv_vazia(Arv *a);
 
 void TransformaInteiroBinario(int n, int *vet, int id);
-
-void TransformaInteiroBinarioLongInt(unsigned long int n, int *vet, int id);
 
 char RetornaValorCharArvore(Arv *arvore);
 

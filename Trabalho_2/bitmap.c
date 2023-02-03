@@ -142,6 +142,13 @@ void bitmapLibera(bitmap *bm)
 	free(bm);
 }
 
+/**
+ * @brief Coloca um bit especifico dentro do contents do bitmap.
+ * 
+ * @param bm O mapa de bits.
+ * @param bit O caracter.
+ * @param index Posição de inserção no contents.
+ */
 void bitmapSetContents(bitmap *bm, unsigned char *bit, unsigned int index)
 {
 	bm->contents[index] = *bit;

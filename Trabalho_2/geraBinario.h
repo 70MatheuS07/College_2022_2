@@ -23,6 +23,4 @@ bitmap *CorrigiTamanhoTextoBits(char *nomeArquivo, Arv *arvore, bitmap *textoBit
 
 bitmap *JuntaMapasDeBits(bitmap *arvoreBits, bitmap *textoBits);
 
-bitmap *JuntaTotalBitsComArquivoBits(long long int numTotalBits, bitmap *arvoreTextoBits);
-
 #endif

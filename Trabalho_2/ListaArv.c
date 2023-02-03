@@ -14,6 +14,11 @@ struct listaArv
     tCelula *ult;
 };
 
+/**
+ * @brief Inicializa e aloca memória para a lista.
+ *
+ * @return ListaArv*
+ */
 ListaArv *IniciaListaArv()
 {
     ListaArv *listaArv = malloc(sizeof(ListaArv));
@@ -23,6 +28,12 @@ ListaArv *IniciaListaArv()
     return listaArv;
 }
 
+/**
+ * @brief Insere uma árvore na lista.
+ *
+ * @param lista Lista de árvores.
+ * @param arv Árvore a ser inserida na lista.
+ */
 void InsereListaArv(ListaArv *lista, Arv *arv)
 {
     tCelula *nova = malloc(sizeof(tCelula));
@@ -41,6 +52,11 @@ void InsereListaArv(ListaArv *lista, Arv *arv)
     }
 }
 
+/**
+ * @brief Imprime as Arvores dentro da lista.
+ *
+ * @param lista Lista a ser impressa.
+ */
 void ImprimeListaArv(ListaArv *lista)
 {
     tCelula *celula;
@@ -49,7 +65,12 @@ void ImprimeListaArv(ListaArv *lista)
         Imprime(celula->arv);
     }
 }
-// essa função vai servir pra executar o algoritimo de Huffman
+/**
+ * @brief Retira a primeira árvore da lista.
+ *
+ * @param lista Lista de árvores.
+ * @return Arv*
+ */
 Arv *RetiraPrimeiraArvDaLista(ListaArv *lista)
 {
     tCelula *p = lista->prim;
@@ -76,6 +97,11 @@ Arv *RetiraPrimeiraArvDaLista(ListaArv *lista)
     return arv;
 }
 
+/**
+ * @brief Libera memória da lista de árvores.
+ *
+ * @param lista Lista de árvores.
+ */
 void LiberaListaArv(ListaArv *lista)
 {
     tCelula *p = lista->prim;
@@ -90,7 +116,15 @@ void LiberaListaArv(ListaArv *lista)
 
     free(lista);
 }
-// Cria arvores para os caracteres com frequencia diferente de 0 e insere na lista
+
+/**
+ * @brief Cria arvores para os caracteres com
+ *        frequencia diferente de 0 e insere na lista.
+ *
+ * @param lista Lista de árvores.
+ * @param V Vetor de inteiros.
+ * @param tam Tamanho do vetor.
+ */
 void PreencheListaArvFrequencia(ListaArv *lista, int V[], int tam)
 {
     char c = '\0';
@@ -106,6 +140,12 @@ void PreencheListaArvFrequencia(ListaArv *lista, int V[], int tam)
     }
 }
 
+/**
+ * @brief Retorna o numero de árvores na lista.
+ * 
+ * @param lista Lista de árvores.
+ * @return int 
+ */
 int RetornaNumListaArv(ListaArv *lista)
 {
     tCelula *celula;
@@ -118,8 +158,14 @@ int RetornaNumListaArv(ListaArv *lista)
     return num;
 }
 
-// Retorna a arvore de codificação de huffman
-Arv* ExecutaAlgoritimoDeHuffman(ListaArv *lista)
+
+/**
+ * @brief Executa o algoritmo de Huffman.
+ * 
+ * @param lista Lista de árvores.
+ * @return Arv* 
+ */
+Arv *ExecutaAlgoritimoDeHuffman(ListaArv *lista)
 {
     Arv *t1;
     Arv *t2;
@@ -139,6 +185,11 @@ Arv* ExecutaAlgoritimoDeHuffman(ListaArv *lista)
     return RetiraPrimeiraArvDaLista(lista);
 }
 
+/**
+ * @brief Ordena a lista de árvores.
+ * 
+ * @param lista Lista de árvores.
+ */
 void OrdenaListaArvFrequencia(ListaArv *lista)
 {
     tCelula *pi;
@@ -165,6 +216,12 @@ void OrdenaListaArvFrequencia(ListaArv *lista)
     }
 }
 
+/**
+ * @brief Retorna a primeira árvore da lista.
+ * 
+ * @param lista Lista de árvores.
+ * @return Arv* 
+ */
 Arv *RetornaArvListaArv(ListaArv *lista)
 {
     return lista->prim->arv;

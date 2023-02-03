@@ -13,26 +13,15 @@ int main(int argc, char *argv[])
 
     ZeraVetorFreq(V, NUM_ASCII);
     PreencheVetorFreq(V, NUM_ASCII, argv[ARQUIVO]);
-    // ImprimeVetorFreq(V, NUM_ASCII);
 
     ListaArv *lista = IniciaListaArv();
 
     PreencheListaArvFrequencia(lista, V, NUM_ASCII);
 
-    ImprimeListaArv(lista);
-
     Arv *arvore = CriaArv_Vazia();
     arvore = ExecutaAlgoritimoDeHuffman(lista);
 
-    printf("\n\n");
-    Imprime(arvore);
-    printf("\n\n");
-
-    // ImprimeListaArv(lista);
-
     CompactaArvoreTexto(arvore, argv[ARQUIVO], V);
-
-    ImprimeListaArv(lista);
 
     Libera(arvore);
     LiberaListaArv(lista);

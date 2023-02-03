@@ -17,14 +17,11 @@ int main(int argc, char *argv[])
 
     fread(&tamanhoTextoBits, sizeof(unsigned long int), 1, arquivo);
 
-    printf("\n\n%ld\n\n", tamanhoTextoBits);
-
     int vetor[NUM_ASCII];
     ZeraVetorFreq(vetor, NUM_ASCII);
 
     fread(vetor, sizeof(int), NUM_ASCII, arquivo);
 
-    /////////////////////////////////////////
     ListaArv *lista = IniciaListaArv();
 
     PreencheListaArvFrequencia(lista, vetor, NUM_ASCII);
@@ -34,36 +31,31 @@ int main(int argc, char *argv[])
     Arv *arvore = CriaArv_Vazia();
     arvore = ExecutaAlgoritimoDeHuffman(lista);
 
-    printf("\n\n");
-    Imprime(arvore);
-    printf("\n\n");
-
-    /////////////////////////////////////////
     bitmap *bm;
 
     int bytesArq = tamanhoTextoBits;
-    printf("\n\nbites: %d\n\n", bytesArq);
 
     bm = bitmapInit(bytesArq);
 
     unsigned char byte;
 
-    printf("conteudo descompacta\n");
-    // pegar de byte a byte
-    for (unsigned int cont = 0; bytesArq > 0; cont++)
+    int i = 0;
+
+    for (; bytesArq > 0; bytesArq -= TAM_CHAR)
     {
         fread(&byte, sizeof(unsigned char), 1, arquivo);
-        
-        bitmapSetContents(bm, &byte, cont);
 
-        printf("%0xh\n", bitmapGetContents(bm)[cont]);
-        // printf("%d ", byte);
-        bytesArq = bytesArq - TAM_CHAR;
+        bitmapSetContents(bm, &byte, i);
+        i++;
     }
 
     fclose(arquivo);
 
     CriaArquivoTxt(argv[1], arvore, bm, tamanhoTextoBits);
+
+    Libera(arvore);
+    LiberaListaArv(lista);
+    bitmapLibera(bm);
 
     return 0;
 }
@@ -72,10 +64,7 @@ void CriaArquivoTxt(char *nomeArquivo, Arv *arvore, bitmap *mapaBits, int totalB
 {
     int tamanhoNomeArquivo = strlen(nomeArquivo);
 
-    // O comp tem tamanho 4 e txt tamanho 3, por isso o -1;
-    tamanhoNomeArquivo--;
-
-    char *nomeArquivoTxt = calloc(tamanhoNomeArquivo, sizeof(char));
+    char *nomeArquivoTxt = calloc(tamanhoNomeArquivo + 1, sizeof(char));
 
     strcpy(nomeArquivoTxt, nomeArquivo);
 
@@ -131,4 +120,7 @@ void CriaArquivoTxt(char *nomeArquivo, Arv *arvore, bitmap *mapaBits, int totalB
     }
 
     fclose(arquivo);
+
+    arvore = arvoreBackupInicio;
+    free(nomeArquivoTxt);
 }

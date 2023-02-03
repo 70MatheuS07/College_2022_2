@@ -3,8 +3,8 @@
 /**
  * @brief Zera os valores da frequencia do vetor.
  *
- * @param V
- * @param tam
+ * @param V Vetor de inteiros.
+ * @param tam Tamanho do vetor de inteiros.
  */
 void ZeraVetorFreq(int V[], int tam)
 {
@@ -18,9 +18,9 @@ void ZeraVetorFreq(int V[], int tam)
  * @brief Abre o arquivo e preenche o vetor com o caracter especifico
  *        e sua frequência.
  *
- * @param V
- * @param tam
- * @param nomeArq
+ * @param V Vetor de inteiros.
+ * @param tam Tamanho do vetor de inteiros.
+ * @param nomeArq String com nome do arquivo.
  */
 void PreencheVetorFreq(int V[], int tam, char *nomeArq)
 {
@@ -49,8 +49,8 @@ void PreencheVetorFreq(int V[], int tam, char *nomeArq)
 /**
  * @brief Imprime o vetor de frequência.
  *
- * @param V
- * @param tam
+ * @param V Vetor de inteiros.
+ * @param tam Tamanho máximo do vetor.
  */
 void ImprimeVetorFreq(int V[], int tam)
 {

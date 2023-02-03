@@ -1,36 +1,22 @@
 #include "geraBinario.h"
 
+/**
+ * @brief Compacta o tamanho do texto, o vetor de inteiro e o texto.
+ *
+ * @param arvore Árvore usada para compactação.
+ * @param nomeArquivo Nome do arquivo.
+ * @param vet Vetor de inteiros para fazer a árvore.
+ */
 void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo, int vet[])
 {
-    // falta tratar o nome do arquivo.
-
-    // bitmap *arvoreBits = CompactaArvore(arvore);
-
     bitmap *textoBits = CompactaTexto(arvore, nomeArquivo);
 
-    // bitmap *arvoreTextoBits = CorrigiTamanhoTextoBits(nomeArquivo, arvore, textoBits);
-
-    // bitmap *arquivoBits = JuntaMapasDeBits(arvoreBits, textoBits);
-
-    /*-----------------------------Acrescenta long long int no inicio dentro do bitmap----------------------*/
-
     unsigned long int totalBitsTexto = (bitmapGetLength(textoBits));
-    // printf("\nlength %d\n", bitmapGetLength(arquivoBits));
-
-    // bitmap *arquivoFinalBits = JuntaTotalBitsComArquivoBits(totalBitsArquivo, arquivoBits);
-
-    /*------------------------------------------------------------------------------------------------------*/
-
-    // unsigned char *pointer = bitmapGetContents(arquivoFinalBits);
-
-    // unsigned int tamanhoBitsArquivo = bitmapGetLength(arquivoFinalBits);
-
-    /*---------------------------------Faz a mudança do .txt para .comp-------------------------------------*/
 
     int tamanhoNomeArquivo = strlen(nomeArquivo);
 
-    // O txt tem tamanho 3 e comp tamanho 4, por isso o +1;
-    tamanhoNomeArquivo++;
+    // O txt tem tamanho 3 e comp tamanho 4 + /0, por isso o +2;
+    tamanhoNomeArquivo += 2;
 
     char *nomeArquivoCompactado = calloc(tamanhoNomeArquivo, sizeof(char));
 
@@ -62,56 +48,26 @@ void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo, int vet[])
     unsigned char byte = 0;
     int cont = 0;
 
-    printf("conteudo compacta\n");
     for (int bytesArq = totalBitsTexto; bytesArq > 0; bytesArq -= 8)
     {
         byte = bitmapGetContents(textoBits)[cont];
-        printf("%0xh\n", bitmapGetContents(textoBits)[cont]);
-        // printf("%d ", byte);
         fwrite(&byte, sizeof(unsigned char), 1, arquivo);
         cont++;
     }
 
     fclose(arquivo);
 
-    // bitmapLibera(arvoreBits);
     bitmapLibera(textoBits);
-    // bitmapLibera(arvoreTextoBits);
-    // bitmapLibera(arquivoBits);
     free(nomeArquivoCompactado);
 }
 
-bitmap *CompactaArvore(Arv *arvore)
-{
-    int qtd_folhas = RetornaQtdFolhas(arvore);
-
-    int qtd_nos = qtd_folhas - 1;
-
-    int qtd_caracteres_folhas = qtd_folhas * TAM_CHAR;
-
-    int total_bits = TAM_CHAR + qtd_nos + qtd_folhas + qtd_caracteres_folhas;
-
-    bitmap *arvoreBits = bitmapInit(total_bits);
-
-    int vetor[TAM_CHAR];
-
-    for (int i = 0; i < TAM_CHAR; i++)
-    {
-        vetor[i] = 0;
-    }
-
-    TransformaInteiroBinario(qtd_folhas, vetor, TAM_CHAR - 1);
-
-    for (int i = 0; i < TAM_CHAR; i++)
-    {
-        bitmapAppendLeastSignificantBit(arvoreBits, vetor[i]);
-    }
-
-    CaminhaArvoreRecurssiva(arvoreBits, arvore);
-
-    return arvoreBits;
-}
-
+/**
+ * @brief Compacta o texto para dentro de um bitmap.
+ *
+ * @param arvore Árvore.
+ * @param nomeArquivo Nome do arquivo.
+ * @return bitmap*
+ */
 bitmap *CompactaTexto(Arv *arvore, char *nomeArquivo)
 {
     int tamanho_texto = RetornaTamanhoTexto(nomeArquivo);
@@ -161,6 +117,12 @@ bitmap *CompactaTexto(Arv *arvore, char *nomeArquivo)
     return textoBits;
 }
 
+/**
+ * @brief Retorna o tamanho do texto.
+ *
+ * @param nomeArquivo Nome do arquivo.
+ * @return int
+ */
 int RetornaTamanhoTexto(char *nomeArquivo)
 {
     FILE *arquivo = fopen("arq.txt", "r");
@@ -177,122 +139,4 @@ int RetornaTamanhoTexto(char *nomeArquivo)
     fclose(arquivo);
 
     return i;
-}
-
-bitmap *CorrigiTamanhoTextoBits(char *nomeArquivo, Arv *arvore, bitmap *textoBits)
-{
-    char caracter = '\0';
-    int total = 0;
-
-    char *binario = calloc(TAM_CHAR + 1, sizeof(char));
-
-    FILE *arquivo = fopen(nomeArquivo, "r");
-
-    while (fscanf(arquivo, "%c", &caracter) != EOF)
-    {
-        for (int i = 0; i < TAM_CHAR + 1; i++)
-        {
-            binario[i] = '\0';
-        }
-
-        VarreArvore(arvore, caracter, INICIALIZA_NUM, binario);
-
-        for (int i = 0; i < TAM_CHAR + 1; i++)
-        {
-            if (binario[i] == '\0')
-            {
-                break;
-            }
-            else
-            {
-                total++;
-            }
-        }
-    }
-
-    fclose(arquivo);
-
-    bitmap *totalRealBits = bitmapInit(total);
-
-    unsigned char bit = 0;
-
-    for (int i = 0; i < total; i++)
-    {
-        bit = bitmapGetBit(textoBits, i);
-        bitmapAppendLeastSignificantBit(totalRealBits, bit);
-    }
-
-    free(binario);
-
-    return totalRealBits;
-}
-
-bitmap *JuntaMapasDeBits(bitmap *arvoreBits, bitmap *textoBits)
-{
-    int num1 = bitmapGetLength(arvoreBits);
-
-    int num2 = bitmapGetLength(textoBits);
-
-    int numTotal = 0;
-    numTotal = num1 + num2;
-
-    bitmap *mapaBits = bitmapInit(numTotal);
-
-    unsigned char bit;
-
-    int j = 0;
-
-    for (int i = 0; i < numTotal; i++)
-    {
-        if (i < num1)
-        {
-            bit = bitmapGetBit(arvoreBits, i);
-        }
-
-        else
-        {
-            bit = bitmapGetBit(textoBits, j);
-            j++;
-        }
-
-        bitmapAppendLeastSignificantBit(mapaBits, bit);
-    }
-
-    return mapaBits;
-}
-
-bitmap *JuntaTotalBitsComArquivoBits(long long int numTotalBits, bitmap *arvoreTextoBits)
-{
-    int vetor[TAM_LONG_INT];
-
-    for (int i = 0; i < TAM_LONG_INT; i++)
-    {
-        vetor[i] = '\0';
-    }
-
-    TransformaInteiroBinarioLongInt(numTotalBits, vetor, TAM_LONG_INT - 1);
-
-    bitmap *mapaBitsFinal = bitmapInit(numTotalBits);
-
-    unsigned char bit;
-
-    int j = 0;
-
-    for (int i = 0; i < numTotalBits; i++)
-    {
-        if (i < TAM_LONG_INT)
-        {
-            bit = vetor[i];
-        }
-
-        else
-        {
-            bit = bitmapGetBit(arvoreTextoBits, j);
-            j++;
-        }
-
-        bitmapAppendLeastSignificantBit(mapaBitsFinal, bit);
-    }
-
-    return mapaBitsFinal;
 }
