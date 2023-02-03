@@ -44,36 +44,17 @@ int main(int argc, char *argv[])
     int bytesArq = tamanhoTextoBits;
     printf("\n\nbites: %d\n\n", bytesArq);
 
-    if (bytesArq % TAM_CHAR == 0)
-    {
-        bm = bitmapInit(bytesArq);
-    }
-    else
-    {
-        bm = bitmapInit(((bytesArq / TAM_CHAR) + 1) * TAM_CHAR);
-    }
+    bm = bitmapInit(bytesArq);
 
     unsigned char byte;
-    int vet[TAM_CHAR];
 
     printf("conteudo descompacta\n");
     // pegar de byte a byte
-    for (int cont = 0; bytesArq > 0; cont++)
+    for (unsigned int cont = 0; bytesArq > 0; cont++)
     {
         fread(&byte, sizeof(unsigned char), 1, arquivo);
-        // zerar vetor para evitar erro na funçao trasformaInteiroBinario
-        for (int i = 0; i < TAM_CHAR; i++)
-        {
-            vet[i] = 0;
-        }
-
-        // trasformar o byte em no binario pra passar pro bitmap
-        TransformaInteiroBinario(byte, vet, TAM_CHAR - 1);
-
-        for (int i = 0; i < TAM_CHAR; i++)
-        {
-            bitmapAppendLeastSignificantBit(bm, vet[i]);
-        }
+        
+        bitmapSetContents(bm, &byte, cont);
 
         printf("%0xh\n", bitmapGetContents(bm)[cont]);
         // printf("%d ", byte);
@@ -122,8 +103,6 @@ void CriaArquivoTxt(char *nomeArquivo, Arv *arvore, bitmap *mapaBits, int totalB
     while (cont < totalBitsTexto)
     {
         bit = bitmapGetBit(mapaBits, cont);
-
-        printf("\n%d\n", bit);
 
         if (bit == 0)
         {
