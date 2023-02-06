@@ -26,8 +26,6 @@ int main(int argc, char *argv[])
 
     PreencheListaArvFrequencia(lista, vetor, NUM_ASCII);
 
-    ImprimeListaArv(lista);
-
     Arv *arvore = CriaArv_Vazia();
     arvore = ExecutaAlgoritimoDeHuffman(lista);
 
@@ -91,6 +89,8 @@ void CriaArquivoTxt(char *nomeArquivo, Arv *arvore, bitmap *mapaBits, int totalB
 
     while (cont < totalBitsTexto)
     {
+        caracter = '\0';
+        bit = 0;
         bit = bitmapGetBit(mapaBits, cont);
 
         if (bit == 0)

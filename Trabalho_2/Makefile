@@ -18,4 +18,3 @@ descompacta: Arvore.o bitmap.o geraBinario.o VetorFreq.o ListaArv.o descompacta.
 
 clean:
 	rm -f *.o compacta descompacta
-	rm -f arq.comp

@@ -80,8 +80,6 @@ bitmap *CompactaTexto(Arv *arvore, char *nomeArquivo)
 
     char *binario = calloc(TAM_CHAR + 1, sizeof(char));
 
-    printf("\n\ntamanho texto: %d\n\n", tamanho_texto);
-
     bitmap *textoBits = bitmapInit(tamanho_texto);
 
     FILE *arquivo = fopen(nomeArquivo, "r");
@@ -94,8 +92,6 @@ bitmap *CompactaTexto(Arv *arvore, char *nomeArquivo)
         }
 
         VarreArvore(arvore, caracter, INICIALIZA_NUM, binario);
-
-        printf("caracter: %c, binario: %s\n", caracter, binario);
 
         for (int i = 0; i < TAM_CHAR + 1; i++)
         {
@@ -125,7 +121,7 @@ bitmap *CompactaTexto(Arv *arvore, char *nomeArquivo)
  */
 int RetornaTamanhoTexto(char *nomeArquivo)
 {
-    FILE *arquivo = fopen("arq.txt", "r");
+    FILE *arquivo = fopen(nomeArquivo, "r");
 
     char lixo = '\0';
     int i = 0;
@@ -135,7 +131,6 @@ int RetornaTamanhoTexto(char *nomeArquivo)
         i++;
     }
 
-    printf("\n\n%d\n\n", i);
     fclose(arquivo);
 
     return i;
