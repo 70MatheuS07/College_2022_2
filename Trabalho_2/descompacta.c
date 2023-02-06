@@ -44,6 +44,7 @@ int main(int argc, char *argv[])
         fread(&byte, sizeof(unsigned char), 1, arquivo);
 
         bitmapSetContents(bm, &byte, i);
+        byte = '\0';
         i++;
     }
 
@@ -83,7 +84,7 @@ void CriaArquivoTxt(char *nomeArquivo, Arv *arvore, bitmap *mapaBits, int totalB
 
     int cont = 0;
     unsigned char bit = 0;
-    char caracter = '\0';
+    unsigned char caracter = '\0';
 
     Arv *arvoreBackupInicio = arvore;
 

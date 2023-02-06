@@ -76,7 +76,7 @@ bitmap *CompactaTexto(Arv *arvore, char *nomeArquivo)
     tamanho_texto = tamanho_texto * TAM_CHAR;
 
     char caracter = '\0';
-    int valorBit = 0;
+    unsigned char valorBit = 0;
 
     char *binario = calloc(TAM_CHAR + 1, sizeof(char));
 
