@@ -7,7 +7,7 @@
  * @param nomeArquivo Nome do arquivo.
  * @param vet Vetor de inteiros para fazer a árvore.
  */
-void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo, int vet[])
+void CompactaTodoArquivo(Arv *arvore, char *nomeArquivo, int vet[])
 {
     bitmap *textoBits = CompactaTexto(arvore, nomeArquivo);
 

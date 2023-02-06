@@ -11,7 +11,7 @@
 #define TAM_INT 16
 #define TAM_CHAR 8
 
-void CompactaArvoreTexto(Arv *arvore, char *nomeArquivo, int vet[]);
+void CompactaTodoArquivo(Arv *arvore, char *nomeArquivo, int vet[]);
 
 bitmap *CompactaArvore(Arv *arvore);
 

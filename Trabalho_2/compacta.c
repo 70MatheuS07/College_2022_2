@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     Arv *arvore = CriaArv_Vazia();
     arvore = ExecutaAlgoritimoDeHuffman(lista);
 
-    CompactaArvoreTexto(arvore, argv[ARQUIVO], V);
+    CompactaTodoArquivo(arvore, argv[ARQUIVO], V);
 
     Libera(arvore);
     LiberaListaArv(lista);
