@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 
     while (fscanf(arquivo, "%c ", &identificador) != EOF)
     {
-        if (identificador == ALUNO)
+        if (identificador == 'A')
         {
             aluno = CriaLehAluno(arquivo);
             InserePessoaListaGenerica(lista, aluno);
@@ -30,9 +30,19 @@ int main(int argc, char *argv[])
         }
     }
 
-    fclose(arquivo);
+    // ImprimeListaGenerica(lista);
 
+    fclose(arquivo);
     free(nomeArquivo);
 
+    FILE *arquivoSaida = fopen("saida.txt", "w");
+
+    ImpressaoSelecionadaArquivo(lista, PROFESSOR, arquivoSaida);
+    fprintf(arquivoSaida, "Salario medio dos professores: %.2f\n\n", CalculoSelecionado(lista, PROFESSOR));
+
+    ImpressaoSelecionadaArquivo(lista, ALUNO, arquivoSaida);
+    fprintf(arquivoSaida, "Cr medio dos alunos: %.2f\n\n", CalculoSelecionado(lista, ALUNO));
+
+    fclose(arquivoSaida);
     return 0;
 }

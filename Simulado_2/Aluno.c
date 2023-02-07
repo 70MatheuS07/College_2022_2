@@ -4,7 +4,7 @@ struct Aluno
 {
     char *nome;
     int cpf;
-    int cr;
+    float cr;
     int verificador;
 };
 
@@ -42,4 +42,9 @@ tAluno *CriaLehAluno(FILE *arquivo)
     aluno->verificador = ALUNO;
 
     return aluno;
+}
+
+void ImprimeAluno(tAluno *aluno, FILE *arquivo)
+{
+    fprintf(arquivo, "Aluno: %s %d %.2f\n", aluno->nome, aluno->cpf, aluno->cr);
 }

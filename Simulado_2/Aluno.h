@@ -11,4 +11,6 @@ typedef struct Aluno tAluno;
 
 tAluno *CriaLehAluno(FILE *arquivo);
 
+void ImprimeAluno(tAluno *aluno, FILE *arquivo);
+
 #endif

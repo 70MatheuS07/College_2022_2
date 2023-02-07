@@ -11,4 +11,10 @@ typedef struct Professor tProfessor;
 
 tProfessor *CriaLehProfessor(FILE *arquivo);
 
+int RetornaInteiroIdentificador(tProfessor *professor);
+
+void ImprimeProfessor(tProfessor *professor, FILE *arquivo);
+
+float RetornaFloatPessoa(tProfessor *professor);
+
 #endif

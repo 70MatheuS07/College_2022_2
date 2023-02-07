@@ -13,4 +13,8 @@ tListaGenerica *CriaListaGenerica();
 
 void InserePessoaListaGenerica(tListaGenerica *lista, void *pessoa);
 
+void ImpressaoSelecionadaArquivo(tListaGenerica *lista, int identificador, FILE *arquivo);
+
+float CalculoSelecionado(tListaGenerica *lista, int identificador);
+
 #endif

@@ -43,3 +43,18 @@ tProfessor *CriaLehProfessor(FILE *arquivo)
 
     return professor;
 }
+
+int RetornaInteiroIdentificador(tProfessor *professor)
+{
+    return professor->verificador;
+}
+
+void ImprimeProfessor(tProfessor *professor, FILE *arquivo)
+{
+    fprintf(arquivo, "Professor: %s %d %.2f\n", professor->nome, professor->cpf, professor->salario);
+}
+
+float RetornaFloatPessoa(tProfessor *professor)
+{
+    return professor->salario;
+}
