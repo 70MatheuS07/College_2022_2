@@ -7,3 +7,39 @@ struct Professor
     float salario;
     int verificador;
 };
+
+tProfessor *CriaLehProfessor(FILE *arquivo)
+{
+    tProfessor *professor = malloc(sizeof(tProfessor));
+
+    char *nome = calloc(100, sizeof(char));
+    char caracter;
+    int i = 0;
+
+    while (1)
+    {
+        fscanf(arquivo, "%c", &caracter);
+
+        if (caracter == ' ')
+        {
+            nome[i] = '\0';
+            break;
+        }
+
+        nome[i] = caracter;
+        i++;
+    }
+
+    int cpf = 0;
+    fscanf(arquivo, "%d ", &cpf);
+
+    float salario = 0.0;
+    fscanf(arquivo, "%f\n", &salario);
+
+    professor->nome = nome;
+    professor->cpf = cpf;
+    professor->salario = salario;
+    professor->verificador = PROFESSOR;
+
+    return professor;
+}

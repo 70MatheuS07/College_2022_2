@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 
     tListaGenerica *lista = CriaListaGenerica();
 
-    while (fscanf(arquivo, "%c", &identificador) != EOF)
+    while (fscanf(arquivo, "%c ", &identificador) != EOF)
     {
         if (identificador == ALUNO)
         {
