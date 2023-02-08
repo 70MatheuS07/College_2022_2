@@ -5,6 +5,7 @@ typedef struct Celula tCelula;
 struct Celula
 {
     void *pessoa;
+    void *identificador;
     tCelula *prox;
 };
 
@@ -24,11 +25,12 @@ tListaGenerica *CriaListaGenerica()
     return lista;
 }
 
-void InserePessoaListaGenerica(tListaGenerica *lista, void *pessoa)
+void InserePessoaListaGenerica(tListaGenerica *lista, void *pessoa, void *identificador)
 {
     tCelula *nova = malloc(sizeof(tCelula));
     tCelula *ultima;
     nova->pessoa = pessoa;
+    nova->identificador = identificador;
     nova->prox = NULL;
 
     if (lista->inicio == NULL && lista->fim == NULL)
@@ -49,7 +51,7 @@ void ImpressaoSelecionadaArquivo(tListaGenerica *lista, int identificador, FILE 
     int id = 0;
     for (tCelula *celula = lista->inicio; celula != NULL; celula = celula->prox)
     {
-        id = RetornaInteiroIdentificador(celula->pessoa);
+        id = celula->identificador;
 
         if (id == identificador)
         {
@@ -72,7 +74,6 @@ float CalculoSelecionado(tListaGenerica *lista, int identificador)
     for (tCelula *celula = lista->inicio; celula != NULL; celula = celula->prox)
     {
         parcial = RetornaFloatPessoa(celula->pessoa);
-        id = RetornaInteiroIdentificador(celula->pessoa);
 
         if (id == identificador)
         {

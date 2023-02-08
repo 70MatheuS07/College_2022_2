@@ -5,6 +5,8 @@
 
 int main(int argc, char *argv[])
 {
+    int *ALUNO = 0;
+    int *PROFESSOR = 1;
     char *nomeArquivo = strdup(argv[1]);
 
     FILE *arquivo = fopen(nomeArquivo, "r");
@@ -21,12 +23,12 @@ int main(int argc, char *argv[])
         if (identificador == 'A')
         {
             aluno = CriaLehAluno(arquivo);
-            InserePessoaListaGenerica(lista, aluno);
+            InserePessoaListaGenerica(lista, aluno, ALUNO);
         }
         else
         {
             professor = CriaLehProfessor(arquivo);
-            InserePessoaListaGenerica(lista, professor);
+            InserePessoaListaGenerica(lista, professor, PROFESSOR);
         }
     }
 

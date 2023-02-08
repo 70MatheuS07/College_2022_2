@@ -5,7 +5,6 @@ struct Professor
     char *nome;
     int cpf;
     float salario;
-    int verificador;
 };
 
 tProfessor *CriaLehProfessor(FILE *arquivo)
@@ -39,14 +38,8 @@ tProfessor *CriaLehProfessor(FILE *arquivo)
     professor->nome = nome;
     professor->cpf = cpf;
     professor->salario = salario;
-    professor->verificador = PROFESSOR;
 
     return professor;
-}
-
-int RetornaInteiroIdentificador(tProfessor *professor)
-{
-    return professor->verificador;
 }
 
 void ImprimeProfessor(tProfessor *professor, FILE *arquivo)

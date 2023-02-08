@@ -11,7 +11,7 @@ typedef struct ListaGenerica tListaGenerica;
 
 tListaGenerica *CriaListaGenerica();
 
-void InserePessoaListaGenerica(tListaGenerica *lista, void *pessoa);
+void InserePessoaListaGenerica(tListaGenerica *lista, void *pessoa, void *identificador);
 
 void ImpressaoSelecionadaArquivo(tListaGenerica *lista, int identificador, FILE *arquivo);
 

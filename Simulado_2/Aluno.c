@@ -5,7 +5,6 @@ struct Aluno
     char *nome;
     int cpf;
     float cr;
-    int verificador;
 };
 
 tAluno *CriaLehAluno(FILE *arquivo)
@@ -39,7 +38,6 @@ tAluno *CriaLehAluno(FILE *arquivo)
     aluno->nome = nome;
     aluno->cpf = cpf;
     aluno->cr = cr;
-    aluno->verificador = ALUNO;
 
     return aluno;
 }
